@@ -1,10 +1,11 @@
 import React from 'react';
 
 
-class Instructions extends React.Component {
+class LanguageModel extends React.Component {
     constructor(props) {
         super(props); 
     }
+    
     render() {
         return(
             <p>placeholder</p>
@@ -12,4 +13,4 @@ class Instructions extends React.Component {
     }
 }
 
-export default Instructions; 
+export default LanguageModel; 

@@ -13,4 +13,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+#NavBar {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+#NavigationLinks {
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#NavigationLinks a {
+  margin-left: 6px;
+}
+
 /*# sourceMappingURL=App.css.map */

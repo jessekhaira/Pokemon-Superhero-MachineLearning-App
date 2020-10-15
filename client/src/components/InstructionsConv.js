@@ -1,11 +1,10 @@
 import React from 'react';
 
 
-class ML_Model extends React.Component {
+class InstructionsConv extends React.Component {
     constructor(props) {
         super(props); 
     }
-    
     render() {
         return(
             <p>placeholder</p>
@@ -13,4 +12,4 @@ class ML_Model extends React.Component {
     }
 }
 
-export default ML_Model; 
+export default InstructionsConv; 
