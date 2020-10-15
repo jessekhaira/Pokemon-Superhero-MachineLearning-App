@@ -1,4 +1,7 @@
 import React from 'react';
+import Instructions from './Instructions';
+import NavBar from './NavBar';
+import ML_Model from './ML_Model'; 
 import '../stylesheets/App.css'; 
 
 class App extends React.Component {
