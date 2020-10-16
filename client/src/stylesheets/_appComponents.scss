@@ -6,9 +6,9 @@
 
 :root {
     --mainBgColor: #F3F3F3;
-    --accent-color-1: #3C1874;
+    --accent-color-1: #5a2aa7;
     --accent-color-2: #932432;
-    --accent-color-3: #DE354C; 
+    --accent-color-3: #ec586c; 
 }
   
 body, #root, html {
@@ -51,9 +51,14 @@ code {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
     color: var(--accent-color-1); 
     height: 30%;
+}
+
+#instructionsLM {
+    margin-bottom: 15px;
 }
 
 #spacingDiv {
@@ -75,11 +80,24 @@ code {
     color: var(--accent-color-3); 
     background-color: var(--accent-color-1);
     transition: 0.3s linear;
+    padding: 10px;
 }
 
 #LanguageModel:hover {
     background-color: #8e54ec;
     color: #e6dddf;
+}
+
+#navbarIcon {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 50px;
+}
+
+
+#DescriptionInfo {
+    display: flex;
+    margin-left: 10px;
 }
 
 #NavigationLinks {
@@ -97,4 +115,3 @@ code {
         transform: rotate(14deg);
     }
 }
-

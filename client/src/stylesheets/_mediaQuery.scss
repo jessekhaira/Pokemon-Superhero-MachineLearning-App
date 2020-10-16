@@ -7,12 +7,7 @@
 
         h2 {
             margin-bottom: 0px;
-       }
-
-
-       #Recognize {
-           margin-top: 17px;
-       }
+        }
 
     }
     
@@ -22,6 +17,13 @@
         #GenerateNames {
             margin-top: 10px;
         }
+        #Recognize {
+            margin-top: 2px;
+         }
+    }
+
+    #LanguageModel {
+        width: 30%;
     }
 
     #spacingDiv {
