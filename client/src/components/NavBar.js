@@ -8,14 +8,18 @@ class NavBar extends React.Component {
     }
     render() {
         return(
-            <div id = "NavBar">
-                <div id = "DescriptionInfo">
-                    <h2>Pokemon Machine Learning</h2>
+            <div id = "NavBar_Container">
+                <div id = "NavBar">
+                    <div id = "DescriptionInfo">
+                        <h2>Pokémon Machine Learning</h2>
+                    </div>
+                    <div id = "NavigationLinks">
+                        <Link to = "/" id="Recognize">Recognize Images</Link>
+                        <Link to = "/getName" id="GenerateNames">Generate Names</Link>
+                    </div>
                 </div>
-                <div id = "NavigationLinks">
-                    <Link to = "/">Recognize Images</Link>
-                    <Link to = "/getName">Generate Names</Link>
-                </div>
+                {/* Div to space out rest of content of page from the navbar */}
+                <div id = "spacingDiv"></div>
             </div>
         );
     }

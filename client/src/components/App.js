@@ -11,19 +11,11 @@ class App extends React.Component {
   state = {users: []}
 
   componentDidMount() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
-
         <Router>
           {/* Navbar is on every route */}
           <Route>
@@ -31,6 +23,7 @@ class App extends React.Component {
           </Route>
 
           <Switch>
+
             <Route exact path = "/getName">
               <InstructionsLanguageModel />
               <LanguageModel /> 
@@ -41,7 +34,9 @@ class App extends React.Component {
               <InstructionsConv />
               <Conv_Model /> 
             </Route>
+
           </Switch>
+          
         </Router>
       </div>
     );

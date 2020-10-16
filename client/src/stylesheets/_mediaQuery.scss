@@ -1,0 +1,30 @@
+@media(max-width:700px) {
+    #NavBar {
+        flex-direction: column;
+        height: 15%;
+        margin: 0px;
+        justify-content: flex-start;
+
+        h2 {
+            margin-bottom: 0px;
+       }
+
+
+       #Recognize {
+           margin-top: 17px;
+       }
+
+    }
+    
+    #NavigationLinks {
+        flex-direction: column;
+
+        #GenerateNames {
+            margin-top: 10px;
+        }
+    }
+
+    #spacingDiv {
+        margin-top: 150px; 
+    }
+}
