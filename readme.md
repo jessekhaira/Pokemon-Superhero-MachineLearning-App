@@ -9,7 +9,7 @@ I also wanted to train a language generating model for fun on all the different 
 
 The tech stack used in the project includes react for the frontend, express for the backend, and various python libraries for scraping the data and for training the models. The express backend was responsible for providing access to the deep learning models through a REST API. 
 
-The project is deployed and can be played around with at: 
+The project is deployed and can be played around with at the following URL:  
 
 ## Features 
 * User can input images on the home route and send them to an AI algorithm, which will return the pokemon it thinks it most likely is
