@@ -5,7 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
+const { type } = require('os');
+require('dotenv').config();
 
+console.log(typeof(process.env.NODE_ENV));
 var app = express();
 
 app.use(logger('dev'));
