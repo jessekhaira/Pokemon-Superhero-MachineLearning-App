@@ -9,11 +9,9 @@ class InstructionsConv extends React.Component {
         return(
             <div className = "ML_Model_Instructions">
                 <div id = "instructionsConv">
-                    The algorithm was trained to recognize pokémon from the first
-                    150 pokémon. 
-                    
-                    This means you should ideally insert images from those 150 pokémon,
-                    like those shown below. 
+                    To use the algorithm, upload a Pokémon image from the first
+                    150 pokémon like those shown below (IE: not sprites), and a prediction will 
+                    be returned by the algorithm for which pokémon it thinks it most likely is! 
                 </div>
                 <div id = "randomPokeImgs">
                 </div>

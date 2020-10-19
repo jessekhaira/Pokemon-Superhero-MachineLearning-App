@@ -68,6 +68,17 @@ code {
   background-color: var(--mainBgColor);
 }
 
+#pokeImg {
+  margin-top: 15px;
+}
+
+#conv_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 #LanguageModel {
   border: 1px solid var(--accent-color-1);
   width: 15%;
