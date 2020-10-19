@@ -61,8 +61,18 @@ code {
   width: 80%;
 }
 
+#imageDisplayDiv {
+  display: none;
+}
+
+#imgLoaded {
+  height: 300px;
+  width: 300px;
+}
+
 #submitConv {
   display: none;
+  margin-top: 20px;
 }
 
 #spacingDiv {
