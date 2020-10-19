@@ -57,6 +57,14 @@ code {
   margin-bottom: 15px;
 }
 
+#labelPokeImg {
+  width: 80%;
+}
+
+#submitConv {
+  display: none;
+}
+
 #spacingDiv {
   margin-top: 100px;
 }
@@ -70,6 +78,7 @@ code {
 
 #pokeImg {
   margin-top: 15px;
+  display: none;
 }
 
 #conv_form {
@@ -79,7 +88,7 @@ code {
   flex-direction: column;
 }
 
-#LanguageModel {
+.buttonSubmitModel {
   border: 1px solid var(--accent-color-1);
   width: 15%;
   cursor: pointer;
@@ -89,7 +98,7 @@ code {
   padding: 10px;
 }
 
-#LanguageModel:hover {
+.buttonSubmitModel:hover {
   background-color: #8e54ec;
   color: #e6dddf;
 }

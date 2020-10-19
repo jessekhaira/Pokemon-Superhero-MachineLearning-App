@@ -9,7 +9,7 @@ class LanguageModel extends React.Component {
     render() {
         return(
             <div className = "Model_Div">
-                <div id = "LanguageModel">Generate New Pokémon Name</div>
+                <div id = "LanguageModel" className = "buttonSubmitModel">Generate New Pokémon Name</div>
                 <div id = "ResultsLanguageModel"></div>
             </div>
         );
