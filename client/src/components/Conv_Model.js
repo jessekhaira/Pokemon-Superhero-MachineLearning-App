@@ -23,12 +23,31 @@ class Conv_Model extends React.Component {
 
         reader.readAsDataURL(imgUploaded);
     }
+
+    _requestPrediction() {
+        // asynchronous action - requesting data from the machine learning model on the server
+        const bodyInfo = document.getElementById('pokeImg'); 
+        let formInfo = new FormData();
+        formInfo.append('prac1', bodyInfo.files[0]);
+        // data has been submitted, so hide all the form info and start showing the convResults instead
+        document.getElementById('conv_form').style.display = 'none'; 
+        fetch('/convModel', {
+            method: 'POST',
+            body: formInfo 
+        }).
+        then(data => data.json()). 
+        then(data => {
+            console.log(data); 
+        });
+    }
+
+
     
     render() {
         return(
             <div className = "Model_Div">
                 <div id = "ConvModel">
-                    <form action="/conv_model" method = "get" id = "conv_form">
+                    <form id = "conv_form">
                         <label for="pokeImg" 
                         id = "labelPokeImg" 
                         className="buttonSubmitModel"
@@ -52,10 +71,14 @@ class Conv_Model extends React.Component {
                             </p>
                             <img id = "imgLoaded" alt = "Your uploaded image"></img>
                         </div>
-                        <input id = "submitConv" type = "submit" className = "buttonSubmitModel"></input>
+                        <div id = "submitConv" onClick = {this._requestPrediction} className = "buttonSubmitModel">Submit</div>
                     </form>
                 </div>
-                <div id = "convResults"></div>
+                <div id = "convResults">
+                    <div id = "seeTopPrediction"></div>
+                    <div id = "startNewPrediction"></div>
+                    <div id = "seeTopTenPredictions"></div>
+                </div>
             </div>        
         );
     }
