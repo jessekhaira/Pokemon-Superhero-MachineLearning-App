@@ -16,6 +16,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "jimp": "^0.16.1",
     "nodemon": "^2.0.5"
   }
 }
