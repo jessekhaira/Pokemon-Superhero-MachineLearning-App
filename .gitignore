@@ -1,3 +1,4 @@
-venv/
-backend/node_modules
-backend/.env
+backend/venv
+Backend/.env
+Backend/node_modules
+ML_Model_Serving/venv

@@ -28,7 +28,7 @@ class Conv_Model extends React.Component {
         // asynchronous action - requesting data from the machine learning model on the server
         const bodyInfo = document.getElementById('pokeImg'); 
         let formInfo = new FormData();
-        formInfo.append('prac1', bodyInfo.files[0]);
+        formInfo.append('image', bodyInfo.files[0]);
         // data has been submitted, so hide all the form info and start showing the convResults instead
         document.getElementById('conv_form').style.display = 'none'; 
         fetch('/convModel', {
