@@ -6,15 +6,21 @@ class LanguageModel extends React.Component {
         super(props); 
     }
 
-    _generateNewName(e) {
+    async _generateNewName(e) {
         // Asynchronous action. Display a spinner when request 
         // is first sent in the results box, then remove the spinner once
         // the data has been recieved 
-        fetch('/languageModel', {
-            method: 'GET'
-        }).
-        then(data => data.json()).
-        then(data => console.log(data));
+        try {
+            let fetchedData = await fetch('/languageModel', {
+                method: 'GET'
+            });
+            let jsonData = await fetchedData.json(); 
+            console.log(jsonData); 
+        }
+        catch(err) {
+            console.log(err); 
+        }
+
     }
     
     render() {

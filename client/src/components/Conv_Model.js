@@ -24,21 +24,23 @@ class Conv_Model extends React.Component {
         reader.readAsDataURL(imgUploaded);
     }
 
-    _requestPrediction() {
-        // asynchronous action - requesting data from the machine learning model on the server
-        const bodyInfo = document.getElementById('pokeImg'); 
-        let formInfo = new FormData();
-        formInfo.append('image', bodyInfo.files[0]);
-        // data has been submitted, so hide all the form info and start showing the convResults instead
-        document.getElementById('conv_form').style.display = 'none'; 
-        fetch('/convModel', {
-            method: 'POST',
-            body: formInfo 
-        }).
-        then(data => data.json()). 
-        then(data => {
-            console.log(data); 
-        });
+    async _requestPrediction() {
+        try {
+            const bodyInfo = document.getElementById('pokeImg'); 
+            let formInfo = new FormData();
+            formInfo.append('image', bodyInfo.files[0]);
+            // data has been submitted, so hide all the form info and start showing the convResults instead
+            document.getElementById('conv_form').style.display = 'none'; 
+            let predictionData = await fetch('/convModel', {
+                method: 'POST',
+                body: formInfo 
+            })
+            let jsonPredictionData = await predictionData.json(); 
+            console.log(jsonPredictionData); 
+        }
+        catch (err) {
+            console.log(err); 
+        }
     }
 
 
