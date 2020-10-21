@@ -14,26 +14,39 @@ class InstructionsLM extends React.Component {
 
     async _fetchQuoteAndDisplay() {
         try {
-            document.getElementById("quoteDisplay").innerHTML = null; 
-            document.getElementById("authorDisplay").innerHTML = null; 
+            this._cleanUpInnerHTML();
+            const quoteBox = document.getElementById("quoteBox");
             // add a spinning element to the div to indicate we are waiting on a response from an api
             // that will either succeed or fail, at which point spinnerDiv is removed 
+            quoteBox.appendChild(this.props._addSpinnerAsync());
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
+            quoteBox.removeChild(quoteBox.lastChild);
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
             const randomIdx = getRndInteger(0, 1643); 
             const randomQuote = fetchedQuotesJSON[randomIdx]; 
-            
-            const [quotePNode, authorPNode] = this._makeQuoteAuthorDisplay(randomQuote); 
-            document.getElementById("quoteDisplay").appendChild(quotePNode); 
-            document.getElementById("authorDisplay").appendChild(authorPNode); 
+            this._addQuoteInfo(randomQuote); 
         }
 
         catch(err) {
             document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
         }
+        finally {
+            document.getElementById("newQuote").innerHTML = "Get New Quote"; 
+        }
     }
 
+    _cleanUpInnerHTML() {
+        document.getElementById("quoteDisplay").innerHTML = null; 
+        document.getElementById("authorDisplay").innerHTML = null; 
+        document.getElementById("newQuote").innerHTML = null; 
+    }
 
+    _addQuoteInfo(randomQuote) {
+        const [quotePNode, authorPNode] = this._makeQuoteAuthorDisplay(randomQuote); 
+        document.getElementById("quoteDisplay").appendChild(quotePNode); 
+        document.getElementById("authorDisplay").appendChild(authorPNode);
+
+    }
 
     _makeQuoteAuthorDisplay(randomQuote) {
         const authorPNode = document.createElement('p'); 
@@ -43,6 +56,7 @@ class InstructionsLM extends React.Component {
         authorPNode.innerHTML = "-"+(randomQuote.author ? randomQuote.author: "Unknown");
         return [quotePNode, authorPNode]; 
     }
+
     render() {
         return(
             <div className = "ML_Model_Instructions">

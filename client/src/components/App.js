@@ -8,7 +8,11 @@ import '../stylesheets/App.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 class App extends React.Component {
-
+  _addSpinnerAsync() {
+    const spinnerDiv = document.createElement('div');
+    spinnerDiv.className = "spinner";
+    return spinnerDiv;
+  }
   render() {
     return (
       <div className="App">
@@ -21,7 +25,7 @@ class App extends React.Component {
           <Switch>
 
             <Route exact path = "/getName">
-              <InstructionsLanguageModel />
+              <InstructionsLanguageModel _addSpinnerAsync = {this._addSpinnerAsync} />
               <LanguageModel /> 
             </Route>
 
