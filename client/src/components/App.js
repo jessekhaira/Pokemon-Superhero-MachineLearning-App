@@ -10,6 +10,9 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 class App extends React.Component {
   _addSpinnerAsync() {
     const spinnerDiv = document.createElement('div');
+    for (let i=0; i<4; i++) {
+      spinnerDiv.appendChild(document.createElement('div'));
+    }
     spinnerDiv.className = "spinner";
     return spinnerDiv;
   }

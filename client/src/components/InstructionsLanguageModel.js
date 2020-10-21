@@ -13,32 +13,31 @@ class InstructionsLM extends React.Component {
     }
 
     async _fetchQuoteAndDisplay() {
-        try {
-            this._cleanUpInnerHTML();
-            const quoteBox = document.getElementById("quoteBox");
-            // add a spinning element to the div to indicate we are waiting on a response from an api
-            // that will either succeed or fail, at which point spinnerDiv is removed 
-            quoteBox.appendChild(this.props._addSpinnerAsync());
-            const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
-            quoteBox.removeChild(quoteBox.lastChild);
-            const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
-            const randomIdx = getRndInteger(0, 1643); 
-            const randomQuote = fetchedQuotesJSON[randomIdx]; 
-            this._addQuoteInfo(randomQuote); 
-        }
-
-        catch(err) {
-            document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
-        }
-        finally {
-            document.getElementById("newQuote").innerHTML = "Get New Quote"; 
-        }
+        const quoteBox = document.getElementById("quoteBox");
+        quoteBox.appendChild(this.props._addSpinnerAsync());
     }
+    //     try {
+    //         this._cleanUpInnerHTML();
+    //         const quoteBox = document.getElementById("quoteBox");
+    //         // add a spinning element to the div to indicate we are waiting on a response from an api
+    //         // that will either succeed or fail, at which point spinnerDiv is removed 
+    //         quoteBox.appendChild(this.props._addSpinnerAsync());
+    //         const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
+    //         quoteBox.removeChild(quoteBox.lastChild);
+    //         const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
+    //         const randomIdx = getRndInteger(0, 1643); 
+    //         const randomQuote = fetchedQuotesJSON[randomIdx]; 
+    //         this._addQuoteInfo(randomQuote); 
+    //     }
+
+    //     catch(err) {
+    //         document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
+    //     }
+    // }
 
     _cleanUpInnerHTML() {
         document.getElementById("quoteDisplay").innerHTML = null; 
         document.getElementById("authorDisplay").innerHTML = null; 
-        document.getElementById("newQuote").innerHTML = null; 
     }
 
     _addQuoteInfo(randomQuote) {
@@ -72,7 +71,7 @@ class InstructionsLM extends React.Component {
                 <div id = "quoteBox">
                     <div id = "quoteDisplay"></div>
                     <div id = "authorDisplay"></div>
-                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get New Quote</div>
+                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get new Quote</div>
                 </div>
             </div>
         );
