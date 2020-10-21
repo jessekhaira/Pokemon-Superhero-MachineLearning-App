@@ -16,6 +16,8 @@ class InstructionsLM extends React.Component {
         try {
             document.getElementById("quoteDisplay").innerHTML = null; 
             document.getElementById("authorDisplay").innerHTML = null; 
+            // add a spinning element to the div to indicate we are waiting on a response from an api
+            // that will either succeed or fail, at which point spinnerDiv is removed 
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
             const randomIdx = getRndInteger(0, 1643); 
@@ -30,6 +32,8 @@ class InstructionsLM extends React.Component {
             document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
         }
     }
+
+
 
     _makeQuoteAuthorDisplay(randomQuote) {
         const authorPNode = document.createElement('p'); 
