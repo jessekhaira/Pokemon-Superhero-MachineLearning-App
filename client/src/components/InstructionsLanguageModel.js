@@ -14,26 +14,25 @@ class InstructionsLM extends React.Component {
 
     async _fetchQuoteAndDisplay() {
         const quoteBox = document.getElementById("quoteBox");
-        quoteBox.appendChild(this.props._addSpinnerAsync());
-    }
-    //     try {
-    //         this._cleanUpInnerHTML();
-    //         const quoteBox = document.getElementById("quoteBox");
-    //         // add a spinning element to the div to indicate we are waiting on a response from an api
-    //         // that will either succeed or fail, at which point spinnerDiv is removed 
-    //         quoteBox.appendChild(this.props._addSpinnerAsync());
-    //         const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
-    //         quoteBox.removeChild(quoteBox.lastChild);
-    //         const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
-    //         const randomIdx = getRndInteger(0, 1643); 
-    //         const randomQuote = fetchedQuotesJSON[randomIdx]; 
-    //         this._addQuoteInfo(randomQuote); 
-    //     }
+        try {
+            this._cleanUpInnerHTML();
+            // add a spinning element to the div to indicate we are waiting on a response from an api
+            // that will either succeed or fail, at which point spinnerDiv is removed 
+            quoteBox.insertBefore(this.props._addSpinnerAsync(), quoteBox.firstChild); 
+            const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
+            quoteBox.removeChild(quoteBox.children[0]);
+            const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
+            const randomIdx = getRndInteger(0, 1643); 
+            const randomQuote = fetchedQuotesJSON[randomIdx]; 
+            this._addQuoteInfo(randomQuote); 
+        }
 
-    //     catch(err) {
-    //         document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
-    //     }
-    // }
+        catch(err) {
+            quoteBox.removeChild(quoteBox.children[0]);
+            console.log(err);
+            document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
+        }
+    }
 
     _cleanUpInnerHTML() {
         document.getElementById("quoteDisplay").innerHTML = null; 
@@ -71,7 +70,7 @@ class InstructionsLM extends React.Component {
                 <div id = "quoteBox">
                     <div id = "quoteDisplay"></div>
                     <div id = "authorDisplay"></div>
-                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get new Quote</div>
+                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get New Quote</div>
                 </div>
             </div>
         );

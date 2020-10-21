@@ -42,6 +42,7 @@ code {
   background-color: var(--accent-color-1);
   color: var(--accent-color-3);
   border-color: var(--accent-color-1);
+  z-index: 5;
 }
 #NavBar h2 {
   font-weight: bold;
@@ -150,6 +151,8 @@ code {
   position: relative;
   width: 80px;
   height: 80px;
+  margin-top: 15px;
+  z-index: 3;
 }
 
 .spinner div {
