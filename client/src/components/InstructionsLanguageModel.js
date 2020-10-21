@@ -14,9 +14,11 @@ class InstructionsLM extends React.Component {
         try {
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
-            console.log(fetchedQuotesJSON); 
             const randomIdx = getRndInteger(0, 1643); 
-            console.log(randomIdx); 
+            const randomQuote = fetchedQuotesJSON[randomIdx]; 
+            
+            document.getElementById("quoteDisplay").innerHTML = randomQuote.text;
+            document.getElementById("authorDisplay").innerHTML = randomQuote.author;
         }
 
         catch(err) {
@@ -36,6 +38,9 @@ class InstructionsLM extends React.Component {
                     </p>
                 </div>
                 <div id = "quoteBox">
+                    <div id = "quoteDisplay"></div>
+                    <div id = "authorDisplay"></div>
+                    <div id = "newQuote"></div>
                 </div>
             </div>
         );
