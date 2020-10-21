@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .App {
     text-align: center;
     width: 100%;
@@ -78,13 +82,14 @@ code {
 }
 
 #spacingDiv {
-    margin-top: 100px; 
+    margin-top: 120px; 
 }
 
 
 .Model_Div {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: var(--mainBgColor);
 }
@@ -143,4 +148,50 @@ code {
     a:hover {
         transform: rotate(14deg);
     }
+}
+
+
+#quoteBox {
+    display: flex;
+    width: 450px;
+    height: 450px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid;
+    font-style: italic;
+    background-color: var(--accent-color-3);
+    color: var(--mainBgColor);
+
+    #quoteDisplay {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #authorDisplay {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 10px;
+        p {
+            margin-right: 10px;
+        }
+    }
+
+    #newQuote {
+        padding: 0px;
+        height: 40px;
+        font-size: 15px;
+        margin-bottom: 20px;
+        width: 100px;
+    }
+}
+
+#LM_ModelDiv {
+    margin-top: 90px;
+}
+
+#LanguageModel {
+    width: 200px;
 }

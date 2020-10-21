@@ -4,6 +4,8 @@ import {getRndInteger} from '../utils/utilityFunctions';
 class InstructionsLM extends React.Component {
     constructor(props) {
         super(props); 
+
+        this._fetchQuoteAndDisplay = this._fetchQuoteAndDisplay.bind(this); 
     }
     
     componentDidMount() {
@@ -12,18 +14,30 @@ class InstructionsLM extends React.Component {
 
     async _fetchQuoteAndDisplay() {
         try {
+            document.getElementById("quoteDisplay").innerHTML = null; 
+            document.getElementById("authorDisplay").innerHTML = null; 
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
             const randomIdx = getRndInteger(0, 1643); 
             const randomQuote = fetchedQuotesJSON[randomIdx]; 
             
-            document.getElementById("quoteDisplay").innerHTML = randomQuote.text;
-            document.getElementById("authorDisplay").innerHTML = randomQuote.author;
+            const [quotePNode, authorPNode] = this._makeQuoteAuthorDisplay(randomQuote); 
+            document.getElementById("quoteDisplay").appendChild(quotePNode); 
+            document.getElementById("authorDisplay").appendChild(authorPNode); 
         }
 
         catch(err) {
-
+            document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
         }
+    }
+
+    _makeQuoteAuthorDisplay(randomQuote) {
+        const authorPNode = document.createElement('p'); 
+        const quotePNode = document.createElement('p'); 
+
+        quotePNode.innerHTML = randomQuote.text; 
+        authorPNode.innerHTML = "-"+(randomQuote.author ? randomQuote.author: "Unknown");
+        return [quotePNode, authorPNode]; 
     }
     render() {
         return(
@@ -40,7 +54,7 @@ class InstructionsLM extends React.Component {
                 <div id = "quoteBox">
                     <div id = "quoteDisplay"></div>
                     <div id = "authorDisplay"></div>
-                    <div id = "newQuote"></div>
+                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get New Quote</div>
                 </div>
             </div>
         );
