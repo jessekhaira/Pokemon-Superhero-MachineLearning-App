@@ -15,6 +15,7 @@ The project is deployed and can be played around with at the following URL:
 * User can input images on the home route and send them to an AI algorithm, which will return the pokemon it thinks it most likely is
 * User can generate new pokemon names
 * Random inspirational quotes are pulled from an API by react and displayed on the language generating models route
+* New quotes are able to be pulled from the API (if they don't already exist on the cache) or are pulled from the cache when the user clicks the "new quote" button 
 * Random images are included within the instructions for using the image recongition model, which are pulled from an API by react 
 
 ## Screenshots 
