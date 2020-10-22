@@ -9,19 +9,24 @@ class LanguageModel extends React.Component {
 
     async _generateNewName(e) {
         const resultsLM = document.getElementById("ResultsLanguageModel");
+        const LM_ModelDiv = document.getElementById("LM_ModelDiv");
+        const LanguageModelDiv = document.getElementById("LanguageModel");
         try {
-            const LanguageModel = document.getElementById("LanguageModel"); 
-            this.props._hideDisplays(resultsLM, LanguageModel); 
-            document.getElementById("LM_ModelDiv").appendChild(this.props._addSpinnerAsync());
+            this.props._hideDisplays(resultsLM, LanguageModelDiv);  
+            LM_ModelDiv.appendChild(this.props._addSpinnerAsync());
             let fetchedData = await fetch('/languageModel', {
                 method: 'GET'
             });
             let jsonData = await fetchedData.json(); 
-            console.log(jsonData);
+            resultsLM.innerHTML = jsonData.predictedName;
         }
         catch(err) {
-            console.log(err); 
             resultsLM.innerHTML = "Sorry, there was an error getting your new pokémon name. Try again?";
+        }
+
+        finally {
+            this.props._showDisplays(resultsLM, LanguageModelDiv);
+            LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
 
     }

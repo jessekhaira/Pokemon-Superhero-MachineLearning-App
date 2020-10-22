@@ -18,9 +18,12 @@ class App extends React.Component {
   }
 
   _hideDisplays(...args) {
-    for (let obj of args) {
-      obj.style.display = 'none'; 
-    }
+    console.log(args);
+    args.forEach((obj) => obj.style.display = 'none');
+  }
+
+  _showDisplays(...args) {
+    args.forEach((obj) => obj.style.display = 'block');
   }
 
   render() {
@@ -35,11 +38,17 @@ class App extends React.Component {
           <Switch>
 
             <Route exact path = "/getName">
+
               <InstructionsLanguageModel 
-              _addSpinnerAsync = {this._addSpinnerAsync} />
+              _addSpinnerAsync = {this._addSpinnerAsync} 
+              _hideDisplays = {this._hideDisplays}
+              _showDisplays = {this._showDisplays}/>
+
               <LanguageModel 
               _addSpinnerAsync = {this._addSpinnerAsync} 
-              _hideDisplays = {this._hideDisplays}/> 
+              _hideDisplays = {this._hideDisplays}
+              _showDisplays = {this._showDisplays}/> 
+              
             </Route>
 
             {/* Least specific route is last one to be matched! */}

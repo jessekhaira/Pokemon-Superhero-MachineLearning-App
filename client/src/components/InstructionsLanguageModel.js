@@ -32,12 +32,14 @@ class InstructionsLM extends React.Component {
     async _fetchQuoteAndDisplay() {
         const quoteBox = document.getElementById("quoteBox");
         try {
-            this._cleanUpInnerHTML();
+            this.props._hideDisplays( 
+                document.getElementById("quoteDisplay"),  
+                document.getElementById("authorDisplay"),
+                document.getElementById("newQuote")); 
             // add a spinning element to the div to indicate we are waiting on a response from an api
             // that will either succeed or fail, at which point spinnerDiv is removed 
-            quoteBox.insertBefore(this.props._addSpinnerAsync(), quoteBox.firstChild); 
+            quoteBox.appendChild(this.props._addSpinnerAsync());
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
-            quoteBox.removeChild(quoteBox.children[0]);
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
             // cache the values we just got from the API in the storage 
             this.setState((state, props) => {
@@ -47,8 +49,14 @@ class InstructionsLM extends React.Component {
         }
 
         catch(err) {
-            quoteBox.removeChild(quoteBox.children[0]);
             document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
+        }
+        finally {
+            this.props._showDisplays( 
+                document.getElementById("quoteDisplay"),  
+                document.getElementById("authorDisplay"),
+                document.getElementById("newQuote")); 
+            quoteBox.removeChild(quoteBox.lastChild); 
         }
     }
 
