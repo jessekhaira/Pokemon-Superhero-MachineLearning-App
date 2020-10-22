@@ -4,12 +4,29 @@ import {getRndInteger} from '../utils/utilityFunctions';
 class InstructionsLM extends React.Component {
     constructor(props) {
         super(props); 
-
+        this.state = {cachedQuotes: null}
         this._fetchQuoteAndDisplay = this._fetchQuoteAndDisplay.bind(this); 
+        this._addQuote = this._addQuote.bind(this); 
     }
     
     componentDidMount() {
         this._fetchQuoteAndDisplay(); 
+    }
+
+    /**
+     * This method is the event handler for when the get new quote button is clicked by the user.
+     * The rationale behind adding this extra wrapper method is for performance reasons. We don't need
+     * to keep requesting data from the API and getting quotes if they are already present in our state storage.
+     * So whenever we do request data from the API, when we recieve the response, we can cache values in storage. 
+     */
+    _addQuote() {
+        if (this.state.cachedQuotes === null) {
+            this._fetchQuoteAndDisplay();
+        }
+
+        else {
+            this._addQuoteToPage(this.state.cachedQuotes); 
+        }
     }
 
     async _fetchQuoteAndDisplay() {
@@ -22,16 +39,24 @@ class InstructionsLM extends React.Component {
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
             quoteBox.removeChild(quoteBox.children[0]);
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
-            const randomIdx = getRndInteger(0, 1643); 
-            const randomQuote = fetchedQuotesJSON[randomIdx]; 
-            this._addQuoteInfo(randomQuote); 
+            // cache the values we just got from the API in the storage 
+            this.setState((state, props) => {
+                return {cachedQuotes: fetchedQuotesJSON};
+            });
+            this._addQuoteToPage(this.state.cachedQuotes);
         }
 
         catch(err) {
             quoteBox.removeChild(quoteBox.children[0]);
-            console.log(err);
             document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
         }
+    }
+
+    _addQuoteToPage(quotes) {
+        this._cleanUpInnerHTML();
+        const randomIdx = getRndInteger(0, 1643); 
+        const randomQuote = quotes[randomIdx]; 
+        this._addQuoteInfo(randomQuote); 
     }
 
     _cleanUpInnerHTML() {
@@ -70,7 +95,7 @@ class InstructionsLM extends React.Component {
                 <div id = "quoteBox">
                     <div id = "quoteDisplay"></div>
                     <div id = "authorDisplay"></div>
-                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._fetchQuoteAndDisplay}>Get New Quote</div>
+                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._addQuote}>Get New Quote</div>
                 </div>
             </div>
         );

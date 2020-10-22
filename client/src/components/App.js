@@ -16,6 +16,13 @@ class App extends React.Component {
     spinnerDiv.className = "spinner";
     return spinnerDiv;
   }
+
+  _hideDisplays(...args) {
+    for (let obj of args) {
+      obj.style.display = 'none'; 
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,8 +35,11 @@ class App extends React.Component {
           <Switch>
 
             <Route exact path = "/getName">
-              <InstructionsLanguageModel _addSpinnerAsync = {this._addSpinnerAsync} />
-              <LanguageModel /> 
+              <InstructionsLanguageModel 
+              _addSpinnerAsync = {this._addSpinnerAsync} />
+              <LanguageModel 
+              _addSpinnerAsync = {this._addSpinnerAsync} 
+              _hideDisplays = {this._hideDisplays}/> 
             </Route>
 
             {/* Least specific route is last one to be matched! */}
