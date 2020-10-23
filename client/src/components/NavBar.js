@@ -11,7 +11,7 @@ class NavBar extends React.Component {
             <div id = "NavBar_Container">
                 <div id = "NavBar">
                     <div id = "DescriptionInfo">
-                        <h2>Pokémon Machine Learning</h2>
+                        <h2>Superhero & Pokémon Machine Learning</h2>
                         <img id = "navbarIcon" className="greyscale" src = "https://cloud.githubusercontent.com/assets/1094151/17297177/9f256f96-57d2-11e6-86fc-6eef2ba19fee.png" alt = "Pokeball"></img>
                     </div>
                     <div id = "NavigationLinks">

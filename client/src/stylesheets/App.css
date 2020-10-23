@@ -46,6 +46,7 @@ code {
 }
 #NavBar h2 {
   font-weight: bold;
+  position: relative;
 }
 
 .ML_Model_Instructions {
@@ -203,7 +204,7 @@ code {
 #quoteBox {
   display: flex;
   width: 450px;
-  height: 200px;
+  height: 230px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -243,6 +244,7 @@ ul {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 0px;
 }
 ul li {
   width: 5%;
@@ -268,7 +270,7 @@ ul li {
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
   #NavBar {
     flex-direction: column;
     height: 15%;
@@ -277,6 +279,7 @@ ul li {
   }
   #NavBar h2 {
     margin-bottom: 0px;
+    font-size: 20px;
   }
 
   #NavigationLinks {
@@ -291,6 +294,10 @@ ul li {
 
   #spacingDiv {
     margin-top: 175px;
+  }
+
+  .Model_Div {
+    margin-top: 35px;
   }
 }
 

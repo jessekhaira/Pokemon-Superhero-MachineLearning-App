@@ -16,7 +16,7 @@ class InstructionsConv extends React.Component {
                     <li>Wolverine</li>
                     <li>Black Panther </li> 
                 </ul>
-                <p>So upload a .png or .jpeg image of any of the x superheros above and the algorithm will
+                <p>So upload a .png or .jpeg image of any of the 4 superheros above and the algorithm will
                 hopefully recognize it! </p>
                 </div>
                 <div id = "randomImgs">

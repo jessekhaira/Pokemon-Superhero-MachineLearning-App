@@ -1,4 +1,4 @@
-@media(max-width:700px) {
+@media(max-width:850px) {
     #NavBar {
         flex-direction: column;
         height: 15%;
@@ -7,6 +7,7 @@
 
         h2 {
             margin-bottom: 0px;
+            font-size: 20px;
         }
 
     }
@@ -24,6 +25,10 @@
 
     #spacingDiv {
         margin-top: 175px; 
+    }
+
+    .Model_Div {
+        margin-top: 35px;
     }
 
 }

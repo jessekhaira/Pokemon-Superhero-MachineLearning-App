@@ -49,6 +49,7 @@ code {
     z-index:5;
     h2 {
         font-weight: bold;
+        position: relative;
     }
 }
 
@@ -136,7 +137,6 @@ code {
     height: 50px;
 }
 
-
 #DescriptionInfo {
     display: flex;
     margin-left: 10px;
@@ -205,7 +205,7 @@ code {
 #quoteBox {
     display: flex;
     width: 450px;
-    height: 200px;
+    height: 230px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -247,6 +247,7 @@ ul {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 0px;
     li {
         width: 5%;
         margin-top: 5px;
