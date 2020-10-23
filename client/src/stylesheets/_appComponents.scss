@@ -66,6 +66,13 @@ code {
     margin-bottom: 15px;
 }
 
+#instructionsConv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 #labelPokeImg {
     width: 80%;
 }
@@ -231,6 +238,20 @@ code {
         font-size: 15px;
         margin-bottom: 20px;
         width: 100px;
+    }
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    li {
+        width: 5%;
+        margin-top: 5px;
+        position: relative;
+        right: 40px;
     }
 }
 

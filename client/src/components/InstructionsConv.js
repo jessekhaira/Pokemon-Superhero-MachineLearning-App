@@ -9,11 +9,17 @@ class InstructionsConv extends React.Component {
         return(
             <div className = "ML_Model_Instructions">
                 <div id = "instructionsConv">
-                    To use the algorithm, upload a image of a SINGLE pokémon from the first
-                    150 pokémon like those shown below (IE: not sprites), and a prediction will 
-                    be returned by the algorithm for which pokémon it thinks it most likely is! 
+                <p>This algorithm was trained to specifically recognize the following 4 superheros:</p>
+                <ul id = "superhero_list">
+                    <li>Spiderman</li>
+                    <li>Batman</li>
+                    <li>Wolverine</li>
+                    <li>Black Panther </li> 
+                </ul>
+                <p>So upload a .png or .jpeg image of any of the x superheros above and the algorithm will
+                hopefully recognize it! </p>
                 </div>
-                <div id = "randomPokeImgs">
+                <div id = "randomImgs">
                 </div>
             </div>
         );
