@@ -7,6 +7,13 @@ import Conv_Model from './Conv_Model';
 import '../stylesheets/App.css'; 
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
+/**
+ * This class is the primary wrapper component for the app, wrapping all the other components. Routing
+ * is also done in this component with React-Router.
+ * 
+ * @class
+ * @public 
+ */
 class App extends React.Component {
   _addSpinnerAsync() {
     const spinnerDiv = document.createElement('div');
