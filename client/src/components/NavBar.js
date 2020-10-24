@@ -2,6 +2,12 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 
+/**
+ * This component represents the navigation bar for the website. Its meant to be a presentational
+ * component. 
+ * @class
+ * @public 
+ */
 class NavBar extends React.Component {
     constructor(props) {
         super(props); 
