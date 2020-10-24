@@ -1,6 +1,12 @@
 import React from 'react';
 
-
+/**
+ * This class is a React component that is meant to be a presentational component containing
+ * instructions for how to use the convolutional model.
+ * 
+ * @class
+ * @public 
+ */
 class InstructionsConv extends React.Component {
     constructor(props) {
         super(props); 
