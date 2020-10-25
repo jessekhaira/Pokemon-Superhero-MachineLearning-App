@@ -1,6 +1,12 @@
 import React from 'react';
 
 
+/**
+ * This class represents the react component responsible for where images are uploaded and sent 
+ * to the backend to the convolutional model, and results recieved and displayed to the user.
+ * 
+ * @class @public 
+ */
 class Conv_Model extends React.Component {
     constructor(props) {
         super(props); 
