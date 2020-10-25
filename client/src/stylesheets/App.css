@@ -287,6 +287,10 @@ ul li {
   height: 65px;
 }
 
+#goBackButton {
+  display: none;
+}
+
 @media (max-width: 850px) {
   #NavBar {
     flex-direction: column;

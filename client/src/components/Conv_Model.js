@@ -17,18 +17,17 @@ class Conv_Model extends React.Component {
     }
 
     _isImgUploaded(e) {
+        e.preventDefault(); 
         const imgUploaded = e.target.files[0];
         const imageDisplayDiv = document.getElementById('imageDisplayDiv');
         const img = document.getElementById('imgLoaded');
         const reader = new FileReader();
-
+        const props = this.props; 
         reader.onloadend = function() {
-            imageDisplayDiv.style.display = 'block'; 
             img.src = reader.result; 
-            document.getElementById('submitConv').style.display = 'block'; 
-            document.getElementById('labelPokeImg').style.display = 'none';
+            props._showDisplays('block', imageDisplayDiv,document.getElementById('submitConv'));
+            props._hideDisplays(document.getElementById('labelPokeImg')); 
         }
-
         reader.readAsDataURL(imgUploaded);
     }
 
@@ -57,10 +56,18 @@ class Conv_Model extends React.Component {
     }
 
     _startNewPrediction(e) {
-        this.props._hideDisplays(document.getElementById('convResults'));
-        this.props._showDisplays('block', document.getElementById('ConvModel'));
+        this.props._hideDisplays(
+            document.getElementById('convResults'), 
+            document.getElementById('imageDisplayDiv'),
+            document.getElementById('submitConv'));
+        this.props._showDisplays('block', document.getElementById('labelPokeImg'));
+        document.getElementById('pokeImg').value = ''; 
+        const conv_form = document.getElementById('conv_form'); 
+        this.props._showDisplays('flex', conv_form);
+        conv_form.style.alignItems = 'center';
+        conv_form.style.justifyContent = 'center';
+        conv_form.style.flexDirection = 'column'; 
     }
-
 
     
     render() {
@@ -71,7 +78,7 @@ class Conv_Model extends React.Component {
                         <label for="pokeImg" 
                         id = "labelPokeImg" 
                         className="button"
-                        onChange = {this._isImgUploaded}>
+                        >
 
                             Submit a .png or .jpg pokemon image like those 
                             above! 
@@ -98,6 +105,7 @@ class Conv_Model extends React.Component {
                     <div id = "seeTopPrediction" className = "button results">See Top Prediction</div>
                     <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
                     <div id = "seeTopTenPredictions" className = "button results">See All Probabilities</div>
+                    <div id = "goBackButton" className = "button results">Go Back</div>
                 </div>
             </div>        
         );
