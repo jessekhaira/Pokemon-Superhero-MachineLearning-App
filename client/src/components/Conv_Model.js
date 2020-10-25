@@ -12,6 +12,7 @@ class Conv_Model extends React.Component {
         super(props); 
 
         this._isImgUploaded = this._isImgUploaded.bind(this); 
+        this._requestPrediction = this._requestPrediction.bind(this); 
     }
 
     _isImgUploaded(e) {
@@ -31,18 +32,23 @@ class Conv_Model extends React.Component {
     }
 
     async _requestPrediction() {
+        const convModel = document.getElementById('ConvModel');
+        const convForm = document.getElementById('conv_form'); 
         try {
             const bodyInfo = document.getElementById('pokeImg'); 
             let formInfo = new FormData();
             formInfo.append('image', bodyInfo.files[0]);
             // data has been submitted, so hide all the form info and start showing the convResults instead
-            document.getElementById('conv_form').style.display = 'none'; 
+            this.props._hideDisplays(convForm); 
+            // start up the async loader
+            convModel.appendChild(this.props._addSpinnerAsync());
             let predictionData = await fetch('/convModel', {
                 method: 'POST',
                 body: formInfo 
-            })
+            });
             let jsonPredictionData = await predictionData.json(); 
-            console.log(jsonPredictionData); 
+            convModel.removeChild(convModel.lastChild); 
+            this.props._showDisplays(convForm); 
         }
         catch (err) {
             console.log(err); 
