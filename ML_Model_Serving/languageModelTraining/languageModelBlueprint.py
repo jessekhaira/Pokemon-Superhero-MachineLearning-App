@@ -8,7 +8,6 @@ languageModelBlueprint = Blueprint('Language Model Blueprint',__name__)
 def languageModel_rootAPIHandler(): 
     dataRecieved = request.get_json()
     temperature = round(float(dataRecieved["temperature"]),2)
-    print('we in python and temperature value is %s'%(temperature))
     return jsonify({'predictedName': 'Currently Not Implemented'})
 
 
