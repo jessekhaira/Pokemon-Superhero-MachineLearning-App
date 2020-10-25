@@ -14,6 +14,7 @@ class Conv_Model extends React.Component {
         this._isImgUploaded = this._isImgUploaded.bind(this); 
         this._requestPrediction = this._requestPrediction.bind(this); 
         this._startNewPrediction = this._startNewPrediction.bind(this); 
+        this._seeTopPrediction = this._seeTopPrediction.bind(this); 
     }
 
     _isImgUploaded(e) {
@@ -47,6 +48,9 @@ class Conv_Model extends React.Component {
                 body: formInfo 
             });
             let jsonPredictionData = await predictionData.json(); 
+            console.log(jsonPredictionData); 
+            document.getElementById('topPrediction').innerHTML = "The AI predicted your image was most likely " +jsonPredictionData.MostLikelyClass;
+            document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
             convModel.removeChild(convModel.lastChild); 
         }
@@ -68,6 +72,19 @@ class Conv_Model extends React.Component {
         conv_form.style.justifyContent = 'center';
         conv_form.style.flexDirection = 'column'; 
     }
+
+    _seeTopPrediction() {
+        for (let i=0; i<3; i++) {
+            this.props._hideDisplays(document.getElementById('convResults').children[i]);
+        }
+        document.getElementById('convResults').style.flexDirection = 'column';  
+        this.props._hideDisplays(document.getElementsByClassName('ML_Model_Instructions')[0]); 
+        this.props._showDisplays('flex',
+            document.getElementById('topPrediction'),
+            document.getElementById('goBackButton'));
+    }
+
+    
 
     
     render() {
@@ -102,10 +119,12 @@ class Conv_Model extends React.Component {
                     </form>
                 </div>
                 <div id = "convResults">
-                    <div id = "seeTopPrediction" className = "button results">See Top Prediction</div>
+                    <div id = "seeTopPrediction" className = "button results" onClick ={this._seeTopPrediction}>See Top Prediction</div>
                     <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
                     <div id = "seeTopTenPredictions" className = "button results">See All Probabilities</div>
                     <div id = "goBackButton" className = "button results">Go Back</div>
+                    <div id = "topPrediction" className = "displayedResult"></div>
+                    <div id = "allProbs" className = "displayedResult"></div>
                 </div>
             </div>        
         );

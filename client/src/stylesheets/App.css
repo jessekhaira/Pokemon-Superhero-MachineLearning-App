@@ -276,6 +276,7 @@ ul li {
   display: flex;
   width: 550px;
   justify-content: space-between;
+  align-items: center;
   display: none;
 }
 
@@ -289,6 +290,19 @@ ul li {
 
 #goBackButton {
   display: none;
+  order: 2;
+  margin-top: 15px;
+}
+
+.displayedResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  border: 5px solid orange;
+  width: 80%;
+  order: 1;
+  font-weight: bold;
 }
 
 @media (max-width: 850px) {
