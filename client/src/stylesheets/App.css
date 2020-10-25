@@ -272,6 +272,37 @@ ul li {
   width: 80%;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#temperatureForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 40px;
+}
+#temperatureForm #temperatureVal {
+  text-align: center;
+}
+#temperatureForm #tempLabel {
+  width: 750px;
+  color: #d33650;
+  line-height: 25px;
+}
+#temperatureForm #submitLM {
+  width: 220px;
+}
+
+#temperatureVal {
+  margin: 10px;
+  width: 100px;
+}
+
 #convResults {
   display: flex;
   width: 550px;
@@ -346,6 +377,14 @@ ul li {
 
   #instructionsConv {
     margin-bottom: 0px;
+  }
+
+  #temperatureForm {
+    height: 120px;
+  }
+  #temperatureForm #tempLabel {
+    width: 450px;
+    line-height: 30px;
   }
 }
 

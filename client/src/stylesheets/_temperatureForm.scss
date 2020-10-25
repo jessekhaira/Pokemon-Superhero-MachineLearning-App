@@ -1,0 +1,36 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+#temperatureForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 40px;
+
+    #temperatureVal {
+        text-align: center;
+    }
+
+    #tempLabel {
+        width: 750px;
+        color: rgb(211, 54, 80);
+        line-height: 25px;
+    }
+
+    #submitLM {
+        width: 220px;
+    }
+}
+
+
+
+#temperatureVal {
+    margin: 10px;
+    width: 100px;
+}

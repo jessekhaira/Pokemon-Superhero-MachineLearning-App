@@ -36,8 +36,13 @@ class LanguageModel extends React.Component {
         return(
             <div className = "Model_Div" id = "LM_ModelDiv">
                 <div id = "ResultsLanguageModel"></div>
-                <div id = "LanguageModel" className = "button" 
-                onClick = {this._generateNewName}>Generate New Pokémon Name</div>
+                <form id = "temperatureForm">
+                    <label for = "temperature" id = "tempLabel">How random do you want your generated names to be? Setting the temperature above 1
+                    will cause the predicted names to be more random, while below 1 will cause the predicted names 
+                    to be more conservative. The number has to be between 0.5 and 5 though (inclusive)!</label>
+                    <input type = "number" id = "temperatureVal" name = "temperature" min = "0.5" max = "5"></input>
+                    <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate New Pokémon Name"></input>
+                </form>
             </div>
         );
     }
