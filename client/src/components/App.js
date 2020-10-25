@@ -18,6 +18,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
  * @public 
  */
 class App extends React.Component {
+
   /**
    * This method creates a loader whenever an asynchronous action is started. 
    */
@@ -83,7 +84,11 @@ class App extends React.Component {
             {/* Least specific route is last one to be matched! */}
             <Route path = "/">
               <InstructionsConv />
-              <Conv_Model /> 
+              <Conv_Model 
+               _addSpinnerAsync = {this._addSpinnerAsync} 
+               _hideDisplays = {this._hideDisplays}
+               _showDisplays = {this._showDisplays}
+              /> 
             </Route>
 
           </Switch>
