@@ -35,14 +35,15 @@ class LanguageModel extends React.Component {
                 }
             });
             let jsonData = await fetchedData.json(); 
-            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain')); 
-            resultsLM.innerHTML = jsonData.predictedName;
+            // if the node backend has an error, it will be passed to client in message
+            resultsLM.innerHTML = jsonData.predictedName || "Sorry, there was an error getting your new pokémon name. Try again?";
         }
         catch(err) {
             resultsLM.innerHTML = "Sorry, there was an error getting your new pokémon name. Try again?";
         }
 
         finally {
+            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain')); 
             LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
 
