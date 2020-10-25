@@ -72,8 +72,10 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   background-color: var(--mainBgColor);
+  border: 1px solid;
 }
 
 #pokeImg {
@@ -88,7 +90,7 @@ code {
   flex-direction: column;
 }
 
-.buttonSubmitModel {
+.button {
   border: 1px solid var(--accent-color-1);
   width: 15%;
   cursor: pointer;
@@ -98,7 +100,7 @@ code {
   padding: 10px;
 }
 
-.buttonSubmitModel:hover {
+.button:hover {
   background-color: #8e54ec;
   color: #e6dddf;
 }
@@ -268,6 +270,20 @@ ul li {
 
 #labelPokeImg {
   width: 80%;
+}
+
+#convResults {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  border: 8px solid pink;
+}
+
+.results {
+  width: 28%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 850px) {

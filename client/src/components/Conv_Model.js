@@ -63,7 +63,7 @@ class Conv_Model extends React.Component {
                     <form id = "conv_form">
                         <label for="pokeImg" 
                         id = "labelPokeImg" 
-                        className="buttonSubmitModel"
+                        className="button"
                         onChange = {this._isImgUploaded}>
 
                             Submit a .png or .jpg pokemon image like those 
@@ -84,13 +84,13 @@ class Conv_Model extends React.Component {
                             </p>
                             <img id = "imgLoaded" alt = "Your uploaded image"></img>
                         </div>
-                        <div id = "submitConv" onClick = {this._requestPrediction} className = "buttonSubmitModel">Submit</div>
+                        <div id = "submitConv" onClick = {this._requestPrediction} className = "button">Submit</div>
                     </form>
                 </div>
                 <div id = "convResults">
-                    <div id = "seeTopPrediction"></div>
-                    <div id = "startNewPrediction"></div>
-                    <div id = "seeTopTenPredictions"></div>
+                    <div id = "seeTopPrediction" className = "button results">See Top Prediction</div>
+                    <div id = "startNewPrediction" className = "button results"> Start New</div>
+                    <div id = "seeTopTenPredictions" className = "button results">See All Probabilities</div>
                 </div>
             </div>        
         );
