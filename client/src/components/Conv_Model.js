@@ -14,7 +14,8 @@ class Conv_Model extends React.Component {
         this._isImgUploaded = this._isImgUploaded.bind(this); 
         this._requestPrediction = this._requestPrediction.bind(this); 
         this._startNewPrediction = this._startNewPrediction.bind(this); 
-        this._seeTopPrediction = this._seeTopPrediction.bind(this); 
+        this._seeInferenceResults = this._seeInferenceResults.bind(this);
+        this._goBack = this._goBack.bind(this); 
     }
 
     _isImgUploaded(e) {
@@ -40,7 +41,7 @@ class Conv_Model extends React.Component {
             let formInfo = new FormData();
             formInfo.append('image', bodyInfo.files[0]);
             // data has been submitted, so hide all the form info and start showing the convResults instead
-            this.props._hideDisplays(convForm); 
+            this.props._hideDisplays(convForm, document.getElementsByClassName('ML_Model_Instructions')[0]); 
             // start up the async loader
             convModel.appendChild(this.props._addSpinnerAsync());
             let predictionData = await fetch('/convModel', {
@@ -65,6 +66,7 @@ class Conv_Model extends React.Component {
             document.getElementById('imageDisplayDiv'),
             document.getElementById('submitConv'));
         this.props._showDisplays('block', document.getElementById('labelPokeImg'));
+        this.props._showDisplays('flex', document.getElementsByClassName('ML_Model_Instructions')[0]); 
         document.getElementById('pokeImg').value = ''; 
         const conv_form = document.getElementById('conv_form'); 
         this.props._showDisplays('flex', conv_form);
@@ -73,19 +75,27 @@ class Conv_Model extends React.Component {
         conv_form.style.flexDirection = 'column'; 
     }
 
-    _seeTopPrediction() {
+    _seeInferenceResults(e) {
+        const typeResultsToShow = (e.target.id.includes("Probs") ? "allProbs":"topPrediction");
         for (let i=0; i<3; i++) {
             this.props._hideDisplays(document.getElementById('convResults').children[i]);
         }
         document.getElementById('convResults').style.flexDirection = 'column';  
-        this.props._hideDisplays(document.getElementsByClassName('ML_Model_Instructions')[0]); 
         this.props._showDisplays('flex',
-            document.getElementById('topPrediction'),
+            document.getElementById(typeResultsToShow),
             document.getElementById('goBackButton'));
     }
 
-    
-
+    _goBack() {
+        const resultToHide = document.getElementById('topPrediction').style.display === 'flex' ? 'topPrediction': 'allProbs';
+        for (let i=0; i<3; i++) {
+            this.props._showDisplays('flex', document.getElementById('convResults').children[i]);
+        }
+        document.getElementById('convResults').style.flexDirection = 'row';  
+        this.props._hideDisplays(
+            document.getElementById(resultToHide),
+            document.getElementById('goBackButton'));
+    }
     
     render() {
         return(
@@ -119,10 +129,10 @@ class Conv_Model extends React.Component {
                     </form>
                 </div>
                 <div id = "convResults">
-                    <div id = "seeTopPrediction" className = "button results" onClick ={this._seeTopPrediction}>See Top Prediction</div>
+                    <div id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>
                     <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
-                    <div id = "seeTopTenPredictions" className = "button results">See All Probabilities</div>
-                    <div id = "goBackButton" className = "button results">Go Back</div>
+                    <div id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
+                    <div id = "goBackButton" className = "button results" onClick = {this._goBack}>Go Back</div>
                     <div id = "topPrediction" className = "displayedResult"></div>
                     <div id = "allProbs" className = "displayedResult"></div>
                 </div>
