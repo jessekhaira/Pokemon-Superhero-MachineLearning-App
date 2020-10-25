@@ -48,7 +48,6 @@ class Conv_Model extends React.Component {
             });
             let jsonPredictionData = await predictionData.json(); 
             convModel.removeChild(convModel.lastChild); 
-            this.props._showDisplays(convForm); 
         }
         catch (err) {
             console.log(err); 
