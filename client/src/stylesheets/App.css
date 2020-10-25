@@ -120,6 +120,10 @@ ul li {
   right: 40px;
 }
 
+#generateAgain {
+  display: none;
+}
+
 #LM_ModelDiv {
   display: flex;
   flex-direction: column;

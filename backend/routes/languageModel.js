@@ -5,10 +5,17 @@ var fetch = require('node-fetch');
 const { json } = require('express');
 require('dotenv').config();
 
-router.get('/', async function(req, res) {
+router.post('/', async function(req, res) {
+    console.log(req.body); 
     try {
         let recievedData = await fetch(process.env.ML_Server + '/languageModel', {
-            method: "GET"
+            method: 'POST',
+            body: JSON.stringify({
+                temperature: req.body.temperature
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
         });
         let jsonData = await recievedData.json(); 
         res.send(jsonData); 
