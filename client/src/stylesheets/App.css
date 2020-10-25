@@ -122,6 +122,7 @@ ul li {
 
 #generateAgain {
   display: none;
+  width: 150px;
 }
 
 #LM_ModelDiv {
@@ -139,6 +140,7 @@ ul li {
   background-color: white;
   padding: 5px;
   display: none;
+  width: 350px;
 }
 
 .spinner {
@@ -192,6 +194,7 @@ ul li {
   display: flex;
   width: 450px;
   height: 300px;
+  padding: 8px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
