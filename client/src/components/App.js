@@ -33,7 +33,9 @@ class App extends React.Component {
 
   /**
    * This method takes a variable number of arguments as inputs, and sets all of their displays to 
-   * none. Useful when performing asynchronous actions and the displays of many elements has to be set to none.
+   * none. Useful when performing asynchronous actions and the displays of many elements has to be set to none
+   * when the action is dispatched and a loader is showing. 
+   * 
    * @param  {HTMLElement} args DOM nodes that will be hidden from the display
    */
   _hideDisplays(...args) {
@@ -41,6 +43,14 @@ class App extends React.Component {
     args.forEach((obj) => obj.style.display = 'none');
   }
 
+  /**
+   * This method takes a variable number of arguments as inputs, and sets all of their displays to 
+   * block. Useful when performing asynchronous actions and data is recieved from the action, and has to be 
+   * added to the appropriate div components and shown on the page. 
+   * 
+   * @param  {HTMLElement} args DOM nodes that will be hidden from the display
+   * 
+   */
   _showDisplays(...args) {
     args.forEach((obj) => obj.style.display = 'block');
   }
