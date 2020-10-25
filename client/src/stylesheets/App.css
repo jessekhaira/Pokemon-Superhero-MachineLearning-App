@@ -187,7 +187,7 @@ ul li {
 #quoteBox {
   display: flex;
   width: 450px;
-  height: 230px;
+  height: 300px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
