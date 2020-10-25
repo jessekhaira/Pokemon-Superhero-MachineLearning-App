@@ -40,7 +40,6 @@ class App extends React.Component {
    * @param  {HTMLElement} args DOM nodes that will be hidden from the display
    */
   _hideDisplays(...args) {
-    console.log(args);
     args.forEach((obj) => obj.style.display = 'none');
   }
 
