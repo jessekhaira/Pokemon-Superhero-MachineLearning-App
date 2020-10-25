@@ -15,8 +15,14 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
  * @public 
  */
 class App extends React.Component {
+  /**
+   * This method creates a loader whenever an asynchronous action is started. Many components
+   * nested within this component have asynchronous actions, so this method is meant to be passed down 
+   * as a prop to them.
+   */
   _addSpinnerAsync() {
     const spinnerDiv = document.createElement('div');
+    // specific loader requires 4 nested divs 
     for (let i=0; i<4; i++) {
       spinnerDiv.appendChild(document.createElement('div'));
     }
