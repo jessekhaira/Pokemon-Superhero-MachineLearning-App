@@ -1,13 +1,14 @@
 #convResults {
     display: flex;
-    width: 50%;
+    width: 550px;
     justify-content: space-between;
-    border: 8px solid pink;
+    display: none;
 }
 
 .results {
-    width: 28%;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 65px;
 }

@@ -26,9 +26,22 @@
     #spacingDiv {
         margin-top: 175px; 
     }
-
-    .Model_Div {
-        margin-top: 35px;
+    #convResults {
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: none;
     }
+
+    .results {
+        margin: 10px;
+    }
+
+    #instructionsConv {
+        margin-bottom: 0px;
+    }
+
 
 }

@@ -25,7 +25,7 @@ class LanguageModel extends React.Component {
         }
 
         finally {
-            this.props._showDisplays(resultsLM, LanguageModelDiv);
+            this.props._showDisplays('block', resultsLM, LanguageModelDiv);
             LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
 
@@ -36,7 +36,7 @@ class LanguageModel extends React.Component {
         return(
             <div className = "Model_Div" id = "LM_ModelDiv">
                 <div id = "ResultsLanguageModel"></div>
-                <div id = "LanguageModel" className = "buttonSubmitModel" 
+                <div id = "LanguageModel" className = "button" 
                 onClick = {this._generateNewName}>Generate New Pokémon Name</div>
             </div>
         );

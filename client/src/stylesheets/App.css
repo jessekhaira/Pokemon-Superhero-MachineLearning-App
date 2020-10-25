@@ -73,9 +73,9 @@ code {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 0px;
   width: 100%;
   background-color: var(--mainBgColor);
-  border: 1px solid;
 }
 
 #pokeImg {
@@ -274,16 +274,17 @@ ul li {
 
 #convResults {
   display: flex;
-  width: 50%;
+  width: 550px;
   justify-content: space-between;
-  border: 8px solid pink;
+  display: none;
 }
 
 .results {
-  width: 28%;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 65px;
 }
 
 @media (max-width: 850px) {
@@ -312,8 +313,21 @@ ul li {
     margin-top: 175px;
   }
 
-  .Model_Div {
-    margin-top: 35px;
+  #convResults {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+  }
+
+  .results {
+    margin: 10px;
+  }
+
+  #instructionsConv {
+    margin-bottom: 0px;
   }
 }
 

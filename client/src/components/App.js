@@ -52,8 +52,8 @@ class App extends React.Component {
    * @param  {HTMLElement} args DOM nodes that will be hidden from the display
    * 
    */
-  _showDisplays(...args) {
-    args.forEach((obj) => obj.style.display = 'block');
+  _showDisplays(display, ...args) {
+    args.forEach((obj) => obj.style.display = display);
   }
 
   render() {

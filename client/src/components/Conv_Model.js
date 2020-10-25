@@ -13,6 +13,7 @@ class Conv_Model extends React.Component {
 
         this._isImgUploaded = this._isImgUploaded.bind(this); 
         this._requestPrediction = this._requestPrediction.bind(this); 
+        this._startNewPrediction = this._startNewPrediction.bind(this); 
     }
 
     _isImgUploaded(e) {
@@ -47,11 +48,17 @@ class Conv_Model extends React.Component {
                 body: formInfo 
             });
             let jsonPredictionData = await predictionData.json(); 
+            this.props._showDisplays('flex',document.getElementById('convResults')); 
             convModel.removeChild(convModel.lastChild); 
         }
         catch (err) {
             console.log(err); 
         }
+    }
+
+    _startNewPrediction(e) {
+        this.props._hideDisplays(document.getElementById('convResults'));
+        this.props._showDisplays('block', document.getElementById('ConvModel'));
     }
 
 
@@ -89,7 +96,7 @@ class Conv_Model extends React.Component {
                 </div>
                 <div id = "convResults">
                     <div id = "seeTopPrediction" className = "button results">See Top Prediction</div>
-                    <div id = "startNewPrediction" className = "button results"> Start New</div>
+                    <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
                     <div id = "seeTopTenPredictions" className = "button results">See All Probabilities</div>
                 </div>
             </div>        

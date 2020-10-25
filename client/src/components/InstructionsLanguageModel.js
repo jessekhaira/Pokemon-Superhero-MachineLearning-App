@@ -32,7 +32,7 @@ class InstructionsLM extends React.Component {
     async _fetchQuoteAndDisplay() {
         const quoteBox = document.getElementById("quoteBox");
         try {
-            this.props._hideDisplays( 
+            this.props._hideDisplays(
                 document.getElementById("quoteDisplay"),  
                 document.getElementById("authorDisplay"),
                 document.getElementById("newQuote")); 
@@ -52,7 +52,7 @@ class InstructionsLM extends React.Component {
             document.getElementById("quoteDisplay").innerHTML = "Sorry, there was an error fetching your quote :(";
         }
         finally {
-            this.props._showDisplays( 
+            this.props._showDisplays('block',
                 document.getElementById("quoteDisplay"),  
                 document.getElementById("authorDisplay"),
                 document.getElementById("newQuote")); 
@@ -103,7 +103,7 @@ class InstructionsLM extends React.Component {
                 <div id = "quoteBox">
                     <div id = "quoteDisplay"></div>
                     <div id = "authorDisplay"></div>
-                    <div id = "newQuote" className = "buttonSubmitModel" onClick = {this._addQuote}>Get New Quote</div>
+                    <div id = "newQuote" className = "button" onClick = {this._addQuote}>Get New Quote</div>
                 </div>
             </div>
         );
