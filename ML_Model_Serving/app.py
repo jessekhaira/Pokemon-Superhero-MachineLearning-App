@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-
+from convModelTraining.convBlueprint import convBlueprint
 
 app = Flask(__name__)
 
@@ -8,10 +8,7 @@ def rootResponse():
     return jsonify({'msg': 
     'Try sending a HTTP POST request to the /convModel endpoint with a RGB image attachment, or a GET request to /languageModel endpoint'})
 
-@app.route('/convModel', methods = ['POST'])
-def convModel_APIHandler(): 
-    return jsonify({'MostLikelyClass': 'Currently Not Implemented', 'Top5ProbSorted': 'Currently Not Implemented'})
-
+app.register_blueprint(convBlueprint, url_prefix = '/convModel')
 
 @app.route('/languageModel', methods = ['GET'])
 def languageModel_APIHAndler():
