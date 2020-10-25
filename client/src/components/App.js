@@ -11,14 +11,15 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
  * This class is the primary wrapper component for the app, wrapping all the other components. Routing
  * is also done in this component with React-Router.
  * 
+ * All of the methods defined in this class are used within components nested inside this component,
+ * and are meant to be passed down as props (to keep code DRY). 
+ * 
  * @class
  * @public 
  */
 class App extends React.Component {
   /**
-   * This method creates a loader whenever an asynchronous action is started. Many components
-   * nested within this component have asynchronous actions, so this method is meant to be passed down 
-   * as a prop to them.
+   * This method creates a loader whenever an asynchronous action is started. 
    */
   _addSpinnerAsync() {
     const spinnerDiv = document.createElement('div');
@@ -30,6 +31,11 @@ class App extends React.Component {
     return spinnerDiv;
   }
 
+  /**
+   * This method takes a variable number of arguments as inputs, and sets all of their displays to 
+   * none. Useful when performing asynchronous actions and the displays of many elements has to be set to none.
+   * @param  {HTMLElement} args DOM nodes that will be hidden from the display
+   */
   _hideDisplays(...args) {
     console.log(args);
     args.forEach((obj) => obj.style.display = 'none');
