@@ -1,0 +1,51 @@
+#NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-3); 
+    border-color: var(--accent-color-1);
+    z-index:5;
+    h2 {
+        font-weight: bold;
+        position: relative;
+    }
+}
+
+#navbarIcon {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 50px;
+}
+
+#DescriptionInfo {
+    display: flex;
+    margin-left: 10px;
+}
+
+#NavigationLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+        margin-left: 15px;
+        margin-right: 10px;
+        text-decoration: none;
+        color: var(--accent-color-3); 
+        transition: 0.3s linear;
+    }
+    a:hover {
+        transform: rotate(14deg);
+    }
+}
+
+
+#labelPokeImg {
+    width: 80%;
+}

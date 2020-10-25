@@ -1,0 +1,38 @@
+#quoteBox {
+    display: flex;
+    width: 450px;
+    height: 230px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid;
+    font-style: italic;
+    background-color: var(--accent-color-3);
+    color: var(--mainBgColor);
+
+    #quoteDisplay {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #authorDisplay {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 10px;
+        p {
+            margin-right: 10px;
+        }
+    }
+
+    #newQuote {
+        padding: 0px;
+        height: 40px;
+        font-size: 15px;
+        margin-bottom: 20px;
+        width: 100px;
+    }
+}
