@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from convModelTraining.convBlueprint import convBlueprint
-from languageModelTraining.languageModelBlueprint import languageModelBlueprint
+from convModel.convBlueprint import convBlueprint
+from languageModel.languageModelBlueprint import languageModelBlueprint
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
