@@ -51,3 +51,7 @@ def get_image_path(imgNum, imgFormat, query):
     imageName = "/" + query + str(imgNum)
     fileExt = "."+imgFormat
     return os.path.abspath('') + folderLoc + imageName + fileExt 
+
+def get_image_data_url(url):
+    image = requests.get(url)
+    return image.content 
