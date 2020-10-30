@@ -1,30 +1,48 @@
 import selenium
-import os 
-from PIL import Image 
-def image_scraper(queries, img_width = None, img_height = None):
+import os
+import base64
+import requests
+import time
+import random
+from imageScrapingUtils import * 
+from selenium.webdriver.support.ui import WebDriverWait
+
+
+def image_scraper(queries, numImagesDesired, driver_path, view_extension_crx_path):
     """
-    This function scrapes full-sized images when given an input
-    hashtable where the keys are a string representing a query
-    and the values are the number of images of that query to be
-    scraped.
+    This function scrapes full-sized images when given an input list containing the terms for 
+    which images should be scraped. 
 
     Args:
-        queries (dict of str:int): HashMap containing mapping between queries and the number
-            of images of each query that should be scraped
+        queries (list of str): List containing the terms for which images should be scraped 
 
-        img_width(int, optional): Optional, integer representing width to save every image
-            that is scraped
+        numImagesDesired (int): Integer representing the number of images to scrape for every
+            query in the queries
 
-        img_height(int, optional): Optional, integer representing height to save every image
-            that is scraped
+        driver_path (str): String representing the path to the chrome driver to be used 
+            with Selenium.
+
+        view_extension_crx_path (str): String representing the path to the view extension .crx file
 
     Returns:
-        None. A new folder is made for each query string, and the images 
-            associated with the query are saved inside of that folder. 
+        None. A new folder is made for each query string, and the images associated with the query
+            are saved inside of that folder. 
 
-    """ 
-    pass 
-
+    """     
+    base_url = 'https://www.google.com/search?tbm=isch&q='
+    options = webdriver.ChromeOptions()
+    options.add_extension(view_extension_crx_path) 
+    wd = webdriver.Chrome(executable_path=driver_path, options= options)
+    for query in queries:
+        # go to the webpage containing all images
+        wd.get(base_url + query)
+        # initalize the directory that will hold all the images
+        try:
+            os.mkdir(os.path.abspath('') + "/"+query) 
+        except:
+            pass 
+        divContainingImages = wd.find_element_by_id('islrg')
+        extract_images(divContainingImages, query, wd, numImagesDesired)
 
 
 
@@ -46,10 +64,10 @@ def extract_images(divContainingImages, query, wd, numImagesDesired):
     # loop through the boxes until our count is greater than numImagesDesired and we're done 
     for box in boxesContainingImages:
         count += 1
-        if count > 25:
+        if count > numImagesDesired:
             return 
         box.click() 
-        time.sleep(random.randint(3,7))
+        time.sleep(random.randint(3,6))
         # give the http a certain amount of seconds to load in for the extension, if it doesn't load in 
         # this time, then we assume its a base64 encoded image and continue 
         
@@ -60,7 +78,7 @@ def extract_images(divContainingImages, query, wd, numImagesDesired):
         actualImage = ""
         # if try succeeds, means we successfuly extracted a url 
         try:
-            WebDriverWait(wd, 12).until(anchor_tag_has_http('ZsbmCf.vi_ext_addon'))
+            WebDriverWait(wd, 30).until(anchor_tag_has_http('ZsbmCf.vi_ext_addon'))
             actualImage = get_actual_image(wd)
         # otherwise, its a base64 encoded image 
         except:
@@ -75,3 +93,6 @@ def extract_images(divContainingImages, query, wd, numImagesDesired):
                     write_base64_to_img(actualImage,count, query)
                 except:
                     continue 
+
+
+if __name__ == "_)ma"
