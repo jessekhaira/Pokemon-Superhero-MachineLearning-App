@@ -37,3 +37,21 @@ def write_url_to_img(actualImage, imgNum, query):
     image_data = get_image_data_url(actualImage)
     img_format = "jpg" if ("jpg" in actualImage) else "png"
     write_to_img(image_data, imgNum, img_format, query) 
+
+class anchor_tag_has_http:
+    """An expectation for checking that the view image tab extension is finalized loading and has the 
+    appropriate anchor tag. 
+
+    locator - used to find the element
+    returns the WebElement once the http has finished loading 
+    """
+    def __init__(self, locator):
+        self.locator = locator
+        self.http = "http"
+
+    def __call__(self, driver):
+        element = driver.find_element_by_class_name(self.locator)
+        if self.http in element.get_attribute("href"):
+            return element
+        else:
+            return False
