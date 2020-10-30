@@ -41,7 +41,7 @@ def save_urls_as_images(urls_queries, img_width, img_height):
 
 
 
-def writeURL_to_img(imageBytesData, imgNum, imgFormat, query):
+def write_url_to_img(imageBytesData, imgNum, imgFormat, query):
     imagePath = get_image_path(imgNum, imgFormat, query)
     with open(imagePath, "wb") as f:
         f.write(imageBytesData)
