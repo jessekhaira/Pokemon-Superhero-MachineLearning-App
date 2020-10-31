@@ -54,8 +54,14 @@ class anchor_tag_has_http:
         self.http = "http"
 
     def __call__(self, driver):
-        element = driver.find_element_by_class_name(self.locator)
-        if self.http in element.get_attribute("href"):
-            return element
-        else:
-            return False
+        view_image_box = lambda: driver.find_element_by_class_name("ZsbmCf.vi_ext_addon") 
+        try:
+            if self.http in view_image_box().get_attribute("href"):
+                return view_image_box()
+            else:
+                return False
+        except:
+            if self.http in view_image_box().get_attribute("href"):
+                return view_image_box() 
+            else:
+                return False
