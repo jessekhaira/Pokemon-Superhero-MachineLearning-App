@@ -35,7 +35,7 @@ def get_actual_image(wd):
         actualImage = view_image_box().get_attribute('href')
         return actualImage
     finally:
-        print(actualImage[:5])
+        print("First 5 letters of image data you got:"+ str(actualImage[:5])) 
 
 def write_url_to_img(actualImage, imgNum, query):
     image_data = get_image_data_url(actualImage)
