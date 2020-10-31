@@ -126,26 +126,30 @@ def extract_images(divContainingImages, query, wd, numImagesDesired):
 if __name__ == "__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument(
-        "queries",  
+        "--queries",  
         nargs="+",  
         type=str,
         default=[], 
     )
 
     parser.add_argument(
-        "numImagesDesired",
+        "--numImagesDesired",
         type=int,  
     )
 
     parser.add_argument(
-        "driver_path",
+        "--driver_path",
         type = str
     )
 
     parser.add_argument(
-        "extension_path",
+        "--extension_path",
         type = str 
     )
 
     args = parser.parse_args()
+    print(args.queries)
+    print(args.numImagesDesired)
+    print(args.driver_path)
+    print(args.extension_path)
     image_scraper(args.queries, args.numImagesDesired, args.driver_path, args.extension_path)
