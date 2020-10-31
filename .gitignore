@@ -4,3 +4,4 @@ Backend/node_modules
 ML_Model_Serving/venv
 
 ML_Model_Serving/convModel/model training/imageScrapingPlayground.ipynb
+.DS_Store
