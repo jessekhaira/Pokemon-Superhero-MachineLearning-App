@@ -1,3 +1,7 @@
+import requests
+import base64
+import os
+
 def write_base64_to_img(encodedString, imgNum, query):
     img_src = encodedString.split(',')
     img_format = "jpg" if ("jpeg" in img_src[0]) else "png"
