@@ -23,8 +23,14 @@ def get_image_path(imgNum, imgFormat, query):
     return os.path.abspath('') + folderLoc + imageName + fileExt 
 
 def get_image_data_url(url):
-    image = requests.get(url, timeout = 7) 
-    return image.content 
+    print ('Trying to get the image data from the url..')
+    try:
+        image = requests.get(url, timeout = 7) 
+        print('Succeeded! Going to save image as file now!')
+        return image.content  
+    except:
+        print('Failed..')
+        return -1 
 
 def get_actual_image(wd):
     view_image_box = lambda: wd.find_element_by_class_name("ZsbmCf.vi_ext_addon") 
@@ -39,6 +45,8 @@ def get_actual_image(wd):
 
 def write_url_to_img(actualImage, imgNum, query):
     image_data = get_image_data_url(actualImage)
+    if image_data == -1:
+        return 
     img_format = "jpg" if ("jpg" in actualImage) else "png"
     write_to_img(image_data, imgNum, img_format, query) 
 
