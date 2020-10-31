@@ -8,6 +8,7 @@ import argparse
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options 
+from selenium.common.exceptions import TimeoutException
 
 def image_scraper(queries, numImagesDesired, driver_path, extension_path):
     """
@@ -74,25 +75,35 @@ def extract_images(divContainingImages, query, wd, numImagesDesired):
         # need a lot of error handling code here because there is a lot of uncertainity with the objects 
         # we're dealing with - IE we don't know how long the extension will take to get the real URL of the
         # image, we don't know the form of the data we return, whether its valid at all (not http/not base64) 
-        time.sleep(14)
+        time.sleep(random.randint(2,3))
         actualImage = ""
         # if try succeeds, means we successfuly extracted a url 
+        print(count)
         try:
-            WebDriverWait(wd, 11).until(anchor_tag_has_http('ZsbmCf.vi_ext_addon'))
+            print('Going into potentially 40s wait..')
+            time.sleep(0.5) 
+            WebDriverWait(wd, 40).until(anchor_tag_has_http('ZsbmCf.vi_ext_addon'))
+            print('Coming out of wait with no exception raised and link to image successfully obtained!')
             actualImage = get_actual_image(wd)
-        # otherwise, its a base64 encoded image 
-        except:
-            actualImage = get_actual_image(wd)
+        except TimeoutException:
+            try:
+                print('exception raised, going to try to get base64 img..')
+                actualImage = get_actual_image(wd)
+                print('got base64 successfully!')
+            except:
+                # no good, just skip this img then 
+                pass 
         finally:
-            print(count)
-            box.click()
+            print('Creating image..')
             if "http" in actualImage:
                 write_url_to_img(actualImage, count, query)
             else:
                 try:
                     write_base64_to_img(actualImage,count, query)
                 except:
-                    continue 
+                    pass 
+            print('Image created!')
+            print('\n') 
 
 
 if __name__ == "__main__":
