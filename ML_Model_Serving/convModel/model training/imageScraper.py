@@ -29,8 +29,7 @@ def image_scraper(queries, numImagesDesired, driver_path, extension_path):
     Returns:
         None. A new folder is made for each query string, and the images associated with the query
             are saved inside of that folder. 
-
-    """     
+    """   
     base_url = 'https://www.google.com/search?tbm=isch&q='
     options = webdriver.ChromeOptions()
     options.add_extension(extension_path) 
@@ -128,7 +127,7 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument(
         "queries",  
-        nargs="*",  
+        nargs="+",  
         type=str,
         default=[], 
     )
