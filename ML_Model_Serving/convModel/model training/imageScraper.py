@@ -148,8 +148,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print(args.queries)
-    print(args.numImagesDesired)
-    print(args.driver_path)
-    print(args.extension_path)
     image_scraper(args.queries, args.numImagesDesired, args.driver_path, args.extension_path)
