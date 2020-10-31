@@ -36,6 +36,7 @@ def image_scraper(queries, numImagesDesired, driver_path, extension_path):
     options.add_extension(extension_path) 
     wd = webdriver.Chrome(executable_path=driver_path, options= options)
     for query in queries:
+        wd.execute_script("window.focus();")
         # go to the webpage containing all images
         wd.get(base_url + query)
         # initalize the directory that will hold all the images
