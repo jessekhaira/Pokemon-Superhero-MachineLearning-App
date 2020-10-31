@@ -23,7 +23,7 @@ def get_image_path(imgNum, imgFormat, query):
     return os.path.abspath('') + folderLoc + imageName + fileExt 
 
 def get_image_data_url(url):
-    image = requests.get(url)
+    image = requests.get(url, timeout = 7) 
     return image.content 
 
 def get_actual_image(wd):
