@@ -112,7 +112,7 @@ if __name__ == "__main__":
         "queries",  
         nargs="*",  
         type=str,
-        default=[],  # default if nothing is provided
+        default=[], 
     )
 
     parser.add_argument(
@@ -130,6 +130,5 @@ if __name__ == "__main__":
         type = str 
     )
 
-    # parse the command line
     args = parser.parse_args()
     image_scraper(args.queries, args.numImagesDesired, args.driver_path, args.extension_path)
