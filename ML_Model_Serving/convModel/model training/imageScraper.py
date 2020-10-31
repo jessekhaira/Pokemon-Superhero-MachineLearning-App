@@ -49,6 +49,23 @@ def image_scraper(queries, numImagesDesired, driver_path, extension_path):
 
 
 def extract_images(divContainingImages, query, wd, numImagesDesired):
+    """
+    This function performs the actual scraping for the scraper. 
+
+    Args:
+        divContainingImages (Selenium WebElement): WebElement that represents the div container 
+            on the page that holds all of the images currently displayed on the page
+        
+        query (str): String representing the current term being looked up for images
+
+        wd (WebDriver): Selenium web driver 
+
+        numImagesDesired (int): Integer representing the number of images to be scraped of the current
+            query str 
+    
+    Returns:
+        None.
+    """ 
     # function for scrolling to bottom in case there aren't enough images loaded on the page 
     def scroll_to_bottom():
         wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
