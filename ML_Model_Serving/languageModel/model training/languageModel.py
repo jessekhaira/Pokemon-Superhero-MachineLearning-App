@@ -21,4 +21,3 @@ def create_char_gru_model(batch_size, vocab_dim, hidden_dim, learning_rate):
     )
     return model 
 
-
