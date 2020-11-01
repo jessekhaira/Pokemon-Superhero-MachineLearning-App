@@ -19,3 +19,8 @@ def create_poke_maps(text):
     index_to_char = {i:c for i,c in enumerate(unique_chars)}
     return char_to_index, index_to_char
 
+
+def char_to_one_hot_vector(char, char_to_index):
+    vector = np.zeros((len(char_to_index),1))
+    vector[char_to_index[char]] = 1 
+    return vector
