@@ -522,7 +522,8 @@ Necrozma
 Nickit
 Nidoking
 Nidoqueen
-Nidoran
+Nidoran♀
+Nidoran♂
 Nidorina
 Nidorino
 Nihilego
