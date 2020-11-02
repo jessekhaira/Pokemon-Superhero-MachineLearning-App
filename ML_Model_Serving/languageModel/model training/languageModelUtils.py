@@ -33,7 +33,16 @@ def word_to_OHvectors(word, char_to_index):
         matrix[i] = char_to_one_hot_vector(char, char_to_index) 
     return matrix 
 
-
+def create_trainx_trainy(preprocessed_list, char_to_index):
+    x = []
+    y = []
+    for name in preprocessed_list:
+        # training language model - the labels at every time step t
+        # is the char at time step t+1 
+        x.append(word_to_OHvectors(name[:-1], char_to_index))
+        y.append(label_to_int(name[1:], char_to_index))
+    x = np.array(x) 
+    return x,y
 
 class MyBatchGenerator(Sequence):
     def __init__(self, tokenized_data, char_to_index, shuffle = True):
