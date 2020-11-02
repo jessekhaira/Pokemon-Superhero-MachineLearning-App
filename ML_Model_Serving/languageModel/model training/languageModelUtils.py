@@ -20,18 +20,3 @@ def create_poke_maps(text):
     return char_to_index, index_to_char
 
 
-def char_to_one_hot_vector(char, char_to_index):
-    vector = np.zeros((len(char_to_index),1))
-    vector[char_to_index[char]] = 1 
-    return vector
-
-
-def word_to_OHvectors(word, char_to_index):
-    # timestep x dim_vocab matrix 
-    matrix = np.empty((len(word), len(char_to_index)))
-    # one hot encode every single char vector 
-    for i,char in enumerate(word):
-        matrix[i] = char_to_one_hot_vector(char, char_to_index) 
-    return matrix 
-
-
