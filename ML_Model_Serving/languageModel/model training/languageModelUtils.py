@@ -44,6 +44,14 @@ def create_trainx_trainy(preprocessed_list, char_to_index):
     x = np.array(x) 
     return x,y
 
+
+def label_to_int(word, char_to_index):
+    labels = []
+    for char in word:
+        labels.append(char_to_index[char])
+    return np.array(labels)
+
+    
 class MyBatchGenerator(Sequence):
     def __init__(self, tokenized_data, char_to_index, shuffle = True):
         self.x, self.y = create_x_y(tokenized_data, char_to_index)
