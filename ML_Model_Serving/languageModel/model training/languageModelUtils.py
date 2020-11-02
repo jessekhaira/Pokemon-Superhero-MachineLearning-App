@@ -26,3 +26,27 @@ def char_to_one_hot_vector(char, char_to_index):
     return vector
 
 
+class MyBatchGenerator(Sequence):
+    def __init__(self, tokenized_data, char_to_index, shuffle = True):
+        self.x, self.y = create_x_y(tokenized_data, char_to_index)
+        # training using SGD
+        # otherwise would use padding and masking and process in parallel 
+        self.batch_size = 1
+        self.shuffle = shuffle
+        self.on_epoch_end()
+    
+    def __len__(self):
+        return int(np.floor(len(self.y)/self.batch_size))
+    
+    def __getitem__(self, index):
+        return self.__data_generation(index)
+    
+    def on_epoch_end(self):
+        self.indices = np.arange(len(self.y))
+        if self.shuffle:
+            np.random.shuffle(self.indices) 
+    
+    def __data_generation(self, index):
+        sentence = self.x[index].reshape(1, *self.x[index].shape)
+        labels = self.y[index].reshape(1, self.y[index].shape[0], 1)
+        return sentence, labels 
