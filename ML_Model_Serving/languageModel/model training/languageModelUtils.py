@@ -25,6 +25,15 @@ def char_to_one_hot_vector(char, char_to_index):
     vector[char_to_index[char]] = 1 
     return vector
 
+def word_to_OHvectors(word, char_to_index):
+    # timestep x dim_vocab matrix 
+    matrix = np.empty((len(word), len(char_to_index)))
+    # one hot encode every single char vector 
+    for i,char in enumerate(word):
+        matrix[i] = char_to_one_hot_vector(char, char_to_index) 
+    return matrix 
+
+
 
 class MyBatchGenerator(Sequence):
     def __init__(self, tokenized_data, char_to_index, shuffle = True):
