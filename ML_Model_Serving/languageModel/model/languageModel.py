@@ -88,8 +88,8 @@ def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
 
     genNamesDuringTraining = train_callback_generate_names(model, index_to_char, char_to_index)
     modelCheckpointTraining = ModelCheckpoint(
-        filepath = os.path.abspath('') + "/model/trained_models/.{epoch:02d}.hdf5",
-        period = 25
+        filepath = os.path.abspath('') + "/trained_models/model_saved_at_epoch.{epoch:02d}.hdf5",
+        period = 1
     )
 
     model.fit(BatchGenerator(tokenized_data, char_to_index), 
@@ -122,3 +122,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args.vocab_dim, args.hidden_dim, args.learning_rate, args.epochs)
+
+
+    # python3 languageModel.py --vocab_dim 34 --hidden_dim 320 --learning_rate 0.001 --epochs 250
