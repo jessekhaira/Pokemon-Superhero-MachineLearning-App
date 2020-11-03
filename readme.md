@@ -21,6 +21,6 @@ For details about the data scraping and machine learning models used, click [her
 
 
 ## Machine Learning Models<a name = "ml_models"></a> 
-The total number of pokémon names is quite low, sitting at 898. This is not enough to train a deep architecture from scratch. With that in mind, a single GRU cell was used in the model with a small number of hidden units to prevent overfitting.
+### Language Model
+The total number of pokémon names is quite low, sitting at 898. This is not enough to train a deep architecture from scratch. With that in mind, a single GRU cell was used in the model with a small number of hidden units to prevent overfitting, but enough so that interesting features could still be learnt. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used. 
 
-With the custom 
