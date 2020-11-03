@@ -4,6 +4,7 @@ from flask import request
 from keras.models import load_model
 languageModelBlueprint = Blueprint('Language Model Blueprint',__name__)
 
+char_
 
 @languageModelBlueprint.route('/', methods = ['POST'])
 def languageModel_rootAPIHandler(): 

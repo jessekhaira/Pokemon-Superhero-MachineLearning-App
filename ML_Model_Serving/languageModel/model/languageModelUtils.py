@@ -19,8 +19,6 @@ def data_preprocess_pipeline():
         tokenized[i] = re.sub(r'\s+', '', sentence)
     return tokenized
 
-
-
 def create_poke_maps(text):
     """
     Creates a mapping between characters and indices, and indices and characters

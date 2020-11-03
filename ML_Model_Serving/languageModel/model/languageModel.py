@@ -11,6 +11,10 @@ import argparse
 
 
 def create_char_gru_model(vocab_dim, hidden_dim, learning_rate):
+    """
+    This function creates a simple Keras language model with the input
+    specifications
+    """ 
     char_input = Input(shape = (None, vocab_dim), batch_size = 1)
     GRU_cell = GRU(hidden_dim, return_sequences=True)(char_input)
     predicted_char = keras.layers.TimeDistributed(Dense(vocab_dim))(GRU_cell)
@@ -50,6 +54,10 @@ def make_name(model, index_to_char, char_to_index, temperature=1, min_seq_len = 
 
 
 class train_callback_generate_names(Callback):
+    """
+    Callback that generates names after a certain number of epochs when training the language model
+    so that the models performance can be assessed.
+    """ 
     def __init__(self, model, index_to_char, char_to_index):
         self.model = model
         self.index_to_char = index_to_char
@@ -63,9 +71,19 @@ class train_callback_generate_names(Callback):
                 print(generated_name)
             print('\n')
 
-def train_model(vocab_dim, hidden_dim, learning_rate, epochs=10):
+def get_tokenized_data_get_maps():
+    """
+    Function preprocesses the scraped data and then prepares a char to index mapping,
+    and index to char mapping and returns thed data and those maps. Done in multiple 
+    different places so a function was made for this.
+    """ 
     tokenized_data = data_preprocess_pipeline() 
     char_to_index, index_to_char = create_poke_maps("".join(tokenized_data))
+    return tokenized_data, char_to_index, index_to_char
+
+
+def train_model(vocab_dim, hidden_dim, learning_rate, epochs=10):
+    tokenized_data, char_to_index, index_to_char = get_tokenized_data_get_maps() 
     model = create_char_gru_model(vocab_dim, hidden_dim, learning_rate)
 
     genNamesDuringTraining = train_callback_generate_names(model, index_to_char, char_to_index)
