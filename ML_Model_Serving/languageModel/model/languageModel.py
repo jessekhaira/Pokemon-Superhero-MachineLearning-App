@@ -82,7 +82,7 @@ def get_tokenized_data_get_maps():
     return tokenized_data, char_to_index, index_to_char
 
 
-def train_model(vocab_dim, hidden_dim, learning_rate, epochs=10):
+def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
     tokenized_data, char_to_index, index_to_char = get_tokenized_data_get_maps() 
     model = create_char_gru_model(vocab_dim, hidden_dim, learning_rate)
 
@@ -121,4 +121,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    train_model(args.vocab_dim, args.hidden_dim, args.learning_rate, args.epochs)
+    main(args.vocab_dim, args.hidden_dim, args.learning_rate, args.epochs)
