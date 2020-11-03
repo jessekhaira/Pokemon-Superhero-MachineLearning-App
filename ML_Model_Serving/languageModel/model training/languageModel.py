@@ -6,7 +6,7 @@ from keras import Model
 from languageModelUtils import * 
 import argparse
 
-class languageModel:
+class LanguageModel:
     def __init__(self, data_pipeline, vocab_dim, hidden_dim, learning_rate):
         self.tokenized_data = data_pipeline() 
         self._char_to_index, self.index_to_char = create_poke_maps("".join(tokenized_data))
@@ -65,5 +65,11 @@ class languageModel:
             on_epoch_end=self.train_callback_generate_names
         )
 
+        modelCheckpointTraining = ModelCheckpoint(
+            filepath = os.path.abspath('') + "/weights.{epoch:02d}.hdf5",
+            save_weights_only=True,
+            period = 1
+        )
+
         self.model.fit(MyBatchGenerator(self.tokenized_data, self._char_to_index), 
-                epochs = 10, callbacks = [genNamesDuringTraining])
+                epochs = 10, callbacks = [genNamesDuringTraining, modelCheckpointTraining])
