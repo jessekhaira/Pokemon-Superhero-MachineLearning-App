@@ -2,6 +2,8 @@ from keras.utils import Sequence
 import numpy as np
 import tensorflow as tf 
 import re
+import os 
+import json 
 
 def data_preprocess_pipeline():
     """
@@ -86,3 +88,35 @@ class BatchGenerator(Sequence):
         sentence = self.x[index].reshape(1, *self.x[index].shape)
         labels = self.y[index].reshape(1, self.y[index].shape[0], 1)
         return sentence, labels 
+
+def get_tokenized_data_get_maps():
+    """
+    Function preprocesses the scraped data and then prepares a char to index mapping,
+    and index to char mapping and returns the data and the maps. 
+    """ 
+    tokenized_data = data_preprocess_pipeline() 
+    char_to_index, index_to_char = create_poke_maps("".join(tokenized_data))
+    return tokenized_data, char_to_index, index_to_char
+
+
+if __name__ == "__main__":
+    # load data and hashmaps once, and save them to disk, then won't have to keep repeating calls
+    # to these functions 
+    tokenized_data, char_to_index, index_to_char = get_tokenized_data_get_maps() 
+
+    jsonified_preprocessed_data = json.dumps(tokenized_data)
+    jsonified_char_to_index = json.dumps(char_to_index)
+    jsonified_index_to_char = json.dumps(index_to_char)
+    try:
+        os.mkdir(os.path.abspath('') + "/jsonified_items")
+    except:
+        pass 
+    with open('jsonified_items/jsonified_preprocessed_data.json', 'w') as f:
+        f.write(jsonified_preprocessed_data)
+
+    with open('jsonified_items/jsonified_char_to_index.json', 'w') as f:
+        f.write(jsonified_char_to_index)
+
+    with open('jsonified_items/jsonified_index_to_char.json', 'w') as f:
+        f.write(jsonified_index_to_char)
+    

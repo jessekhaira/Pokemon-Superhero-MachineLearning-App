@@ -71,16 +71,6 @@ class train_callback_generate_names(Callback):
                 print(generated_name)
             print('\n')
 
-def get_tokenized_data_get_maps():
-    """
-    Function preprocesses the scraped data and then prepares a char to index mapping,
-    and index to char mapping and returns thed data and those maps. Done in multiple 
-    different places so a function was made for this.
-    """ 
-    tokenized_data = data_preprocess_pipeline() 
-    char_to_index, index_to_char = create_poke_maps("".join(tokenized_data))
-    return tokenized_data, char_to_index, index_to_char
-
 
 def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
     tokenized_data, char_to_index, index_to_char = get_tokenized_data_get_maps() 
@@ -89,7 +79,7 @@ def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
     genNamesDuringTraining = train_callback_generate_names(model, index_to_char, char_to_index)
     modelCheckpointTraining = ModelCheckpoint(
         filepath = os.path.abspath('') + "/trained_models/model_saved_at_epoch.{epoch:02d}.hdf5",
-        period = 1
+        period = 25
     )
 
     model.fit(BatchGenerator(tokenized_data, char_to_index), 
@@ -124,4 +114,4 @@ if __name__ == "__main__":
     main(args.vocab_dim, args.hidden_dim, args.learning_rate, args.epochs)
 
 
-    # python3 languageModel.py --vocab_dim 34 --hidden_dim 320 --learning_rate 0.001 --epochs 250
+    # python3 languageModel.py --vocab_dim 34 --hidden_dim 270 --learning_rate 0.001 --epochs 250

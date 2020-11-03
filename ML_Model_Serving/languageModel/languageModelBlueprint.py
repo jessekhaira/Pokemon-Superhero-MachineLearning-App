@@ -2,7 +2,6 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 from keras.models import load_model
-from model.languageModel import get_tokenized_data_get_maps, make_name
 languageModelBlueprint = Blueprint('Language Model Blueprint',__name__)
 
 _, char_to_index, index_to_char = get_tokenized_data_get_maps() 
