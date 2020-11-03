@@ -6,7 +6,9 @@ Specifically, I wanted to determine if an algorithm could recognize my four favo
 
 I also trained a language generating model on all the different pokémon names. This model is deployed alongside the superhero recognition model in the app. 
 
-The tech stack used in the project includes react for the frontend, express for the backend of the app, flask to serve the machine learning models, and various other python libraries for scraping the data and for training the models. So whenever a user sends an HTTP request for a prediction, that prediction goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, another request is dispatched to the flask backend to the machine learning model. 
+The tech stack used in the project invovled react for the frontend, express for the backend of the app, flask to serve the machine learning models, and various other python libraries for scraping the data and for training the models. So whenever a user sends an HTTP request for a prediction, that prediction goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, another request is dispatched to the flask backend to the machine learning model. 
+
+For details about the data scraping and machine learning models used, click here! 
 
 ## Features 
 * User can input images on the home route and send them to an AI algorithm, which will return the superhero it thinks it most likely is
@@ -16,3 +18,9 @@ The tech stack used in the project includes react for the frontend, express for 
 * Media queries make website responsive 
 
 ## Screenshots 
+
+
+## Machine Learning Models
+The total number of pokémon names is quite low, sitting at 898. This is not enough to train a deep architecture from scratch. With that in mind, a single GRU cell was used in the model with a small number of hidden units to prevent overfitting.
+
+With the custom 
