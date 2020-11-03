@@ -27,7 +27,7 @@ def char_to_one_hot_vector(char, char_to_index):
     return vector
 
 
-def word_to_OHvectors(word, char_to_index):
+def word_to_onehot_vectors(word, char_to_index):
     # timestep x dim_vocab matrix 
     matrix = np.empty((len(word), len(char_to_index)))
     # one hot encode every single char vector 
@@ -54,7 +54,7 @@ def label_to_int(word, char_to_index):
         labels.append(char_to_index[char])
     return np.array(labels)
 
-    
+
 class BatchGenerator(Sequence):
     def __init__(self, tokenized_data, char_to_index, shuffle = True):
         self.x, self.y = create_x_y(tokenized_data, char_to_index)
@@ -74,7 +74,7 @@ class BatchGenerator(Sequence):
         self.indices = np.arange(len(self.y))
         if self.shuffle:
             np.random.shuffle(self.indices) 
-    
+            
     def __data_generation(self, index):
         sentence = self.x[index].reshape(1, *self.x[index].shape)
         labels = self.y[index].reshape(1, self.y[index].shape[0], 1)
