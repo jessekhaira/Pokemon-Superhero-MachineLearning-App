@@ -13,6 +13,7 @@ def data_preprocess_pipeline(text):
         tokenized[i] = re.sub(r'\s+', '', sentence)
     return tokenized
 
+
 def create_poke_maps(text):
     unique_chars = set(text) 
     char_to_index = {c:i for i,c in enumerate(unique_chars)}
@@ -25,6 +26,7 @@ def char_to_one_hot_vector(char, char_to_index):
     vector[char_to_index[char]] = 1 
     return vector
 
+
 def word_to_OHvectors(word, char_to_index):
     # timestep x dim_vocab matrix 
     matrix = np.empty((len(word), len(char_to_index)))
@@ -32,6 +34,7 @@ def word_to_OHvectors(word, char_to_index):
     for i,char in enumerate(word):
         matrix[i] = char_to_one_hot_vector(char, char_to_index) 
     return matrix 
+
 
 def create_trainx_trainy(preprocessed_list, char_to_index):
     x = []
