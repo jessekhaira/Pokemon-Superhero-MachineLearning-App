@@ -52,7 +52,7 @@ def label_to_int(word, char_to_index):
     return np.array(labels)
 
     
-class MyBatchGenerator(Sequence):
+class BatchGenerator(Sequence):
     def __init__(self, tokenized_data, char_to_index, shuffle = True):
         self.x, self.y = create_x_y(tokenized_data, char_to_index)
         # training using SGD
