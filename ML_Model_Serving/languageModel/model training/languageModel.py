@@ -7,8 +7,8 @@ from languageModelUtils import *
 import argparse
 
 class languageModel:
-    def __init__(self, vocab_dim, hidden_dim, learning_rate):
-        self.tokenized_data = data_preprocess_pipeline()
+    def __init__(self, data_pipeline, vocab_dim, hidden_dim, learning_rate):
+        self.tokenized_data = data_pipeline() 
         self._char_to_index, self.index_to_char = create_poke_maps("".join(tokenized_data))
         self.model = self.create_char_gru_model(vocab_dim, hidden_dim, learning_rate)
 
@@ -53,8 +53,17 @@ class languageModel:
 
     def train_callback_generate_names(self, epoch, logs):
         # check progress every 27 epochs
-        pass 
+        # if epoch % 27 == 0:
+            print('\n')
+            for i in range(5):
+                generated_name = self.make_name()
+                print(generated_name)
+            print('\n')
 
     def fit(self, epochs):
-        self.model.fit(MyBatchGenerator(self.tokenized_data, self._char_to_index), epochs = epochs)
+        genNamesDuringTraining = LambdaCallback(
+            on_epoch_end=self.train_callback_generate_names
+        )
 
+        self.model.fit(MyBatchGenerator(self.tokenized_data, self._char_to_index), 
+                epochs = 10, callbacks = [genNamesDuringTraining])
