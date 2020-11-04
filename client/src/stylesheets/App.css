@@ -292,22 +292,21 @@ input[type=number]::-webkit-outer-spin-button {
   flex-direction: column;
   text-align: center;
   height: 40px;
+  margin-top: 25px;
 }
-#temperatureForm #temperatureVal {
+#temperatureForm .formInputNumber {
   text-align: center;
+  width: 50px;
+  margin: 15px;
 }
-#temperatureForm #tempLabel {
-  width: 750px;
+#temperatureForm .formLabel {
+  width: 450px;
   color: #d33650;
   line-height: 25px;
 }
 #temperatureForm #submitLM {
-  width: 220px;
-}
-
-#temperatureVal {
-  margin: 10px;
-  width: 100px;
+  width: 150px;
+  font-size: 20px;
 }
 
 #convResults {

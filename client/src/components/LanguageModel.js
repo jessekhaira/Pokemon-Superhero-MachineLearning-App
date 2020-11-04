@@ -60,9 +60,8 @@ class LanguageModel extends React.Component {
     }
 
     _setTempLabelInnerHTML() {
-        document.getElementById('tempLabel').innerHTML = `How random do you want your generated names to be? Setting the temperature above 1
-        will cause the predicted names to be more random, while below 1 will cause the predicted names 
-        to be more conservative. The number has to be between 0.5 and 5 though (inclusive)!`; 
+        document.getElementById('tempLabel').innerHTML = `Provide a value between 0.5 and 5. The higher
+        the number the more random the names:`
     }
 
    
@@ -71,9 +70,11 @@ class LanguageModel extends React.Component {
             <div className = "Model_Div" id = "LM_ModelDiv">
                 <div id = "ResultsLanguageModel"></div>
                 <form id = "temperatureForm">
-                    <label for = "temperature" id = "tempLabel"></label>
-                    <input type = "number" id = "temperatureVal" name = "temperature" min = "0.5" max = "5" step = "any"></input>
-                    <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate New Pokémon Name"></input>
+                    <label for = "temperature" id = "tempLabel" className = "formLabel">Temperature:</label>
+                    <input type = "number" id = "temperatureVal" className = "formInputNumber" name = "temperature" min = "0.5" max = "5" step = "any"></input>
+                    <label for = "numGenerate" id = "numGenerateLabel" className = "formLabel">Pick a number of names to generate between 1 and 15 (inclusive)!</label>
+                    <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "any"></input>
+                    <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate!"></input>
                 </form>
                 <div id = "generateAgain" className = "button" onClick = {this._resetLM}>Generate Again</div>
             </div>

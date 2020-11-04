@@ -12,25 +12,27 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     text-align: center;
     height: 40px;
+    margin-top: 25px;
 
-    #temperatureVal {
+    .formInputNumber {
         text-align: center;
+        width: 50px;
+        margin: 15px;
     }
 
-    #tempLabel {
-        width: 750px;
+    .formLabel {
+        width: 450px;
         color: rgb(211, 54, 80);
         line-height: 25px;
     }
 
     #submitLM {
-        width: 220px;
+        width: 150px;
+        font-size: 20px;
     }
+
+
+
 }
 
 
-
-#temperatureVal {
-    margin: 10px;
-    width: 100px;
-}
