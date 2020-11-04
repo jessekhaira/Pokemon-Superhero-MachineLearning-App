@@ -14,7 +14,7 @@ with open(os.path.abspath('') + '/languageModelFolder/model/jsonified_items/json
 with open(os.path.abspath('') +'/languageModelFolder/model/jsonified_items/jsonified_index_to_char.json', 'r') as f:
     index_to_char = json.load(f)
 
-model = load_model(os.path.abspath('') + '/languageModelFolder/model/trained_models/model_saved_at_epoch.250.hdf5', compile = False)
+model = load_model(os.path.abspath('') + '/languageModelFolder/model/trained_models/final_model.hdf5', compile = False)
 
 @languageModelBlueprint.route('/', methods = ['POST'])
 def languageModel_rootAPIHandler(): 
@@ -24,6 +24,5 @@ def languageModel_rootAPIHandler():
     predictedName = []
     for i in range(int(number_to_generate)):
         predictedName.append(make_name(model, index_to_char, char_to_index, temperature = temperature, max_seq_len = 10))
-    print(predictedName)
     return jsonify({'predictedName': predictedName})
 

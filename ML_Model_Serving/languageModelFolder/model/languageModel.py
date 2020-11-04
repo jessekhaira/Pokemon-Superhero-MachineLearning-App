@@ -73,6 +73,7 @@ class train_callback_generate_names(Callback):
             print('\n')
 
 
+
 def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
     with open(os.path.abspath('') +'/jsonified_items/jsonified_preprocessed_data.json', 'r') as f:
         tokenized_data = json.load(f) 
@@ -84,7 +85,6 @@ def main(vocab_dim, hidden_dim, learning_rate, epochs=10):
         index_to_char = json.load(f)
 
     model = create_char_gru_model(vocab_dim, hidden_dim, learning_rate)
-
     genNamesDuringTraining = train_callback_generate_names(model, index_to_char, char_to_index)
     modelCheckpointTraining = ModelCheckpoint(
         filepath = os.path.abspath('') + "/trained_models/model_saved_at_epoch.{epoch:02d}.hdf5",
