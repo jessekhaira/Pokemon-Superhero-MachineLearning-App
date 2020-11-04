@@ -58,7 +58,8 @@ class LanguageModel extends React.Component {
             let fetchedData = await fetch('/languageModel', {
                 method: 'POST',
                 body: JSON.stringify({
-                    temperature: temperatureInputNode.value 
+                    temperature: temperatureInputNode.value,
+                    number_to_generate: numNamesInputNode.value 
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
