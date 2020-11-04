@@ -124,4 +124,3 @@ if __name__ == "__main__":
     main(args.vocab_dim, args.hidden_dim, args.learning_rate, args.epochs)
 
 
-    # python3 languageModel.py --vocab_dim 34 --hidden_dim 270 --learning_rate 0.001 --epochs 250
