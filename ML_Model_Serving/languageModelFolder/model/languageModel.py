@@ -8,7 +8,7 @@ from keras.optimizers import Adam
 from keras.losses import SparseCategoricalCrossentropy
 from keras.layers import Input, Dense, GRU, TimeDistributed
 from keras.callbacks import Callback, ModelCheckpoint
-from languageModelUtils import BatchGenerator, char_to_one_hot_vector
+from ML_Model_Serving.languageModelFolder.model.languageModelUtils import BatchGenerator, char_to_one_hot_vector
 
 
 def create_char_gru_model(vocab_dim, hidden_dim, learning_rate):
