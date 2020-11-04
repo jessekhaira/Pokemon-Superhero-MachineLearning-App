@@ -10,15 +10,22 @@ class LanguageModel extends React.Component {
 
     componentDidMount() {
         this._setTempLabelInnerHTML(); 
+        this._addLabelsClasses();
+    }
+
+    _addLabelsClasses() {
+        const labels = document.getElementById('temperatureForm').getElementsByTagName('label');
+        for (let i=0; i<labels.length; i++) {
+            labels[i].className = '';
+            labels[i].classList.add('formLabel');
+        }
     }
     async _generateNewName(e) {
         e.preventDefault(); 
-        const temperatureVal = document.getElementById('temperatureVal').value;
-        if(temperatureVal>5 || temperatureVal <0.5 ) {
-            document.getElementById('temperatureVal').setCustomValidity(`Value must be a number between 0.5 and 5, and ${document.getElementById('temperatureVal').value} does not meet those conditions`);
-            document.getElementById('tempLabel').innerHTML = document.getElementById('temperatureVal').validationMessage; 
+        if (this._validateTemperature()) {
             return; 
         }
+        const temperatureVal = document.getElementById('temperatureVal').value;
         const resultsLM = document.getElementById("ResultsLanguageModel");
         const LM_ModelDiv = document.getElementById("LM_ModelDiv");
         const LanguageModelDiv = document.getElementById("temperatureForm");
@@ -46,9 +53,21 @@ class LanguageModel extends React.Component {
             this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain')); 
             LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
-
     }
 
+    _validateTemperature() {
+        const temperatureVal = document.getElementById('temperatureVal').value;
+        const tempLabel = document.getElementById('tempLabel');
+        if(temperatureVal>5 || temperatureVal <0.5 ) {
+            const validation_value_msg = temperatureVal? `${temperatureVal} does not meet those conditions `:`no value was provided at all!`;
+            document.getElementById('temperatureVal').setCustomValidity(`**Value must be a number between 0.5 and 5, and ${validation_value_msg}`);
+            tempLabel.innerHTML = document.getElementById('temperatureVal').validationMessage; 
+            tempLabel.className = '';
+            tempLabel.classList.add('validationErrorLabel');
+            return true; 
+        }
+        return false; 
+    }
     _resetLM() {
         const resultsLM = document.getElementById("ResultsLanguageModel");
         this.props._showDisplays('flex',document.getElementById('temperatureForm'));
@@ -70,9 +89,9 @@ class LanguageModel extends React.Component {
             <div className = "Model_Div" id = "LM_ModelDiv">
                 <div id = "ResultsLanguageModel"></div>
                 <form id = "temperatureForm">
-                    <label for = "temperature" id = "tempLabel" className = "formLabel">Temperature:</label>
+                    <label for = "temperature" id = "tempLabel">Temperature:</label>
                     <input type = "number" id = "temperatureVal" className = "formInputNumber" name = "temperature" min = "0.5" max = "5" step = "any"></input>
-                    <label for = "numGenerate" id = "numGenerateLabel" className = "formLabel">Pick a number of names to generate between 1 and 15 (inclusive)!</label>
+                    <label for = "numGenerate" id = "numGenerateLabel">Pick a number of names to generate between 1 and 15 (inclusive)!</label>
                     <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "any"></input>
                     <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate!"></input>
                 </form>

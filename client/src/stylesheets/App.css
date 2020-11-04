@@ -309,6 +309,11 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 20px;
 }
 
+.validationErrorLabel {
+  font-weight: bold;
+  color: red;
+}
+
 #convResults {
   display: flex;
   width: 550px;
