@@ -8,4 +8,4 @@ ML_Model_Serving/convModelFolder/model/imageScrapingPlayground.ipynb
 ML_Model_Serving/languageModelFolder/model/kerasLanguageModel.ipynb
 machine_learning_models_api.egg-info/
 .vscode/
-!**/__pycache__/
+*.pyc
