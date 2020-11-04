@@ -11,7 +11,8 @@ router.post('/', async function(req, res) {
         let recievedData = await fetch(process.env.ML_Server + '/languageModel', {
             method: 'POST',
             body: JSON.stringify({
-                temperature: req.body.temperature
+                temperature: req.body.temperature,
+                number_to_generate: req.body.number_to_generate
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'

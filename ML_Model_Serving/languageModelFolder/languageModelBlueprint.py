@@ -20,7 +20,10 @@ model = load_model(os.path.abspath('') + '/languageModelFolder/model/trained_mod
 def languageModel_rootAPIHandler(): 
     dataRecieved = request.get_json()
     temperature = round(float(dataRecieved["temperature"]),2)
-    predictedName = make_name(model, index_to_char, char_to_index, temperature = temperature, max_seq_len = 10)
+    number_to_generate = dataRecieved["number_to_generate"]
+    predictedName = []
+    for i in range(int(number_to_generate)):
+        predictedName.append(make_name(model, index_to_char, char_to_index, temperature = temperature, max_seq_len = 10))
     print(predictedName)
     return jsonify({'predictedName': predictedName})
 
