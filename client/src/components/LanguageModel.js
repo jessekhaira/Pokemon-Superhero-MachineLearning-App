@@ -9,23 +9,46 @@ class LanguageModel extends React.Component {
     }
 
     componentDidMount() {
-        this._setTempLabelInnerHTML(); 
-        this._addLabelsClasses();
+        this._addClassesLabels(document.getElementById('tempLabel'), document.getElementById('numGenerateLabel'));
+        this._addHTML_tempLabel();
+        this._addHTML_numLabel();
     }
 
-    _addLabelsClasses() {
-        const labels = document.getElementById('temperatureForm').getElementsByTagName('label');
-        for (let i=0; i<labels.length; i++) {
-            labels[i].className = '';
-            labels[i].classList.add('formLabel');
+    _addClassesLabels(...args) {
+        for (let arg of args) {
+            console.log(arg);
+            arg.className = '';
+            arg.classList.add('formLabel');
         }
     }
+
+    _addHTML_tempLabel() {
+        document.getElementById('tempLabel').innerHTML = `Provide a value between 0.5 and 5. The higher
+        the number the more random the names:`;
+    }
+
+    _addHTML_numLabel() {
+        document.getElementById('numGenerateLabel').innerHTML = `Pick a number of names to generate between 1 and 15 (inclusive)!`;
+    }
+
     async _generateNewName(e) {
         e.preventDefault(); 
-        if (this._validateTemperature()) {
+        const temperatureInputNode = document.getElementById('temperatureVal');
+        const tempLabelNode = document.getElementById('tempLabel');
+        const numNamesInputNode = document.getElementById('numGenerateInput');
+        const numberNamesLabelNode = document.getElementById('numGenerateLabel'); 
+        // validate the inputs and make sure they are in an acceptable range 
+        if (this._validateInputs(0.5, 5,temperatureInputNode, tempLabelNode)) {
             return; 
         }
-        const temperatureVal = document.getElementById('temperatureVal').value;
+        else {
+            this._addClassesLabels(tempLabelNode); 
+            this._addHTML_tempLabel(); 
+        }
+        if (this._validateInputs(1, 15, numNamesInputNode, numberNamesLabelNode)) {
+            return; 
+        }
+
         const resultsLM = document.getElementById("ResultsLanguageModel");
         const LM_ModelDiv = document.getElementById("LM_ModelDiv");
         const LanguageModelDiv = document.getElementById("temperatureForm");
@@ -35,7 +58,7 @@ class LanguageModel extends React.Component {
             let fetchedData = await fetch('/languageModel', {
                 method: 'POST',
                 body: JSON.stringify({
-                    temperature: temperatureVal
+                    temperature: temperatureInputNode.value 
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
@@ -55,15 +78,14 @@ class LanguageModel extends React.Component {
         }
     }
 
-    _validateTemperature() {
-        const temperatureVal = document.getElementById('temperatureVal').value;
-        const tempLabel = document.getElementById('tempLabel');
-        if(temperatureVal>5 || temperatureVal <0.5 ) {
-            const validation_value_msg = temperatureVal? `${temperatureVal} does not meet those conditions `:`no value was provided at all!`;
-            document.getElementById('temperatureVal').setCustomValidity(`**Value must be a number between 0.5 and 5, and ${validation_value_msg}`);
-            tempLabel.innerHTML = document.getElementById('temperatureVal').validationMessage; 
-            tempLabel.className = '';
-            tempLabel.classList.add('validationErrorLabel');
+    _validateInputs(minVal, maxVal, inputNode, labelNode) {
+        const value = inputNode.value; 
+        if(value>maxVal || value <minVal ) {
+            const validation_value_msg = value ? `${value} does not meet those conditions `:`no value was provided at all!`;
+            inputNode.setCustomValidity(`**Value must be a number between ${minVal} and ${maxVal}, and ${validation_value_msg}`);
+            labelNode.innerHTML = inputNode.validationMessage; 
+            labelNode.className = '';
+            labelNode.classList.add('validationErrorLabel');
             return true; 
         }
         return false; 
@@ -75,12 +97,9 @@ class LanguageModel extends React.Component {
         // reset the temperature val to be nothing, and reset the string in the label to be the original string because 
         // there may still be an error message displayed there 
         document.getElementById('temperatureVal').value = '';
-        this._setTempLabelInnerHTML();
-    }
-
-    _setTempLabelInnerHTML() {
-        document.getElementById('tempLabel').innerHTML = `Provide a value between 0.5 and 5. The higher
-        the number the more random the names:`
+        document.getElementById('numGenerateInput').value = '';
+        this._addClassesLabels(document.getElementById('numGenerateLabel'));
+        this._addHTML_numLabel();
     }
 
    
@@ -91,7 +110,7 @@ class LanguageModel extends React.Component {
                 <form id = "temperatureForm">
                     <label for = "temperature" id = "tempLabel">Temperature:</label>
                     <input type = "number" id = "temperatureVal" className = "formInputNumber" name = "temperature" min = "0.5" max = "5" step = "any"></input>
-                    <label for = "numGenerate" id = "numGenerateLabel">Pick a number of names to generate between 1 and 15 (inclusive)!</label>
+                    <label for = "numGenerate" id = "numGenerateLabel"></label>
                     <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "any"></input>
                     <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate!"></input>
                 </form>
