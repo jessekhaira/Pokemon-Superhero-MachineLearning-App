@@ -40,7 +40,7 @@ code {
     flex-direction: column;
     width: 100%;
     color: var(--accent-color-1); 
-    height: 30%;
+    height: auto;
 }
 
 #instructionsLM {
@@ -123,16 +123,13 @@ ul {
     }
 }
 
-#generateAgain {
-   display: none; 
-   width:150px;
-
-}
 
 #LM_ModelDiv {
     display: flex;
+    justify-content:flex-start;
+    align-items: center;
     flex-direction: column;
-    margin-top: 90px;
+    height:auto;
 
     #LanguageModel {
         width: 200px;
@@ -141,13 +138,26 @@ ul {
     #ResultsLanguageModel {
         border: 1px solid var(--accent-color-1);
         color: var(--accent-color-3);
-        margin-bottom: 10px;
         background-color: white;
         padding: 5px;
         display: none;
         width: 350px;
         text-align: center;
         align-items: center;
+        height: auto; 
+        margin-top: 25px; 
+        margin-bottom: 25px;
     }
+
+    #generateAgain {
+        display: none; 
+        width:150px;
+     }
+
+    form {
+        height: auto;
+        margin-top: 25px;
+    }
+
 }
 
