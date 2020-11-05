@@ -7,6 +7,7 @@ class LanguageModel extends React.Component {
         this._generateNewName = this._generateNewName.bind(this); 
         this._resetLM = this._resetLM.bind(this); 
         this._sendRequestForNames = this._sendRequestForNames.bind(this); 
+        this._validateInputs = this._validateInputs.bind(this); 
     }
 
     componentDidMount() {
@@ -38,37 +39,45 @@ class LanguageModel extends React.Component {
         const tempLabelNode = document.getElementById('tempLabel');
         const numNamesInputNode = document.getElementById('numGenerateInput');
         const numberNamesLabelNode = document.getElementById('numGenerateLabel'); 
-        // validate the inputs and make sure they are in an acceptable range 
-        if (this._validateInputs(0.5, 5,temperatureInputNode, tempLabelNode)) {
-            return; 
-        }
-        else {
-            this._addClassesLabels(tempLabelNode); 
-            this._addHTML_tempLabel(); 
-        }
-        if (this._validateInputs(1, 15, numNamesInputNode, numberNamesLabelNode)) {
-            return; 
-        }
-
-        const resultsLM = document.getElementById("ResultsLanguageModel");
         const LM_ModelDiv = document.getElementById("LM_ModelDiv");
         const LanguageModelDiv = document.getElementById("temperatureForm");
+        const resultsLM = document.getElementById("ResultsLanguageModel");
+
+        // validate the inputs and make sure they are in an acceptable range 
+        if (this._validateInputs(temperatureInputNode, tempLabelNode, numNamesInputNode, numberNamesLabelNode)) {
+            return; 
+        }
+        // regardless of if we get an error or not here, reset whatever is currently in the results div
+        // because something new will be placed in there
+        resultsLM.innerHTML = ''; 
+
         try {
             await this._sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM); 
         }
         catch(err) {
             resultsLM.innerHTML = "Sorry, there was an error getting your new pokémon name. Try again?";
+            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain'));
         }
 
         finally {
-            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain'));
-            this._setGridDisplayResults(resultsLM);
+            this.props._showDisplays('block', document.getElementById('generateAgain'));
             LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
     }
 
-    _setGridDisplayResults(resultsLM) {
+    _setGridDisplayResults(resultsLM, numberGenerated) {
+        const numberRows = Math.ceil(numberGenerated/3);
+        resultsLM.style.display = 'grid'; 
+        resultsLM.style.gridTemplateColumns = 'repeat(3,minmax(100px, 1fr))';
+        resultsLM.style.gridTemplateRows = `repeat(${numberRows}, minmax(30px, 50px))`; 
+    }
 
+    _addNodesToResultsLM(resultsLM, predictedNames) {
+        for (let name of predictedNames) {
+            const nameDiv = document.createElement('div');
+            nameDiv.innerHTML = name;
+            resultsLM.appendChild(nameDiv); 
+        }
     }
 
     async _sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM) {
@@ -85,15 +94,52 @@ class LanguageModel extends React.Component {
             }
         });
         let jsonData = await fetchedData.json();
-        resultsLM.innerHTML = jsonData.predictedName || "Sorry, there was an error getting your new pokémon name. Try again?";
+        let predictedNames = jsonData.predictedName; 
+        if (!predictedNames) {
+            resultsLM.innerHTML = "Sorry, there was an error getting your new pokémon name. Try again?";
+            this.props._showDisplays('block', resultsLM);
+            return;
+        }
+        else if (predictedNames.length === 1) {
+            resultsLM.innerHTML = predictedNames[0];
+            this.props._showDisplays('block', resultsLM);
+            return; 
+        }
+        this._addNodesToResultsLM(resultsLM, predictedNames); 
+        this._setGridDisplayResults(resultsLM, predictedNames.length);
     }
 
-    _validateInputs(minVal, maxVal, inputNode, labelNode) {
+    _validateInputs(temperatureInputNode, tempLabelNode, numNamesInputNode, numberNamesLabelNode) {
+        if (this._validateInputsHelper(0.5, 5,temperatureInputNode, tempLabelNode)) {
+            return true; 
+        }
+        else {
+            this._addClassesLabels(tempLabelNode); 
+            this._addHTML_tempLabel(); 
+        }
+        if (this._validateInputsHelper(1, 15, numNamesInputNode, numberNamesLabelNode, false)) {
+            return true; 
+        }
+        else {
+            this._addClassesLabels(numberNamesLabelNode); 
+            this._addHTML_numLabel(); 
+        }
+
+        return false; 
+    }
+
+    _validateInputsHelper(minVal, maxVal, inputNode, labelNode, temperatureInput = true) {
         const value = inputNode.value; 
         if(value>maxVal || value <minVal ) {
             const validation_value_msg = value ? `${value} does not meet those conditions `:`no value was provided at all!`;
-            inputNode.setCustomValidity(`**Value must be a number between ${minVal} and ${maxVal}, and ${validation_value_msg}`);
-            labelNode.innerHTML = inputNode.validationMessage; 
+            labelNode.innerHTML = `**Value must be a number between ${minVal} and ${maxVal}, and ${validation_value_msg}`;
+            labelNode.className = '';
+            labelNode.classList.add('validationErrorLabel');
+            return true; 
+        }
+        // can't pass a floating value in when specifying number of names to generate 
+        else if (!temperatureInput && value%1 !== 0) {
+            labelNode.innerHTML = `**Please pass an integer between 1 and 15`
             labelNode.className = '';
             labelNode.classList.add('validationErrorLabel');
             return true; 
@@ -110,7 +156,7 @@ class LanguageModel extends React.Component {
         document.getElementById('temperatureVal').value = '';
         document.getElementById('numGenerateInput').value = '';
         this._addClassesLabels(document.getElementById('numGenerateLabel'));
-        this._addHTML_numLabel();
+        // this._addHTML_numLabel();
     }
 
    
@@ -122,7 +168,7 @@ class LanguageModel extends React.Component {
                     <label for = "temperature" id = "tempLabel">Temperature:</label>
                     <input type = "number" id = "temperatureVal" className = "formInputNumber" name = "temperature" min = "0.5" max = "5" step = "any"></input>
                     <label for = "numGenerate" id = "numGenerateLabel"></label>
-                    <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "any"></input>
+                    <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "1"></input>
                     <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate!"></input>
                 </form>
                 <div id = "generateAgain" className = "button" onClick = {this._resetLM}>Generate Again</div>
