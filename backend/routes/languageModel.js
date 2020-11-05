@@ -6,7 +6,6 @@ const { json } = require('express');
 require('dotenv').config();
 
 router.post('/', async function(req, res) {
-    console.log(req.body); 
     try {
         let recievedData = await fetch(process.env.ML_Server + '/languageModel', {
             method: 'POST',

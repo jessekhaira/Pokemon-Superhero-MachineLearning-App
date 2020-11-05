@@ -6,6 +6,7 @@ class LanguageModel extends React.Component {
         super(props); 
         this._generateNewName = this._generateNewName.bind(this); 
         this._resetLM = this._resetLM.bind(this); 
+        this._sendRequestForNames = this._sendRequestForNames.bind(this); 
     }
 
     componentDidMount() {
@@ -53,30 +54,38 @@ class LanguageModel extends React.Component {
         const LM_ModelDiv = document.getElementById("LM_ModelDiv");
         const LanguageModelDiv = document.getElementById("temperatureForm");
         try {
-            this.props._hideDisplays(document.getElementById('temperatureForm')); 
-            LM_ModelDiv.appendChild(this.props._addSpinnerAsync());
-            let fetchedData = await fetch('/languageModel', {
-                method: 'POST',
-                body: JSON.stringify({
-                    temperature: temperatureInputNode.value,
-                    number_to_generate: numNamesInputNode.value 
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8'
-                }
-            });
-            let jsonData = await fetchedData.json(); 
-            // if the node backend has an error, it will be passed to client in message
-            resultsLM.innerHTML = jsonData.predictedName || "Sorry, there was an error getting your new pokémon name. Try again?";
+            await this._sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM); 
         }
         catch(err) {
             resultsLM.innerHTML = "Sorry, there was an error getting your new pokémon name. Try again?";
         }
 
         finally {
-            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain')); 
+            this.props._showDisplays('block', resultsLM, document.getElementById('generateAgain'));
+            this._setGridDisplayResults(resultsLM);
             LM_ModelDiv.removeChild(LM_ModelDiv.lastChild); 
         }
+    }
+
+    _setGridDisplayResults(resultsLM) {
+
+    }
+
+    async _sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM) {
+        this.props._hideDisplays(document.getElementById('temperatureForm')); 
+        LM_ModelDiv.appendChild(this.props._addSpinnerAsync());
+        let fetchedData = await fetch('/languageModel', {
+            method: 'POST',
+            body: JSON.stringify({
+                temperature: temperatureInputNode.value,
+                number_to_generate: numNamesInputNode.value 
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        });
+        let jsonData = await fetchedData.json();
+        resultsLM.innerHTML = jsonData.predictedName || "Sorry, there was an error getting your new pokémon name. Try again?";
     }
 
     _validateInputs(minVal, maxVal, inputNode, labelNode) {
@@ -91,6 +100,7 @@ class LanguageModel extends React.Component {
         }
         return false; 
     }
+    
     _resetLM() {
         const resultsLM = document.getElementById("ResultsLanguageModel");
         this.props._showDisplays('flex',document.getElementById('temperatureForm'));
