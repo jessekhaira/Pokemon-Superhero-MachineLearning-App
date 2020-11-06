@@ -10,7 +10,7 @@ def configure_data_generators(batch_size):
     
     train_generator = train_datagen.flow_from_directory(
         os.path.abspath('') + '/data/train',
-        target_size=(150,150),
+        target_size=(224,224),
         batch_size = 32,
         class_mode='categorical'
     )
@@ -18,14 +18,14 @@ def configure_data_generators(batch_size):
     test_datagen = ImageDataGenerator(rescale=1./255)
     test_generator = test_datagen.flow_from_directory(
         os.path.abspath('') + '/data/test',
-        target_size = (150,150),
+        target_size = (224,224),
         batch_size=batch_size,
         class_mode='categorical'
     )
 
     val_generator = test_datagen.flow_from_directory(
         os.path.abspath('') + '/data/valid',
-        target_size = (150,150),
+        target_size = (224,224),
         batch_size=batch_size,
         class_mode='categorical'
     )
