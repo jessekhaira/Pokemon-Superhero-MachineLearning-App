@@ -77,13 +77,13 @@ if __name__ == "__main__":
 
     argparseObj.add_argument(
         '--valid_percent',
-        type = int,
+        type = float,
         default = 0.18
     )
 
     argparseObj.add_argument(
         '--test_percent',
-        type = int,
+        type = float,
         default= 0.18
     )
 
