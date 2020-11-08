@@ -2,7 +2,7 @@
 ## Description
 This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and the popular media franchise Pokémon. The project is deployed and can be played around with at the following URL:  
 
-Specifically, I wanted to determine if an algorithm could recognize my four favourite superheros given arbitrary images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and trained deep learning algorithms on the scraped data, and obtained excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
+Specifically, I wanted to determine if an algorithm could recognize my four favourite superheros given arbitrary images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, trained deep learning algorithms on the scraped data, and obtained excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
 I also worked with an external API to obtain inspirational quotes and templated the quotes on the website. 
 
