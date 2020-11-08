@@ -49,14 +49,19 @@ class Conv_Model extends React.Component {
                 body: formInfo 
             });
             let jsonPredictionData = await predictionData.json(); 
-            console.log(jsonPredictionData); 
+            // if there was an error with the server processing data,
+            // either data of incorrect shape was passed in or error on our end
+            // want to display appropriate message to user 
+            if ('message' in jsonPredictionData) {
+                throw Error(jsonPredictionData.message)
+            }
             document.getElementById('topPrediction').innerHTML = "The AI predicted your image was most likely " +jsonPredictionData.MostLikelyClass;
             document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
             convModel.removeChild(convModel.lastChild); 
         }
         catch (err) {
-            console.log(err); 
+            console.log(err.message); 
         }
     }
 
