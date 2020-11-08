@@ -4,6 +4,12 @@ from keras.preprocessing.image import ImageDataGenerator
 import argparse
 
 def configure_data_generators(batch_size):
+    """
+    This function creates, configures and returns Keras image data generators for
+    the train, validation, and test set. This function assumes that all your data is 
+    present in a directory called /data, and is split up into /data/train, /data/valid and
+    /data/test, with all the classes in your data present in those folders. 
+    """ 
     train_datagen = ImageDataGenerator(
         shear_range=0.2,
         zoom_range=0.2,
@@ -40,7 +46,12 @@ def configure_data_generators(batch_size):
 
 
 def ResNet50V2_transfer_learned_model(learn_rate, dropout_fraction):
-    # not including the top softmax layer - re-training softmax classifier on top of the
+    """
+    This function creates a transfer learned 50 layer ResNetV2 model with a custom
+    linear layer on top producing 4 logits. A global max pooling layer and a dropout 
+    layer precede the linear layer.
+    """ 
+    # not including the top softmax layer - re-training linear layer on top of the
     # existing net and treating the net as a fixed feature extractor 
     base_model = keras.applications.ResNet50V2(
         include_top = False, 
@@ -82,8 +93,8 @@ def main(batch_size, epochs, learn_rate, dropout_fraction):
     model = ResNet50V2_transfer_learned_model(learn_rate, dropout_fraction)
     
     my_callbacks = [
-        keras.callbacks.EarlyStopping(patience=5),
-        keras.callbacks.ModelCheckpoint(filepath='model.{epoch:02d}-{val_loss:.2f}.h5', period = 15),
+        keras.callbacks.EarlyStopping(patience=15),
+        keras.callbacks.ModelCheckpoint(filepath=os.path.join(os.path.abspath(''), "trained_models/model.{epoch:02d}-{val_loss:.2f}.h5"), period = 5),
         keras.callbacks.TensorBoard(log_dir='./logs'),
         keras.callbacks.ReduceLROnPlateau(
             patience=6,
@@ -107,7 +118,7 @@ if __name__ == "__main__":
 
     argparse_obj.add_argument(
         "--epochs",
-        default = 60,
+        default = 180,
         type = int 
     )
 
@@ -123,4 +134,5 @@ if __name__ == "__main__":
         type = float 
     )
 
+    argparse_obj = argparse_obj.parse_args() 
     main(argparse_obj.batch_size, argparse_obj.epochs, argparse_obj.learn_rate, argparse_obj.dropout_fraction)
