@@ -83,6 +83,14 @@ ul li {
   right: 40px;
 }
 
+.serverError {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
 #instructionsConv {
   display: flex;
   align-items: center;
@@ -114,14 +122,6 @@ ul li {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-#serverError {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: red;
 }
 
 #convResults {

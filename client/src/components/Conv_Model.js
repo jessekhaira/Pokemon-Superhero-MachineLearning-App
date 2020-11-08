@@ -61,7 +61,7 @@ class Conv_Model extends React.Component {
             this.props._showDisplays('flex',document.getElementById('convResults')); 
         }
         catch (err) {
-            this.props._showDisplays('flex',document.getElementById('serverError')); 
+            this.props._showDisplays('flex',document.getElementById('convServErr')); 
             let err_msg = err.message; 
             if(err_msg.includes('reason:')) {
                 err_msg = "It seems the connection to the AI algorithms is unavailable at the moment. Please try again later."
@@ -119,7 +119,7 @@ class Conv_Model extends React.Component {
 
     _errorStartAgain() {
         this.props._hideDisplays(
-            document.getElementById('serverError'),
+            document.getElementById('convServErr'),
         );
         this._showConvForm(); 
     }
@@ -155,7 +155,7 @@ class Conv_Model extends React.Component {
                         <div id = "submitConv" onClick = {this._requestPrediction} className = "button">Submit</div>
                     </form>
                 </div>
-                <div id = "serverError">
+                <div id = "convServErr" className = "serverError">
                     <p id = "error_message"></p>
                     <div id = "startNew" className = "button" onClick = {this._errorStartAgain}>Try new image</div>
                 </div>
