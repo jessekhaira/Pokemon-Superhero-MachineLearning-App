@@ -39,10 +39,6 @@ code {
   height: auto;
 }
 
-#instructionsLM {
-  margin-bottom: 15px;
-}
-
 #instructionsConv {
   display: flex;
   align-items: center;
@@ -120,36 +116,8 @@ ul li {
   right: 40px;
 }
 
-#LM_ModelDiv {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  height: auto;
-}
-#LM_ModelDiv #LanguageModel {
-  width: 200px;
-}
-#LM_ModelDiv #ResultsLanguageModel {
-  border: 1px solid var(--accent-color-1);
-  color: var(--accent-color-3);
-  background-color: white;
-  padding: 5px;
+#serverError {
   display: none;
-  width: 350px;
-  text-align: center;
-  align-items: center;
-  height: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-#LM_ModelDiv #generateAgain {
-  display: none;
-  width: 150px;
-}
-#LM_ModelDiv form {
-  height: auto;
-  margin-top: 25px;
 }
 
 .spinner {
@@ -292,6 +260,38 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#LM_ModelDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+}
+#LM_ModelDiv #LanguageModel {
+  width: 200px;
+}
+#LM_ModelDiv #ResultsLanguageModel {
+  border: 1px solid var(--accent-color-1);
+  color: var(--accent-color-3);
+  background-color: white;
+  padding: 5px;
+  display: none;
+  width: 350px;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+#LM_ModelDiv #generateAgain {
+  display: none;
+  width: 150px;
+}
+#LM_ModelDiv form {
+  height: auto;
+  margin-top: 25px;
 }
 
 #temperatureForm {

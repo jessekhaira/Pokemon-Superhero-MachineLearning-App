@@ -60,7 +60,8 @@ class Conv_Model extends React.Component {
             this.props._showDisplays('flex',document.getElementById('convResults')); 
         }
         catch (err) {
-            console.log(err); 
+            this.props._showDisplays('flex',document.getElementById('serverError')); 
+            document.getElementById('error_message').innerHTML = err.message; 
         }
         finally {
             convModel.removeChild(convModel.lastChild); 
@@ -136,7 +137,7 @@ class Conv_Model extends React.Component {
                     </form>
                 </div>
                 <div id = "serverError">
-                    <p></p>
+                    <p id = "error_message"></p>
                     <div id = "startNew" className = "button">Try new image</div>
                 </div>
                 <div id = "convResults">

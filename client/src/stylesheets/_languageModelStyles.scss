@@ -1,0 +1,79 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#instructionsLM {
+    margin-bottom: 15px;
+}
+
+#LM_ModelDiv {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    height:auto;
+
+    #LanguageModel {
+        width: 200px;
+    }
+
+    #ResultsLanguageModel {
+        border: 1px solid var(--accent-color-1);
+        color: var(--accent-color-3);
+        background-color: white;
+        padding: 5px;
+        display: none;
+        width: 350px;
+        text-align: center;
+        align-items: center;
+        height: auto; 
+        margin-top: 25px; 
+        margin-bottom: 25px;
+    }
+
+    #generateAgain {
+        display: none; 
+        width:150px;
+     }
+
+    form {
+        height: auto;
+        margin-top: 25px;
+    }
+
+}
+
+#temperatureForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 40px;
+    margin-top: 25px;
+
+    .formInputNumber {
+        text-align: center;
+        width: 50px;
+        margin: 15px;
+    }
+
+    .formLabel {
+        width: 450px;
+        color: rgb(211, 54, 80);
+        line-height: 25px;
+    }
+
+    #submitLM {
+        width: 150px;
+        font-size: 20px;
+    }
+}
+
+
+.validationErrorLabel {
+    font-weight: bold;
+    color: red; 
+}
