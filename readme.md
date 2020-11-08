@@ -2,7 +2,7 @@
 ## Description
 This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and the popular media franchise Pokémon. The project is deployed and can be played around with at the following URL:  
 
-Specifically, I wanted to determine if an algorithm could recognize my four favourite superheros given arbitrary images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, trained deep learning algorithms on the scraped data, and obtained excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
+Specifically, I wanted to determine if an algorithm could recognize my four favourite superheros given arbitrary images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and trained deep learning algorithms on the scraped data. Upon validation, the algorithms were found to produce excellent results for both of the two use cases. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
 I also worked with an external API to obtain inspirational quotes and templated the quotes on the website. 
 
@@ -31,8 +31,6 @@ Keras was used as the deep learning framework for this project due to its simpli
 After scraping every base Pokémon name using a combination of the Python requests package and beautiful soup, I obtained a total number of names of 898. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used. 
 
 The particular type of language model I chose to build was a character-level language model, so at every time step in the GRU cell, the goal is to predict the most likely next character.  
-
-The script I created to train the language model can be seen [here](). 
 
 ### Image Recognition Model
 After creating a custom image scraper with Selenium, I obtained ~500 raw images of each superhero. After manual cleaning of these images, I ended up with approximately ~260 images of each superhero, with the training set being ~1000 images overall and the validation and test set each having 100 images. 
