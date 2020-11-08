@@ -16,6 +16,7 @@ class Conv_Model extends React.Component {
         this._startNewPrediction = this._startNewPrediction.bind(this); 
         this._seeInferenceResults = this._seeInferenceResults.bind(this);
         this._goBack = this._goBack.bind(this); 
+        this._errorStartAgain = this._errorStartAgain.bind(this); 
     }
 
     _isImgUploaded(e) {
@@ -61,18 +62,29 @@ class Conv_Model extends React.Component {
         }
         catch (err) {
             this.props._showDisplays('flex',document.getElementById('serverError')); 
-            document.getElementById('error_message').innerHTML = err.message; 
+            let err_msg = err.message; 
+            if(err_msg.includes('reason:')) {
+                err_msg = "It seems the connection to the AI algorithms is unavailable at the moment. Please try again later."
+            }
+            document.getElementById('error_message').innerHTML = err_msg; 
         }
         finally {
             convModel.removeChild(convModel.lastChild); 
         }
     }
 
-    _startNewPrediction(e) {
+    _startNewPrediction() {
         this.props._hideDisplays(
-            document.getElementById('convResults'), 
+            document.getElementById('convResults')
+        )
+        this._showConvForm(); 
+    }
+
+    _showConvForm() {
+        this.props._hideDisplays(
             document.getElementById('imageDisplayDiv'),
-            document.getElementById('submitConv'));
+            document.getElementById('submitConv')
+        )
         this.props._showDisplays('block', document.getElementById('labelPokeImg'));
         this.props._showDisplays('flex', document.getElementsByClassName('ML_Model_Instructions')[0]); 
         document.getElementById('pokeImg').value = ''; 
@@ -103,6 +115,13 @@ class Conv_Model extends React.Component {
         this.props._hideDisplays(
             document.getElementById(resultToHide),
             document.getElementById('goBackButton'));
+    }
+
+    _errorStartAgain() {
+        this.props._hideDisplays(
+            document.getElementById('serverError'),
+        );
+        this._showConvForm(); 
     }
     
     render() {
@@ -138,7 +157,7 @@ class Conv_Model extends React.Component {
                 </div>
                 <div id = "serverError">
                     <p id = "error_message"></p>
-                    <div id = "startNew" className = "button">Try new image</div>
+                    <div id = "startNew" className = "button" onClick = {this._errorStartAgain}>Try new image</div>
                 </div>
                 <div id = "convResults">
                     <div id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>

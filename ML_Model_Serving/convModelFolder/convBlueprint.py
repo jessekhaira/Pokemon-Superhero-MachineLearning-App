@@ -1,6 +1,5 @@
 from flask import Blueprint
 from flask import jsonify
-from flask import Response
 from keras.models import load_model
 import os 
 from PIL import Image
@@ -27,12 +26,11 @@ def convModel_APIHandler():
         base64_decoded = base64.b64decode(base64_image_string)
         image = Image.open(io.BytesIO(base64_decoded))
         image_np = np.array(image)
-        raise Exception
         resp = jsonify({'MostLikelyClass': 'Batman', 'allProbs': {'Batman':0.52, 'Spiderman': 0.21, 'Black Panther': 0.21, 'Wolverine': 0.06}})
         resp.status_code = 200
         return resp
     except:
-        resp = jsonify({'message': 'There was an error processing your image by the model. Try a different image?'})
+        resp = jsonify({'message': 'There was an error processing your image by the server. Try a different image?'})
         resp.status_code = 500 
         return resp 
 

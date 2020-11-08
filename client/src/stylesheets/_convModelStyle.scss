@@ -1,0 +1,69 @@
+#instructionsConv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#imageDisplayDiv {
+    display: none; 
+}
+#imgLoaded {
+    height: 300px;
+    width: 300px;
+}
+#submitConv {
+    display: none;
+    margin-top: 20px; 
+}
+#pokeImg {
+    margin-top: 15px;
+    display: none;
+}
+
+#conv_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#serverError {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+}
+
+#convResults {
+    display: flex;
+    width: 550px;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+}
+
+.results {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+}
+
+#goBackButton {
+    display: none;
+    order: 2;
+    margin-top: 15px;
+}
+
+.displayedResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    display: none; 
+    border: 5px solid orange; 
+    width: 80%;
+    order: 1;
+    font-weight: bold;
+}

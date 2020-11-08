@@ -43,24 +43,6 @@ code {
     height: auto;
 }
 
-#instructionsConv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-#imageDisplayDiv {
-    display: none; 
-}
-#imgLoaded {
-    height: 300px;
-    width: 300px;
-}
-#submitConv {
-    display: none;
-    margin-top: 20px; 
-}
-
 #spacingDiv {
     margin-top: 120px; 
 }
@@ -74,19 +56,6 @@ code {
     margin-bottom: 0px;
     width: 100%;
     background-color: var(--mainBgColor);
-}
-
-
-#pokeImg {
-    margin-top: 15px;
-    display: none;
-}
-
-#conv_form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .button {
@@ -119,8 +88,3 @@ ul {
     }
 }
 
-
-#serverError {
-    display: none; 
-
-}
