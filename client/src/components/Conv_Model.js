@@ -58,10 +58,12 @@ class Conv_Model extends React.Component {
             document.getElementById('topPrediction').innerHTML = "The AI predicted your image was most likely " +jsonPredictionData.MostLikelyClass;
             document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
-            convModel.removeChild(convModel.lastChild); 
         }
         catch (err) {
-            console.log(err.message); 
+            console.log(err); 
+        }
+        finally {
+            convModel.removeChild(convModel.lastChild); 
         }
     }
 
@@ -132,6 +134,10 @@ class Conv_Model extends React.Component {
                         </div>
                         <div id = "submitConv" onClick = {this._requestPrediction} className = "button">Submit</div>
                     </form>
+                </div>
+                <div id = "serverError">
+                    <p></p>
+                    <div id = "startNew" className = "button">Try new image</div>
                 </div>
                 <div id = "convResults">
                     <div id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>
