@@ -25,7 +25,7 @@ can be shown on demand.
 ## Screenshots 
 
 
-## Machine Learning Models<a name = "ml_models"></a> 
+## Deep Learning Models Information<a name = "ml_models"></a> 
 Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models. 
 ### Language Model
 After scraping every base Pokémon name using a combination of the Python requests package and beautiful soup, I obtained a total number of names of 898. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used. 
