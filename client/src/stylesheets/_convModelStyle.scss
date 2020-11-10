@@ -60,3 +60,21 @@
     order: 1;
     font-weight: bold;
 }
+
+
+#topPrediction{
+    flex-direction: column;
+    font-weight: normal;
+    p {
+        margin: 0px;
+        margin-top: 15px;
+    }
+    #pred_result {
+        display: block;
+        width: 100%;
+        font-weight: bold;
+        font-size: 26px;
+        margin-top: 15px;
+        padding: 5px;
+    }
+}

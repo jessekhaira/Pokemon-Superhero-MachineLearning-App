@@ -9,7 +9,7 @@ import React from 'react';
  */
 class Conv_Model extends React.Component {
     constructor(props) {
-        super(props); 
+        super(props);
 
         this._isImgUploaded = this._isImgUploaded.bind(this); 
         this._requestPrediction = this._requestPrediction.bind(this); 
@@ -21,7 +21,7 @@ class Conv_Model extends React.Component {
 
     _isImgUploaded(e) {
         e.preventDefault(); 
-        const imgUploaded = e.target.files[0];
+        const imgUploaded = e.target.files[0]; 
         const imageDisplayDiv = document.getElementById('imageDisplayDiv');
         const img = document.getElementById('imgLoaded');
         const reader = new FileReader();
@@ -35,6 +35,7 @@ class Conv_Model extends React.Component {
     }
 
     async _requestPrediction() {
+
         const convModel = document.getElementById('ConvModel');
         const convForm = document.getElementById('conv_form'); 
         try {
@@ -57,7 +58,10 @@ class Conv_Model extends React.Component {
                 throw Error(jsonPredictionData.message)
             }
             console.log(jsonPredictionData.allProbs); 
-            document.getElementById('topPrediction').innerHTML = "The AI predicted your image was most likely " +jsonPredictionData.MostLikelyClass;
+            const mostLikelyClass = jsonPredictionData.MostLikelyClass;
+            const allProbs = jsonPredictionData.allProbs;
+            document.getElementById('pred_info').innerHTML = `With a probability of ${allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`
+            document.getElementById('pred_result').innerHTML = jsonPredictionData.MostLikelyClass;
             document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
         }
@@ -165,7 +169,10 @@ class Conv_Model extends React.Component {
                     <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
                     <div id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
                     <div id = "goBackButton" className = "button results" onClick = {this._goBack}>Go Back</div>
-                    <div id = "topPrediction" className = "displayedResult"></div>
+                    <div id = "topPrediction" className = "displayedResult">
+                        <p id = "pred_info"></p>
+                        <p id = "pred_result"></p>
+                    </div>
                     <div id = "allProbs" className = "displayedResult"></div>
                 </div>
             </div>        
