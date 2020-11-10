@@ -21,7 +21,14 @@ class_indices = {
 
 @convBlueprint.route('/', methods = ['POST'])
 def convModel_APIHandler(): 
+    """
+    This function represents a Flask API endpoint that serves a Keras image classifier.
+    If the input data is valid, this function will return the models top prediction for the
+    image, along with all of the probabilities for the classes. 
+    """ 
     try:
+        # image is expected to be recieved in a base64 encoded string which will be decoded
+        # and converted to a tensor and then preprocessed 
         base64_image_string = request.form['image_data_buffer']
         base64_decoded = base64.b64decode(base64_image_string)
         image = Image.open(io.BytesIO(base64_decoded))
@@ -29,8 +36,8 @@ def convModel_APIHandler():
         raw_logits_tensor = model(preprocessed_img)
         prob_distribution = softmax(raw_logits_tensor)
         topPrediction = class_indices[prob_distribution.numpy().argmax()]
-        allProbs = get_all_probs(prob_distribution)
-        resp = jsonify({'MostLikelyClass': topPrediction, 'allProbs': {'Batman':0.52, 'Spiderman': 0.21, 'Black Panther': 0.21, 'Wolverine': 0.06}})
+        allProbsDict = get_all_probs(prob_distribution)
+        resp = jsonify(MostLikelyClass= topPrediction, allProbs=allProbsDict)
         resp.status_code = 200
         return resp
     except:
@@ -43,10 +50,10 @@ def prepare_image(image):
     image_tensor = img_to_array(image)
     preprocessed_img = preprocess_input(image_tensor)
     preprocessed_img = np.expand_dims(preprocessed_img, axis =0)
-    print(preprocessed_img)
-    print(preprocessed_img.shape)
     return preprocessed_img
 
 def get_all_probs(prob_distribution):
     all_probs = {}
-    
+    for i, val in enumerate(prob_distribution.numpy()[0]):
+        all_probs[class_indices[i]] = round(float(val),2)
+    return all_probs

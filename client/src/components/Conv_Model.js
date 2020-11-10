@@ -56,6 +56,7 @@ class Conv_Model extends React.Component {
             if ('message' in jsonPredictionData) {
                 throw Error(jsonPredictionData.message)
             }
+            console.log(jsonPredictionData.allProbs); 
             document.getElementById('topPrediction').innerHTML = "The AI predicted your image was most likely " +jsonPredictionData.MostLikelyClass;
             document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
