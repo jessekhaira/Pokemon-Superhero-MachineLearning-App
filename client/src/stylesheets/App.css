@@ -281,6 +281,9 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+#LM_ModelDiv #ResultsLanguageModel div {
+  animation: pokeNamesAnimation 0.6s ease-in-out forwards;
+}
 #LM_ModelDiv #generateAgain {
   display: none;
   width: 150px;
@@ -319,6 +322,15 @@ input[type=number]::-webkit-outer-spin-button {
   color: red;
 }
 
+@keyframes pokeNamesAnimation {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .spinner {
   display: inline-block;
   position: relative;
@@ -386,12 +398,14 @@ input[type=number]::-webkit-outer-spin-button {
   align-items: center;
   font-size: 20px;
   font-weight: bold;
+  animation: quoteAnim 0.7s ease-in-out forwards;
 }
 #quoteBox #authorDisplay {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-top: 10px;
+  animation: quoteAnim 0.7s ease-in-out forwards;
 }
 #quoteBox #authorDisplay p {
   margin-right: 10px;
@@ -404,6 +418,14 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100px;
 }
 
+@keyframes quoteAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 #NavBar {
   display: flex;
   justify-content: space-between;

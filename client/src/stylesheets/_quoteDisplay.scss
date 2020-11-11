@@ -18,12 +18,14 @@
         align-items: center;
         font-size: 20px;
         font-weight: bold;
+        animation: quoteAnim 0.7s ease-in-out forwards;
     }
     #authorDisplay {
         display: flex;
         justify-content: flex-end;
         width: 100%;
         margin-top: 10px;
+        animation: quoteAnim 0.7s ease-in-out forwards;
         p {
             margin-right: 10px;
         }
@@ -35,5 +37,15 @@
         font-size: 15px;
         margin-bottom: 20px;
         width: 100px;
+    }
+}
+
+@keyframes quoteAnim {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
     }
 }

@@ -48,6 +48,5 @@ function getObjWidthInPercent(obj) {
     const obj_width = obj.clientWidth;
     const parent_width = obj.parentElement.clientWidth;
     const width_in_percent =Math.ceil((obj_width/parent_width) *100);
-    console.log(width_in_percent);  
     return width_in_percent; 
 }

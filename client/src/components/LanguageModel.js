@@ -18,7 +18,6 @@ class LanguageModel extends React.Component {
 
     _addClassesLabels(...args) {
         for (let arg of args) {
-            console.log(arg);
             arg.className = '';
             arg.classList.add('formLabel');
         }
