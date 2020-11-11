@@ -73,6 +73,13 @@ class InstructionsLM extends React.Component {
     }
 
     _addQuoteInfo(randomQuote) {
+        // have to clone the nodes so the animation can start again sucessfully 
+        let quoteDisplay = document.getElementById('quoteDisplay');
+        quoteDisplay.parentNode.replaceChild(quoteDisplay.cloneNode(true), quoteDisplay);
+
+        let authorDisplay = document.getElementById('authorDisplay');
+        authorDisplay.parentNode.replaceChild(authorDisplay.cloneNode(true), authorDisplay);
+
         const [quotePNode, authorPNode] = this._makeQuoteAuthorDisplay(randomQuote); 
         document.getElementById("quoteDisplay").appendChild(quotePNode); 
         document.getElementById("authorDisplay").appendChild(authorPNode);
