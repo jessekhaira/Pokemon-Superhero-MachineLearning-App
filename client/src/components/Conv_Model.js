@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 /**
  * This class represents the react component responsible for where images are uploaded and sent 
  * to the backend to the convolutional model, and results recieved and displayed to the user.
@@ -81,8 +80,21 @@ class Conv_Model extends React.Component {
     }
 
     _populateAllProbs(allProbs) {
-        console.log(allProbs);
-        // document.getElementById('batman').innerHTML = allProbs["Batman"];
+        const batmanProb = allProbs["Batman"] * 100;
+        const spidermanProb = allProbs["Spiderman"] * 100;
+        const hulkProb = allProbs["Hulk"]* 100;
+        const supermanProb = allProbs["Superman"]*100;
+        document.getElementById('batman_descr').innerHTML = `Batman: ${batmanProb}%`;
+        document.getElementById('batman').style.width = `${batmanProb}%`;
+
+        document.getElementById('spiderman_descr').innerHTML = `Spiderman: ${spidermanProb}%`;
+        document.getElementById('spiderman').style.width = `${spidermanProb}%`;
+
+        document.getElementById('hulk_descr').innerHTML = `Hulk: ${hulkProb}%`;
+        document.getElementById('hulk').style.width = `${hulkProb}%`;
+
+        document.getElementById('superman_descr').innerHTML = `Superman: ${supermanProb}%`;
+        document.getElementById('superman').style.width = `${supermanProb}%`;
     }
 
     _startNewPrediction() {
@@ -181,26 +193,26 @@ class Conv_Model extends React.Component {
                         <p id = "pred_result"></p>
                     </div>
                     <div id = "allProbs" className = "displayedResult">
-                        <p id = "descr_allprobs">Here's how likely the AI thought the image was each of the 4 superheros</p>
+                        <p id = "descr_allprobs">Here's how likely the AI thought the image was each of the 4 superheros:</p>
                         <div id = "container_bar_graph">
 
                             <div id ="batman_holder" className = "superhero_holder">
-                                <p id ="batman_descr" className = "superhero_prob_descr">xd</p>
+                                <p id ="batman_descr" className = "superhero_prob_descr"></p>
                                 <div id = "batman" className = "probsSuperheros"></div>
                             </div>
 
                             <div id ="spiderman_holder" className = "superhero_holder">
-                                <p id = "spiderman_descr" className = "superhero_prob_descr">xd</p>
+                                <p id = "spiderman_descr" className = "superhero_prob_descr"></p>
                                 <div id = "spiderman" className = "probsSuperheros"></div>
                             </div>
 
                             <div id ="hulk_holder" className = "superhero_holder">
-                                <p id = "hulk_descr" className = "superhero_prob_descr">xd</p>
+                                <p id = "hulk_descr" className = "superhero_prob_descr"></p>
                                 <div id = "hulk" className = "probsSuperheros"></div>
                             </div>
 
                             <div id ="superman_holder" className = "superhero_holder">
-                                <p id = "superman_descr" className = "superhero_prob_descr">xd</p>
+                                <p id = "superman_descr" className = "superhero_prob_descr"></p>
                                 <div id = "superman" className = "probsSuperheros"></div>
                             </div>
 

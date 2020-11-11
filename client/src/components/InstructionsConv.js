@@ -15,7 +15,7 @@ class InstructionsConv extends React.Component {
         return(
             <div className = "ML_Model_Instructions">
                 <div id = "instructionsConv">
-                <p>Upload a .png or .jpeg image of one of the following four superheros, and the algorithm will correctly recognize
+                <p>Upload a .png or .jpeg image of one of the following four superheros, and the algorithm will hopefully correctly recognize
                     it!</p>
                 <ul id = "superhero_list">
                     <li>Spiderman</li>

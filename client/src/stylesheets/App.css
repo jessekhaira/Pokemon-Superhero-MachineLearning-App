@@ -132,7 +132,6 @@ ul li {
 }
 #allProbs #container_bar_graph {
   width: 100%;
-  border: 1px solid;
   height: auto;
 }
 #allProbs #batman {
@@ -152,16 +151,21 @@ ul li {
 }
 #allProbs p {
   margin-bottom: 0px;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
-.superhero_prob_descr {
+#allProbs #descr_allprobs {
+  text-align: center;
+}
+#allProbs .superhero_prob_descr {
   font-size: 22px;
   text-align: left;
+  animation: descr_appearance 1s ease-in-out forwards;
 }
-
-.probsSuperheros {
+#allProbs .probsSuperheros {
   border: 1px solid black;
-  width: 20%;
+  width: 0%;
   height: 35px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -217,6 +221,14 @@ ul li {
   padding: 5px;
 }
 
+@keyframes descr_appearance {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
