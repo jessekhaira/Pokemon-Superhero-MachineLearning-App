@@ -1,8 +1,11 @@
 @media(max-width:850px) {
+
+
     #NavBar {
         flex-direction: column;
-        height: 15%;
+        height: auto;
         margin: 0px;
+        padding: 10px;
         justify-content: flex-start;
 
         h2 {
@@ -42,6 +45,7 @@
 
     #instructionsConv {
         margin-bottom: 0px;
+        width: 350px;
     }
 
     #temperatureForm {

@@ -80,8 +80,8 @@ class Conv_Model extends React.Component {
         }
     }
 
-    _populateAllProbs() {
-        
+    _populateAllProbs(allProbs) {
+        document.getElementById('batman').innerHTML = allProbs["batman"];
     }
 
     _startNewPrediction() {
@@ -181,6 +181,7 @@ class Conv_Model extends React.Component {
                     </div>
                     <div id = "allProbs" className = "displayedResult">
                         <p id = "descr_allprobs">Here's how likely the AI thought the image was each of the 4 superheros</p>
+                        <p>batman</p>
                         <div id = "batman"></div>
                         <div id = "spiderman"></div>
                         <div id = "hulk"></div>

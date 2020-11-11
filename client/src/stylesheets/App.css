@@ -387,8 +387,9 @@ input[type=number]::-webkit-outer-spin-button {
 @media (max-width: 850px) {
   #NavBar {
     flex-direction: column;
-    height: 15%;
+    height: auto;
     margin: 0px;
+    padding: 10px;
     justify-content: flex-start;
   }
   #NavBar h2 {
@@ -426,6 +427,7 @@ input[type=number]::-webkit-outer-spin-button {
 
   #instructionsConv {
     margin-bottom: 0px;
+    width: 350px;
   }
 
   #temperatureForm {
