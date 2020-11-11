@@ -174,7 +174,7 @@ ul li {
 
 #convResults {
   display: flex;
-  width: 550px;
+  width: 450px;
   justify-content: space-between;
   align-items: center;
   display: none;
@@ -186,6 +186,7 @@ ul li {
   justify-content: center;
   align-items: center;
   height: 65px;
+  margin-left: 10px;
 }
 
 #goBackButton {

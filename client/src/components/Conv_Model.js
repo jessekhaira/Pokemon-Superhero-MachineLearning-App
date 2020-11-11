@@ -85,10 +85,10 @@ class Conv_Model extends React.Component {
     }
 
     _populateAllProbs() {
-        const batmanProb = (this.state.allProbs["Batman"] * 100).toPrecision(3);
-        const spidermanProb = (this.state.allProbs["Spiderman"] * 100).toPrecision(3);
-        const hulkProb = (this.state.allProbs["Hulk"]* 100).toPrecision(3);
-        const supermanProb = (this.state.allProbs["Superman"]*100).toPrecision(3); 
+        const batmanProb = Math.round(this.state.allProbs["Batman"] * 100);
+        const spidermanProb = Math.round(this.state.allProbs["Spiderman"] * 100);
+        const hulkProb = Math.round(this.state.allProbs["Hulk"]* 100);
+        const supermanProb = Math.round(this.state.allProbs["Superman"]*100);
         document.getElementById('batman_descr').innerHTML = `Batman: ${batmanProb}%`;
         document.getElementById('spiderman_descr').innerHTML = `Spiderman: ${spidermanProb}%`;
         document.getElementById('hulk_descr').innerHTML = `Hulk: ${hulkProb}%`;
@@ -169,8 +169,7 @@ class Conv_Model extends React.Component {
                         className="button"
                         >
 
-                            Submit a .png or .jpg pokemon image like those 
-                            above! 
+                            Submit a .png or .jpg superhero image of the 4 heros above! 
 
                         </label>
                         <input type="file"
