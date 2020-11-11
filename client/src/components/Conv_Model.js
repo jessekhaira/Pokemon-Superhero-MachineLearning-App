@@ -60,11 +60,13 @@ class Conv_Model extends React.Component {
             console.log(jsonPredictionData.allProbs); 
             const mostLikelyClass = jsonPredictionData.MostLikelyClass;
             const allProbs = jsonPredictionData.allProbs;
-            document.getElementById('pred_info').innerHTML = `With a probability of ${allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`
+            document.getElementById('pred_info').innerHTML = `With a probability of ${allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`;
             document.getElementById('pred_result').innerHTML = jsonPredictionData.MostLikelyClass;
-            document.getElementById('allProbs').innerHTML = "Here's how likely the AI thought the image was each of the 4 superheros"+jsonPredictionData.allProbs;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
+
+            this._populateAllProbs(allProbs);
         }
+
         catch (err) {
             this.props._showDisplays('flex',document.getElementById('convServErr')); 
             let err_msg = err.message; 
@@ -76,6 +78,10 @@ class Conv_Model extends React.Component {
         finally {
             convModel.removeChild(convModel.lastChild); 
         }
+    }
+
+    _populateAllProbs() {
+        
     }
 
     _startNewPrediction() {
@@ -173,7 +179,13 @@ class Conv_Model extends React.Component {
                         <p id = "pred_info"></p>
                         <p id = "pred_result"></p>
                     </div>
-                    <div id = "allProbs" className = "displayedResult"></div>
+                    <div id = "allProbs" className = "displayedResult">
+                        <p id = "descr_allprobs">Here's how likely the AI thought the image was each of the 4 superheros</p>
+                        <div id = "batman"></div>
+                        <div id = "spiderman"></div>
+                        <div id = "hulk"></div>
+                        <div id = "superman"></div>
+                    </div>
                 </div>
             </div>        
         );
