@@ -15,15 +15,14 @@ class InstructionsConv extends React.Component {
         return(
             <div className = "ML_Model_Instructions">
                 <div id = "instructionsConv">
-                <p>This algorithm was trained to specifically recognize the following 4 superheros:</p>
+                <p>Upload a .png or .jpeg image of one of the following four superheros, and the algorithm will correctly recognize
+                    it!</p>
                 <ul id = "superhero_list">
                     <li>Spiderman</li>
                     <li>Batman</li>
-                    <li>Wolverine</li>
-                    <li>Black Panther </li> 
+                    <li>Hulk</li>
+                    <li>Superman </li> 
                 </ul>
-                <p>So upload a .png or .jpeg image of any of the 4 superheros above and the algorithm will
-                hopefully recognize it! </p>
                 </div>
                 <div id = "randomImgs">
                 </div>
