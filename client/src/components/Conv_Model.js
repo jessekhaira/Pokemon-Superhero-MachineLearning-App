@@ -10,6 +10,10 @@ class Conv_Model extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            allProbs: null
+        };
+
         this._isImgUploaded = this._isImgUploaded.bind(this); 
         this._requestPrediction = this._requestPrediction.bind(this); 
         this._startNewPrediction = this._startNewPrediction.bind(this); 
@@ -56,14 +60,14 @@ class Conv_Model extends React.Component {
             if ('message' in jsonPredictionData) {
                 throw Error(jsonPredictionData.message)
             }
-            console.log(jsonPredictionData.allProbs); 
             const mostLikelyClass = jsonPredictionData.MostLikelyClass;
-            const allProbs = jsonPredictionData.allProbs;
-            document.getElementById('pred_info').innerHTML = `With a probability of ${allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`;
+            const allProbs_new = jsonPredictionData.allProbs;
+            this.setState((state, props) => ({
+                allProbs: allProbs_new
+            }));
+            document.getElementById('pred_info').innerHTML = `With a probability of ${this.state.allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`;
             document.getElementById('pred_result').innerHTML = jsonPredictionData.MostLikelyClass;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
-
-            this._populateAllProbs(allProbs);
         }
 
         catch (err) {
@@ -79,13 +83,16 @@ class Conv_Model extends React.Component {
         }
     }
 
-    _populateAllProbs(allProbs) {
-        const batmanProb = allProbs["Batman"] * 100;
-        const spidermanProb = allProbs["Spiderman"] * 100;
-        const hulkProb = allProbs["Hulk"]* 100;
-        const supermanProb = allProbs["Superman"]*100;
+    _populateAllProbs() {
+        const batmanProb = this.state.allProbs["Batman"] * 100;
+        const spidermanProb = this.state.allProbs["Spiderman"] * 100;
+        const hulkProb = this.state.allProbs["Hulk"]* 100;
+        const supermanProb = this.state.allProbs["Superman"]*100;
         document.getElementById('batman_descr').innerHTML = `Batman: ${batmanProb}%`;
         document.getElementById('batman').style.width = `${batmanProb}%`;
+        const batmandiv = document.getElementById('batman');
+        setTimeout(() =>  console.log((batmandiv.scrollWidth)), 200);
+
 
         document.getElementById('spiderman_descr').innerHTML = `Spiderman: ${spidermanProb}%`;
         document.getElementById('spiderman').style.width = `${spidermanProb}%`;
@@ -128,6 +135,12 @@ class Conv_Model extends React.Component {
         this.props._showDisplays('flex',
             document.getElementById(typeResultsToShow),
             document.getElementById('goBackButton'));
+
+
+        // if we're showing all the probabilities, we're going to play a dynamic JS animation
+        if (typeResultsToShow === "allProbs") {
+            this._populateAllProbs(); 
+        }
     }
 
     _goBack() {
@@ -215,7 +228,6 @@ class Conv_Model extends React.Component {
                                 <p id = "superman_descr" className = "superhero_prob_descr"></p>
                                 <div id = "superman" className = "probsSuperheros"></div>
                             </div>
-
                         </div>                        
                     </div>
                 </div>
