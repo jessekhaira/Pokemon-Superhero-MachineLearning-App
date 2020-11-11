@@ -121,6 +121,8 @@
 #topPrediction{
     flex-direction: column;
     font-weight: normal;
+    animation: topPred 1s ease-in-out forwards; 
+    padding: 35px;
     p {
         margin: 0px;
         margin-top: 15px;
@@ -132,6 +134,11 @@
         font-size: 26px;
         margin-top: 15px;
         padding: 5px;
+        animation: pred_result_info 0.5s ease-in-out forwards;
+    }
+
+    #pred_info {
+        animation: pred_result_info 0.5s ease-in-out forwards;
     }
 }
 
@@ -144,3 +151,15 @@
         opacity: 100%;
     }
 }
+
+@keyframes pred_result_info {
+    0% {
+        opacity: 0%;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+

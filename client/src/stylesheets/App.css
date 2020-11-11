@@ -210,6 +210,8 @@ ul li {
 #topPrediction {
   flex-direction: column;
   font-weight: normal;
+  animation: topPred 1s ease-in-out forwards;
+  padding: 35px;
 }
 #topPrediction p {
   margin: 0px;
@@ -222,11 +224,24 @@ ul li {
   font-size: 26px;
   margin-top: 15px;
   padding: 5px;
+  animation: pred_result_info 0.5s ease-in-out forwards;
+}
+#topPrediction #pred_info {
+  animation: pred_result_info 0.5s ease-in-out forwards;
 }
 
 @keyframes descr_appearance {
   0% {
     opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes pred_result_info {
+  0% {
+    opacity: 0%;
+    transform: translateY(-30px);
   }
   100% {
     opacity: 100%;
