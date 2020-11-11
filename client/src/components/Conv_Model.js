@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {animateWidthGrowing} from '../utils/utilityFunctions';
 /**
  * This class represents the react component responsible for where images are uploaded and sent 
  * to the backend to the convolutional model, and results recieved and displayed to the user.
@@ -18,6 +18,7 @@ class Conv_Model extends React.Component {
         this._requestPrediction = this._requestPrediction.bind(this); 
         this._startNewPrediction = this._startNewPrediction.bind(this); 
         this._seeInferenceResults = this._seeInferenceResults.bind(this);
+        this._populateAllProbs = this._populateAllProbs.bind(this); 
         this._goBack = this._goBack.bind(this); 
         this._errorStartAgain = this._errorStartAgain.bind(this); 
     }
@@ -89,19 +90,15 @@ class Conv_Model extends React.Component {
         const hulkProb = this.state.allProbs["Hulk"]* 100;
         const supermanProb = this.state.allProbs["Superman"]*100;
         document.getElementById('batman_descr').innerHTML = `Batman: ${batmanProb}%`;
-        document.getElementById('batman').style.width = `${batmanProb}%`;
-        const batmandiv = document.getElementById('batman');
-        setTimeout(() =>  console.log((batmandiv.scrollWidth)), 200);
-
-
         document.getElementById('spiderman_descr').innerHTML = `Spiderman: ${spidermanProb}%`;
-        document.getElementById('spiderman').style.width = `${spidermanProb}%`;
-
         document.getElementById('hulk_descr').innerHTML = `Hulk: ${hulkProb}%`;
-        document.getElementById('hulk').style.width = `${hulkProb}%`;
-
         document.getElementById('superman_descr').innerHTML = `Superman: ${supermanProb}%`;
-        document.getElementById('superman').style.width = `${supermanProb}%`;
+        animateWidthGrowing(
+            [document.getElementById('batman'), batmanProb],
+            [document.getElementById('spiderman'), spidermanProb],
+            [document.getElementById('superman'), supermanProb],
+            [document.getElementById('hulk'), hulkProb]
+        );
     }
 
     _startNewPrediction() {
