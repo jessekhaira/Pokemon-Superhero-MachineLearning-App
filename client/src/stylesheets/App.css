@@ -127,6 +127,46 @@ ul li {
   flex-direction: column;
 }
 
+#allProbs {
+  flex-direction: column;
+}
+#allProbs #container_bar_graph {
+  width: 100%;
+  border: 1px solid;
+  height: auto;
+}
+#allProbs #batman {
+  background-color: black;
+}
+#allProbs #spiderman {
+  background-color: #ec6969;
+  border-color: #da0505;
+}
+#allProbs #hulk {
+  background-color: #41e641;
+  border-color: #018a01;
+}
+#allProbs #superman {
+  background-color: #6060fa;
+  border-color: blue;
+}
+#allProbs p {
+  margin-bottom: 0px;
+}
+
+.superhero_prob_descr {
+  font-size: 22px;
+  text-align: left;
+}
+
+.probsSuperheros {
+  border: 1px solid black;
+  width: 20%;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 #convResults {
   display: flex;
   width: 550px;
@@ -417,7 +457,6 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     display: none;
   }
 

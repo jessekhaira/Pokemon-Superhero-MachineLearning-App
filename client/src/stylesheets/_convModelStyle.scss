@@ -27,6 +27,52 @@
     flex-direction: column;
 }
 
+#allProbs {
+    flex-direction: column;
+
+    #container_bar_graph {
+        width: 100%;
+        border: 1px solid;
+        height: auto;
+    }
+
+    #batman {
+        background-color: black;
+    }
+
+    #spiderman {
+        background-color: rgb(236, 105, 105);
+        border-color: rgb(218, 5, 5);
+    }
+
+    #hulk {
+        background-color: rgb(65, 230, 65);
+        border-color: rgb(1, 138, 1);
+    }
+
+    #superman {
+        background-color: rgb(96, 96, 250);
+        border-color: blue;
+    }
+
+    p {
+        margin-bottom: 0px;
+    }
+}
+
+.superhero_prob_descr {
+    font-size: 22px;
+    text-align: left;
+}
+
+.probsSuperheros {
+    border: 1px solid black; 
+    width: 20%;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 
 #convResults {
     display: flex;

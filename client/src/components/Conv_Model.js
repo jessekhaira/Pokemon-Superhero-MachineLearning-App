@@ -81,7 +81,8 @@ class Conv_Model extends React.Component {
     }
 
     _populateAllProbs(allProbs) {
-        document.getElementById('batman').innerHTML = allProbs["batman"];
+        console.log(allProbs);
+        // document.getElementById('batman').innerHTML = allProbs["Batman"];
     }
 
     _startNewPrediction() {
@@ -181,11 +182,29 @@ class Conv_Model extends React.Component {
                     </div>
                     <div id = "allProbs" className = "displayedResult">
                         <p id = "descr_allprobs">Here's how likely the AI thought the image was each of the 4 superheros</p>
-                        <p>batman</p>
-                        <div id = "batman"></div>
-                        <div id = "spiderman"></div>
-                        <div id = "hulk"></div>
-                        <div id = "superman"></div>
+                        <div id = "container_bar_graph">
+
+                            <div id ="batman_holder" className = "superhero_holder">
+                                <p id ="batman_descr" className = "superhero_prob_descr">xd</p>
+                                <div id = "batman" className = "probsSuperheros"></div>
+                            </div>
+
+                            <div id ="spiderman_holder" className = "superhero_holder">
+                                <p id = "spiderman_descr" className = "superhero_prob_descr">xd</p>
+                                <div id = "spiderman" className = "probsSuperheros"></div>
+                            </div>
+
+                            <div id ="hulk_holder" className = "superhero_holder">
+                                <p id = "hulk_descr" className = "superhero_prob_descr">xd</p>
+                                <div id = "hulk" className = "probsSuperheros"></div>
+                            </div>
+
+                            <div id ="superman_holder" className = "superhero_holder">
+                                <p id = "superman_descr" className = "superhero_prob_descr">xd</p>
+                                <div id = "superman" className = "probsSuperheros"></div>
+                            </div>
+
+                        </div>                        
                     </div>
                 </div>
             </div>        
