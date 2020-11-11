@@ -66,7 +66,7 @@ class Conv_Model extends React.Component {
             this.setState((state, props) => ({
                 allProbs: allProbs_new
             }));
-            document.getElementById('pred_info').innerHTML = `With a probability of ${this.state.allProbs[mostLikelyClass] * 100}%, the AI says your image is of the superhero:`;
+            document.getElementById('pred_info').innerHTML = `With a probability of ${(this.state.allProbs[mostLikelyClass] * 100).toPrecision(3)}%, the AI says your image is of the superhero:`;
             document.getElementById('pred_result').innerHTML = jsonPredictionData.MostLikelyClass;
             this.props._showDisplays('flex',document.getElementById('convResults')); 
         }
@@ -85,10 +85,10 @@ class Conv_Model extends React.Component {
     }
 
     _populateAllProbs() {
-        const batmanProb = this.state.allProbs["Batman"] * 100;
-        const spidermanProb = this.state.allProbs["Spiderman"] * 100;
-        const hulkProb = this.state.allProbs["Hulk"]* 100;
-        const supermanProb = this.state.allProbs["Superman"]*100;
+        const batmanProb = (this.state.allProbs["Batman"] * 100).toPrecision(3);
+        const spidermanProb = (this.state.allProbs["Spiderman"] * 100).toPrecision(3);
+        const hulkProb = (this.state.allProbs["Hulk"]* 100).toPrecision(3);
+        const supermanProb = (this.state.allProbs["Superman"]*100).toPrecision(3); 
         document.getElementById('batman_descr').innerHTML = `Batman: ${batmanProb}%`;
         document.getElementById('spiderman_descr').innerHTML = `Spiderman: ${spidermanProb}%`;
         document.getElementById('hulk_descr').innerHTML = `Hulk: ${hulkProb}%`;
