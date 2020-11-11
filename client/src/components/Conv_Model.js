@@ -149,6 +149,7 @@ class Conv_Model extends React.Component {
         this.props._hideDisplays(
             document.getElementById(resultToHide),
             document.getElementById('goBackButton'));
+
     }
 
     _errorStartAgain() {

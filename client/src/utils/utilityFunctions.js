@@ -7,9 +7,13 @@ export function getRndInteger(min,max) {
  * and the second element is the expected width of this object in %.
  */
 export function animateWidthGrowing(...args) {
-    // if every single animation is done, every animation will return true
-    // if even one animation returns false, we continue on 
+    // reset the widths of all the elements to 0% so we can animate correctly
+    for (let arg of args) {
+        arg[0].style.width = '0%'; 
+    }
     function animate() {
+        // if every single animation is done, every animation will return true
+        // if even one animation returns false, we continue on
         let allAnimsDone = true;
         for (let arg of args) {
             allAnimsDone &= grow_width(arg[0], arg[1]);
@@ -30,7 +34,7 @@ function grow_width(obj, max_width) {
     if (obj_width_in_percent >= max_width) {
         return true;
     }
-    obj.style.width = `${obj_width_in_percent+1}%`;
+    obj.style.width = `${obj_width_in_percent+1.5}%`;
     return false; 
 }
 
