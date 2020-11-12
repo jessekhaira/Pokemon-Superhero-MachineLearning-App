@@ -34,7 +34,7 @@ function grow_width(obj, max_width) {
     if (obj_width_in_percent >= Number(max_width)) {
         return true;
     }
-    obj.style.width = `${obj_width_in_percent+1.5}%`;
+    obj.style.width = `${obj_width_in_percent+2}%`;
     return false; 
 }
 

@@ -8,7 +8,7 @@ from PIL import Image
 from keras.applications.resnet_v2 import preprocess_input
 from keras.preprocessing.image import img_to_array
 from keras.activations import softmax 
-
+from keras.backend import shape 
 convBlueprint = Blueprint('Convolutional Blueprint', __name__)
 model = load_model(os.path.join(os.path.abspath(''), 'convModelFolder/model/trained_models/model.50-0.21.h5'))
 class_indices = {
@@ -46,6 +46,8 @@ def convModel_APIHandler():
         return resp 
 
 def prepare_image(image):
+    if image.mode != 'RGB':
+        image = image.convert("RGB") 
     image = image.resize((224,224))
     image_tensor = img_to_array(image)
     preprocessed_img = preprocess_input(image_tensor)
