@@ -490,6 +490,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 20px;
   }
 
+  #DescriptionInfo h2 {
+    font-size: 20px;
+  }
+
   #NavigationLinks {
     flex-direction: column;
     margin-right: 25px;
