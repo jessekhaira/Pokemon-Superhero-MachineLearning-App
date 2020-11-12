@@ -1,6 +1,4 @@
 @media(max-width:850px) {
-
-
     #NavBar {
         flex-direction: column;
         height: auto;
@@ -32,15 +30,32 @@
          }
     }
 
+
     #spacingDiv {
         margin-top: 175px; 
     }
+
     #convResults {
         margin-top: 0px;
         display: flex;
         justify-content: center;
         align-items: center;
         display: none;
+    }
+
+    #LM_ModelDiv {
+        font-size: 19px;
+        #generateAgain {
+            margin-bottom: 30px;
+        }  
+    }
+
+    #superhero_list {
+        margin-right: 18px;
+    }
+
+    #submitConv {
+        margin-bottom: 15px;
     }
 
     .results {

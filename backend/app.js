@@ -16,6 +16,7 @@ app.use(compression());
 app.use(helmet({
   contentSecurityPolicy: false
 }));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

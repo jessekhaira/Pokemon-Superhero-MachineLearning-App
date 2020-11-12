@@ -164,9 +164,11 @@ ul li {
   font-size: 22px;
   text-align: left;
   animation: descr_appearance 1s ease-in-out forwards;
+  color: black !important;
 }
 #allProbs .probsSuperheros {
   border: 1px solid black;
+  color: black;
   width: 0%;
   height: 35px;
   margin-top: 10px;
@@ -212,6 +214,7 @@ ul li {
   font-weight: normal;
   animation: topPred 1s ease-in-out forwards;
   padding: 35px;
+  color: black;
 }
 #topPrediction p {
   margin: 0px;
@@ -232,19 +235,19 @@ ul li {
 
 @keyframes descr_appearance {
   0% {
-    opacity: 0%;
+    opacity: 0;
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 @keyframes pred_result_info {
   0% {
-    opacity: 0%;
+    opacity: 0;
     transform: translateY(-30px);
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 input[type=number]::-webkit-inner-spin-button,
@@ -491,7 +494,7 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   #DescriptionInfo h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   #NavigationLinks {
@@ -515,6 +518,21 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     display: none;
+  }
+
+  #LM_ModelDiv {
+    font-size: 19px;
+  }
+  #LM_ModelDiv #generateAgain {
+    margin-bottom: 30px;
+  }
+
+  #superhero_list {
+    margin-right: 18px;
+  }
+
+  #submitConv {
+    margin-bottom: 15px;
   }
 
   .results {

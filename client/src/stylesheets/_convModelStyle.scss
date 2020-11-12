@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     font-size: 20px;
+
 }
 #imageDisplayDiv {
     display: none; 
@@ -71,10 +72,12 @@
         font-size: 22px;
         text-align: left;
         animation: descr_appearance 1s ease-in-out forwards;
+        color: black !important;
     }
 
     .probsSuperheros {
         border: 1px solid black; 
+        color: black;
         width: 0%;
         height: 35px;
         margin-top: 10px;
@@ -123,6 +126,7 @@
     font-weight: normal;
     animation: topPred 1s ease-in-out forwards; 
     padding: 35px;
+    color: black;
     p {
         margin: 0px;
         margin-top: 15px;
@@ -144,22 +148,22 @@
 
 @keyframes descr_appearance {
     0% {
-        opacity: 0%;
+        opacity: 0;
     }
 
     100% {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
 @keyframes pred_result_info {
     0% {
-        opacity: 0%;
+        opacity: 0;
         transform: translateY(-30px);
     }
 
     100% {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
