@@ -55,11 +55,11 @@ Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 kiwisolver==1.1.0
 lazy-object-proxy==1.4.3
--e git+https://github.com/13jk59/Pokemon-MachineLearning-App.git@cf7b999188735c2fd0d8901c5102b6f96acc88d9#egg=machine_learning_models_api
 Markdown==3.2.1
 MarkupSafe==1.1.1
 mccabe==0.6.1
 mistune==0.8.4
+-e git+https://github.com/13jk59/Pokemon-MachineLearning-App.git@c8dd767bf953d73af50a4f4a8987e6a6d151a128#egg=ML_Model_Serving
 murmurhash==1.0.2
 nbconvert==5.6.1
 nbformat==5.0.7
