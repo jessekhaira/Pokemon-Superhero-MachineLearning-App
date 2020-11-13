@@ -1,6 +1,6 @@
 # Pokemon & Superhero Machine Learning
 ## Description
-This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and the popular media franchise Pokémon. The project is deployed and can be played around with at the following URL:  
+This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and the popular media franchise Pokémon. The project is deployed on the free-tier of Heroku and can be played around with at the following URL: https://pokemon-superhero-ai.herokuapp.com/. As the website is deployed freely, expect the site to run slowly. 
 
 Specifically, I wanted to determine if an algorithm could recognize my four favourite superheros given arbitrary images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and trained deep learning algorithms on the scraped data. Upon validation, the algorithms were found to produce excellent results for both of the two use cases. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
@@ -11,7 +11,8 @@ The tech stack I used in the project included:
 - Express for the backend
 - Flask to serve as an API wrapper for the machine learning models
 - Keras in Python to actually build and train the deep learning models
-- Beautiful Soup + Selenium in Python for scraping the data used to train the models. 
+- Beautiful Soup + Selenium in Python for scraping the data used to train the models
+- Heroku was used to deploy the API Flask server and the Express web server 
 
 So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, another request is dispatched to the flask backend to the machine learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend. 
 
