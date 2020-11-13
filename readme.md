@@ -26,34 +26,34 @@ can be shown on demand.
 ## Screenshots 
 Homepage of the app, where the user can submit images of a superhero and send them to be processed by the image recognition algorithm
 <br>
-<img src="./screenshots/img_rec_page.png" height = "450" width = "900">
+<img src="./screenshots/img_rec_page.png" width = "900">
 
 Route of the app where the user can request a language generating model to generate between 1-15 names
 <br>
-<img src="./screenshots/name_gen_page.png" width="800">
+<img src="./screenshots/name_gen_page.png" width="900">
 
 Showing results from the language model generating a various number of names 
 <br>
-<img src="./screenshots/15_names_generated.png" width="800">
+<img src="./screenshots/15_names_generated.png" width="900">
 
 <br>
-<img src="./screenshots/6_names_generated.png" width="800">
+<img src="./screenshots/6_names_generated.png" width="900">
 
 After the user has sumbitted an image on the homepage, the image will be shown to the user before sending to the model 
 <br>
-<img src="./screenshots/img_submitted.png" width="800">
+<img src="./screenshots/img_submitted.png" width="900">
 
 Once the image has been processed, user can access the most likely prediction or see all of the probabilities 
 <br>
-<img src="./screenshots/img_results_obtained.png" width="800">
+<img src="./screenshots/img_results_obtained.png" width="900">
 
 Seeing the top prediction
 <br>
-<img src="./screenshots/top_prediction.png" width="800">
+<img src="./screenshots/top_prediction.png" width="900">
 
 Seeing all the probabilities
 <br>
-<img src="./screenshots/all_probs.png" width="800">
+<img src="./screenshots/all_probs.png" width="900">
 
 
 ## Deep Learning Models Information<a name = "ml_models"></a> 
