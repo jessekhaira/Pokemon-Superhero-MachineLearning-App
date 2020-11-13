@@ -2,4 +2,4 @@
 
 (trap 'kill 0' SIGINT; 
     cd backend && npm start &
-    cd ML_Model_Serving && python3 app.py)
+    pip install . && cd ML_Model_Serving && python3 app.py)
