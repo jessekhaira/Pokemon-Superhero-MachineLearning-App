@@ -16,12 +16,13 @@ The tech stack I used in the project included:
 
 So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, another request is dispatched to the flask backend to the machine learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend. 
 
-## Installation
+## Installation 
 ```
 $ git clone https://github.com/13jk59/MachineLearning_Scratch.git
 $ cd MachineLearning_Scratch
-$ pip3 install . 
+$ ./run-app-locally
 ```
+Then go to your browser and go to this URL: http://localhost:3002/ and the app should be running locally on your computer there! To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
 
 ## Features 
 * User can input images on the home route and send them to an AI algorithm, which will return the superhero it thinks it most likely is. User can see the top prediction, and probabilities for all the classes. 
