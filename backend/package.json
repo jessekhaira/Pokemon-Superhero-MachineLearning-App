@@ -6,7 +6,7 @@
     "node": "12.18.0"
   },
   "scripts": {
-    "start": "cd .. && cd client && npm install && npm run build && cd .. && cd backend && node app.js",
+    "start": "cd .. && cd client && npm install && npm run build && cd .. && cd backend && npm install && node app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
