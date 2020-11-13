@@ -24,7 +24,8 @@ $ ./run-app-locally
 ```
 Then go to your browser and go to this URL: http://localhost:3002/ and the app should be running locally on your computer there! To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
 
-As a side note, all the bash script is really doing is.. 
+As a side note, the bash script executed above is responsible for running the express server and flask server in parallel, after
+installing the necessary requirements needed for the software to run (dependencies, building the react app into a static bundle, installing the flask package, etc.) 
 
 ## Features 
 * User can input images on the home route and send them to an AI algorithm, which will return the superhero it thinks it most likely is. User can see the top prediction, and probabilities for all the classes. 
