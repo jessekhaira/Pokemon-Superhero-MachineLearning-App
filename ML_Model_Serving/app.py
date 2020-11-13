@@ -12,4 +12,4 @@ app.register_blueprint(convBlueprint, url_prefix = '/convModel')
 app.register_blueprint(languageModelBlueprint, url_prefix = '/languageModel')
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=3002)
+    app.run() 
