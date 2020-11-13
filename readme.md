@@ -25,9 +25,11 @@ can be shown on demand.
 
 ## Screenshots 
 Homepage of the app, where the user can submit images of a superhero and send them to be processed by the image recognition algorithm
+<br>
 <img src="./screenshots/img_rec_page.png" width="700">
 
 Route of the app where the user can request a language generating model to generate between 1-15 names
+<br>
 <img src="./screenshots/name_gen_page.png" width="700">
 
 
