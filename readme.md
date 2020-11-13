@@ -32,6 +32,29 @@ Route of the app where the user can request a language generating model to gener
 <br>
 <img src="./screenshots/name_gen_page.png" width="800">
 
+Showing results from the language model generating a various number of names 
+<br>
+<img src="./screenshots/15_names_generated.png" width="800">
+
+<br>
+<img src="./screenshots/6_names_generated.png" width="800">
+
+After the user has sumbitted an image on the homepage, the image will be shown to the user before sending to the model 
+<br>
+<img src="./screenshots/img_submitted.png" width="800">
+
+Once the image has been processed, user can access the most likely prediction or see all of the probabilities 
+<br>
+<img src="./screenshots/img_results_obtained.png" width="800">
+
+Seeing the top prediction
+<br>
+<img src="./screenshots/top_prediction.png" width="800">
+
+Seeing all the probabilities
+<br>
+<img src="./screenshots/all_probs.png" width="800">
+
 
 ## Deep Learning Models Information<a name = "ml_models"></a> 
 Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models. 
