@@ -3,6 +3,7 @@ Backend/.env
 Backend/node_modules
 ML_Model_Serving/venv
 
+ML_Model_Serving/convModelFolder/model/data
 ML_Model_Serving/convModelFolder/model/imageScrapingPlayground.ipynb
 ML_Model_Serving/convModelFolder/model/kerasConvModel.ipynb
 
