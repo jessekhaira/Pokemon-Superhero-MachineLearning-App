@@ -12,7 +12,6 @@ router.use(fileUpload({
 }));
 
 
-console.log(process.env.ML_Server); 
 router.post('/', async function(req, res) {
     try {
         var form = new FormData();
