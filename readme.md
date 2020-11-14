@@ -22,16 +22,15 @@ $ git clone https://github.com/13jk59/MachineLearning_Scratch.git
 $ cd Pokemon-Superhero-MachineLearning-App/
 $ ./run-app-locally
 ```
-Then go to your browser and go to this URL: http://localhost:3002/ and the app should be running locally on your computer there! To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
+Then go to your browser and go to this URL: http://localhost:3002/. To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
 
 As a side note, the bash script executed above is responsible for running the express server and flask server in parallel, after
-installing the necessary requirements needed for the software to run (dependencies, building the react app into a static bundle, installing the flask package, etc.) 
+installing the necessary requirements needed for the app to run (dependencies for the flask server and the app, building the react app into a static bundle, installing the flask package, etc.) 
 
 ## Features 
 * User can input images on the home route and send them to an AI algorithm, which will return the superhero it thinks it most likely is. User can see the top prediction, and probabilities for all the classes. 
 * User can query a deep learning model to generate 1-15 new pokemon names
-* Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes
-can be shown on demand. 
+* Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes can be shown on demand. 
 * Media queries make website responsive 
 
 ## Screenshots 
@@ -43,7 +42,7 @@ Route of the app where the user can request a language generating model to gener
 <br>
 <img src="./screenshots/name_gen_page.png" width="900">
 
-Showing results from the language model generating a various number of names 
+Showing results from the language model generating various numbers of pokemon names 
 <br>
 <img src="./screenshots/15_names_generated.png" width="900">
 
@@ -58,11 +57,11 @@ Once the image has been processed, user can access the most likely prediction or
 <br>
 <img src="./screenshots/img_results_obtained.png" width="900">
 
-Seeing the top prediction
+Seeing the hero the image recognition model most thought the image was of
 <br>
 <img src="./screenshots/top_prediction.png" width="900">
 
-Seeing all the probabilities
+Seeing all the probabilities for an image that was sent to the image recognition model
 <br>
 <img src="./screenshots/all_probs.png" width="900">
 
