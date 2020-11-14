@@ -7,6 +7,7 @@ with open(os.path.join(os.path.abspath(''), 'ML_Model_Serving/requirements.txt')
     list_all_reqs.pop() 
     install_requires = [string_requirement.strip() for string_requirement in list_all_reqs if 'git+' not in string_requirement]
 
+print(install_requires)
 setup(
     name='ML_Model_Serving', 
     version='1.0', 
