@@ -73,10 +73,7 @@ class Conv_Model extends React.Component {
 
         catch (err) {
             this.props._showDisplays('flex',document.getElementById('convServErr')); 
-            let err_msg = err.message; 
-            if(err_msg.includes('reason:')) {
-                err_msg = "It seems the connection to the AI algorithms is unavailable at the moment. Please try again later."
-            }
+            let err_msg = 'There was an error processing your image by the server. Try a different image?'; 
             document.getElementById('error_message').innerHTML = err_msg; 
         }
         finally {
