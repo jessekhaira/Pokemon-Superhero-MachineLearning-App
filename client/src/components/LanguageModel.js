@@ -124,10 +124,10 @@ class LanguageModel extends React.Component {
      * This function is an asynchronous function that accepts multiple DOM nodes as inputs, and sends an HTTP 
      * request to the server to obtain the desired number of generated pokemon names. If succesful, the names are
      * added to the results div called resultsLM, and styled appropriately. 
-     * @param {HTMLElement} LM_ModelDiv 
-     * @param {HTMLElement} temperatureInputNode 
-     * @param {HTMLElement} numNamesInputNode 
-     * @param {HTMLElement} resultsLM 
+     * @param {HTMLElement} LM_ModelDiv Div containing the DOM nodes related to the language model  
+     * @param {HTMLElement} temperatureInputNode DOM node representing the input tag for the temperature
+     * @param {HTMLElement} numNamesInputNode DOM node represneting the input tag for the number of names to generate
+     * @param {HTMLElement} resultsLM DOM node representing the div holding the results obtained from the language model 
      */
     async _sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM) {
         this.props._hideDisplays(document.getElementById('temperatureForm')); 
@@ -158,6 +158,16 @@ class LanguageModel extends React.Component {
         this._setGridDisplayResults(resultsLM, predictedNames.length);
     }
 
+
+    /**
+     * This function validates the user inputs for the temperature and the number of names to generate. 
+     * @param {HTMLElement} temperatureInputNode DOM node representing the input tag for the temperature
+     * @param {HTMLElement} tempLabelNode DOM node representing the label of the input tag for the temperature
+     * @param {HTMLElement} numNamesInputNode DOM node representing the input tag for the number of names to generate
+     * @param {HTMLElement} numberNamesLabelNode DOM node representing the label of the input tag for the number of names to generate
+     * 
+     * @returns {Boolean} Boolean representing whether the user passed acceptable inputs or not 
+     */
     _validateInputs(temperatureInputNode, tempLabelNode, numNamesInputNode, numberNamesLabelNode) {
         if (this._validateInputsHelper(0.5, 5,temperatureInputNode, tempLabelNode)) {
             return true; 
@@ -177,6 +187,10 @@ class LanguageModel extends React.Component {
         return false; 
     }
 
+    /**
+     * Helper function for validating the inputs for the language model that ensures that the given input falls 
+     * between a given min value and max value
+     */
     _validateInputsHelper(minVal, maxVal, inputNode, labelNode, temperatureInput = true) {
         const value = inputNode.value; 
         if(value>maxVal || value <minVal ) {
@@ -196,6 +210,10 @@ class LanguageModel extends React.Component {
         return false; 
     }
     
+
+    /**
+     * 
+     */
     _resetLM() {
         const resultsLM = document.getElementById("ResultsLanguageModel");
         this.props._showDisplays('flex',document.getElementById('temperatureForm'));
