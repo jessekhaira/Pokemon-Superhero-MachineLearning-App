@@ -22,6 +22,11 @@ class LanguageModel extends React.Component {
         this._addHTML_numLabel();
     }
 
+    /**
+     * This function accepts a variable number of input arguments, each of which will be a DOM node, and will 
+     * remove all the classes from each of the DOM nodes and then add a class called formLabel to them. 
+     * @param  {HTMLElement[]} args 
+     */
     _addClassesLabels(...args) {
         for (let arg of args) {
             arg.className = '';
@@ -29,11 +34,19 @@ class LanguageModel extends React.Component {
         }
     }
 
+    /**
+     * This function provides a description for the label of the temperature input
+     * for the language model.
+     */
     _addHTML_tempLabel() {
         document.getElementById('tempLabel').innerHTML = `Provide a value between 0.5 and 5. The higher
         the number the more random the names:`;
     }
 
+    /**
+     * This function provides a description for the label of the number of names to generate for the language
+     * model. 
+     */
     _addHTML_numLabel() {
         document.getElementById('numGenerateLabel').innerHTML = `Pick a number of names to generate between 1 and 15 (inclusive)!`;
     }
