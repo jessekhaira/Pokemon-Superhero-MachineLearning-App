@@ -1,6 +1,12 @@
 import React from 'react';
 
 
+/**
+ * This class represents a React Component responsible for where users can request Pokemon names to be 
+ * generated.
+ * 
+ * @class @public 
+ */
 class LanguageModel extends React.Component {
     constructor(props) {
         super(props); 
