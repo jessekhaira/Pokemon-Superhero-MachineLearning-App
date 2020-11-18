@@ -24,11 +24,10 @@ $ ./run-app-locally
 ```
 Then in a browser, visit this URL: http://localhost:3002/. To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
 
-As a side note, the bash script executed above is responsible for running the express server and flask server in parallel, after
-installing the necessary requirements needed for the app to run (dependencies for the flask server and the app, building the react app into a static bundle, launching the servers, etc.) 
+The bash script runs the express server and flask server in parallel, after installing the necessary requirements needed for the app to run.
 
 ## Features 
-* User can input images on the home route and send them to an AI algorithm, which will return the superhero it thinks it most likely is. User can see the top prediction, and probabilities for all the classes. 
+* User can input images on the home route and send them to an AI algorithm, which will process the data and send back predictions. The user can then see the top prediction, and probabilities for all the classes. 
 * User can query a deep learning model to generate 1-15 new pokemon names
 * Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes can be shown on demand. 
 * Media queries make website responsive 
