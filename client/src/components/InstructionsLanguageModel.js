@@ -73,6 +73,10 @@ class InstructionsLM extends React.Component {
         }
     }
 
+    /**
+     * This method accepts a HashMap mapping indices to inspirational quotes, pulls a quote out of the HashMap and 
+     * displays it on the page. 
+    */
     _addQuoteToPage(quotes) {
         this._cleanUpInnerHTML();
         const randomIdx = getRndInteger(0, 1643); 
