@@ -35,6 +35,13 @@ class InstructionsLM extends React.Component {
         }
     }
 
+
+    /**
+     * This function is an asynchronous function that sends a GET request to an external API to obtain inspirational quotes,
+     * and then templates the quotes on the page if the request is sucessful. If the fetch fails, then an error is shown on 
+     * the page. 
+     * 
+     */
     async _fetchQuoteAndDisplay() {
         const quoteBox = document.getElementById("quoteBox");
         try {
