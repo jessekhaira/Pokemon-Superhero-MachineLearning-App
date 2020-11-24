@@ -1,6 +1,12 @@
 import React from 'react';
 import {getRndInteger} from '../utils/utilityFunctions';
 
+
+/**
+ * This class is a stateful React component containing instructions for how to use the language model to generate new names.
+ * @class
+ * @public 
+ */
 class InstructionsLM extends React.Component {
     constructor(props) {
         super(props); 
