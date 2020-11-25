@@ -23,6 +23,12 @@ class Conv_Model extends React.Component {
         this._errorStartAgain = this._errorStartAgain.bind(this); 
     }
 
+
+    /**
+     * This method is the event handler for the change event that occurs to the input tag that accepts the user images. If the user
+     * has uploaded an image, this event handler will load that image onto the page. 
+     * @param {Event} e Change event 
+     */
     _isImgUploaded(e) {
         e.preventDefault(); 
         const imgUploaded = e.target.files[0]; 
