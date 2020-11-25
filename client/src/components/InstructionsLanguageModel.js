@@ -40,7 +40,6 @@ class InstructionsLM extends React.Component {
      * This function is an asynchronous function that sends a GET request to an external API to obtain inspirational quotes,
      * and then templates the quotes on the page if the request is sucessful. If the fetch fails, then an error is shown on 
      * the page. 
-     * 
      */
     async _fetchQuoteAndDisplay() {
         const quoteBox = document.getElementById("quoteBox");
@@ -76,6 +75,9 @@ class InstructionsLM extends React.Component {
     /**
      * This method accepts a HashMap mapping indices to inspirational quotes, pulls a quote out of the HashMap and 
      * displays it on the page. 
+     * 
+     * @param {Map<Number, String>} quotes 
+     * @returns Undefined
     */
     _addQuoteToPage(quotes) {
         this._cleanUpInnerHTML();
@@ -84,11 +86,19 @@ class InstructionsLM extends React.Component {
         this._addQuoteInfo(randomQuote); 
     }
 
+    /**
+     * This method cleans up the inner html contained with the div that holds the quotes, and the div that holds
+     * the authors, to get the divs ready for displaying a new random quote within them. 
+     */
     _cleanUpInnerHTML() {
         document.getElementById("quoteDisplay").innerHTML = null; 
         document.getElementById("authorDisplay").innerHTML = null; 
     }
 
+    /**
+     * 
+     * @param {*} randomQuote 
+     */
     _addQuoteInfo(randomQuote) {
         // have to clone the nodes so the animation can start again sucessfully 
         let quoteDisplay = document.getElementById('quoteDisplay');
