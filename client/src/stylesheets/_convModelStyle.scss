@@ -1,3 +1,5 @@
+// This SASS file contains styles for all the DOM elements contained on the convolutional route. 
+
 #instructionsConv {
     display: flex;
     align-items: center;
@@ -29,6 +31,7 @@
     flex-direction: column;
 }
 
+// Styles applied to when the user is trying to see all the probabilities returned by the algorithm for any given image
 #allProbs {
     flex-direction: column;
 
