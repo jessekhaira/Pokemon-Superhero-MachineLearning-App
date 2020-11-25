@@ -77,7 +77,6 @@ class InstructionsLM extends React.Component {
      * displays it on the page. 
      * 
      * @param {Map<Number, String>} quotes 
-     * @returns Undefined
     */
     _addQuoteToPage(quotes) {
         this._cleanUpInnerHTML();
@@ -96,8 +95,9 @@ class InstructionsLM extends React.Component {
     }
 
     /**
-     * 
-     * @param {*} randomQuote 
+     * This method takes a string as input that represents an inspirational quote, and adds that quote to the 
+     * appropriate divs on the page.  
+     * @param {String} randomQuote 
      */
     _addQuoteInfo(randomQuote) {
         // have to clone the nodes so the animation can start again sucessfully 
