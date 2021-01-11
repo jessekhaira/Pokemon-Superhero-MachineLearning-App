@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var fetch = require('node-fetch'); 
 var fileUpload = require('express-fileupload');
 var FormData = require('form-data');
@@ -12,6 +11,10 @@ router.use(fileUpload({
 }));
 
 
+/**
+ * This endpoint responds to POST requests to the /convModel endpoint of the server. This endpoint expects the
+ * request body to contain a file containing a jpg or png image, which is then sent to the flask server. 
+ */
 router.post('/', async function(req, res) {
     try {
         var form = new FormData();
