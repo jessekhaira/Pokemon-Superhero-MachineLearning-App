@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var fetch = require('node-fetch'); 
 const { json } = require('express');
 require('dotenv').config();
 
+/**
+ * This endpoint responds to POST requests to the /languageModel endpoint of the server. This endpoint expects the
+ * request body to contain two Numbers: a value for the temperature, and a value for the number of names to generate.
+ * These values are then included in a request to the Flask server. 
+ */
 router.post('/', async function(req, res) {
     try {
         let recievedData = await fetch(process.env.ML_Server + '/languageModel', {
