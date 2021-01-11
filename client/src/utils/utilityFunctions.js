@@ -1,3 +1,10 @@
+
+/**
+ * This function accepts two integers, and returns a random integer in between the two
+ * integers. 
+ * @param {Number} min 
+ * @param {Number} max 
+ */
 export function getRndInteger(min,max) {
     return Math.floor(Math.random() * (max-min)) + min; 
 }
