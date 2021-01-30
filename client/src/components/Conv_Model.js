@@ -44,8 +44,11 @@ class Conv_Model extends React.Component {
         reader.readAsDataURL(imgUploaded);
     }
 
+    /**
+     * This method is the asynchronous event handler for click events for the DOM element with id 'submitConv', responsible  
+     * for sending the uploaded image currently showing in the image tag with id 'pokeImg' to the server to be processed. 
+     */
     async _requestPrediction() {
-
         const convModel = document.getElementById('ConvModel');
         const convForm = document.getElementById('conv_form'); 
         try {
