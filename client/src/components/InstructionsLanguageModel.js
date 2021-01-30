@@ -113,6 +113,10 @@ class InstructionsLM extends React.Component {
 
     }
 
+    /**
+     * This method makes and inserts the appropriate information into 2 DOM elements representing the author
+     * of a given quote and the text of a given quote. 
+     */
     _makeQuoteAuthorDisplay(randomQuote) {
         const authorPNode = document.createElement('p'); 
         const quotePNode = document.createElement('p'); 
