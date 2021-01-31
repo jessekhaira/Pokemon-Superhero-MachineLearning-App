@@ -112,6 +112,10 @@ class Conv_Model extends React.Component {
         );
     }
 
+    /**
+     * This method is the event handler for click events for the DOM element with id startNewPrediction, that has the 
+     * responsibility of resetting the view to the original convForm so the user can submit more predictions. 
+     */
     _startNewPrediction() {
         this.props._hideDisplays(
             document.getElementById('convResults')
