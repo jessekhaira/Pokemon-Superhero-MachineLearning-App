@@ -90,6 +90,11 @@ class Conv_Model extends React.Component {
         }
     }
 
+    /**
+     * This method is used to insert the probabilities for the input imgee returned by the neural network into the appropriate 
+     * DOM elements. A function used to animate the width of the DOM elements growing in proportion to the probability
+     * assigned to them is then called. 
+     */
     _populateAllProbs() {
         const batmanProb = Math.round(this.state.allProbs["Batman"] * 100);
         const spidermanProb = Math.round(this.state.allProbs["Spiderman"] * 100);
