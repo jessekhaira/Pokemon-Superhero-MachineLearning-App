@@ -1,6 +1,6 @@
 # Pokemon & Superhero Machine Learning
 ## Description
-This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project is deployed on the free-tier of Heroku and can be played around with at the following URL: https://pokemon-superhero-ai.herokuapp.com/. As the website is deployed freely, expect the site to run slowly.  
+This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project is deployed on the free-tier of Heroku and can be played around with at the following URL: https://pokemon-superhero-ai.herokuapp.com/. As the website is deployed freely on Heroku, expect the site to run slowly. 
 
 I wanted to determine if an algorithm could recognize my four favourite superheros given images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and then trained deep learning algorithms on the scraped data. Upon validation, the algorithms were found to produce excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
