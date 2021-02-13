@@ -3,10 +3,9 @@
 
 1. [Description](#Description)
 2. [Installation](#Installation)
-3. [Screenshots](#Screenshots)
-4. [Features](#Features)
-5. [Deep Learning and Data Scraping](#Deep Learning & Data Scraping)
-  1. [Language Model](#Language Model)
+3. [Features](#Features)
+4. [Screenshots](#Screenshots)
+5. [Deep Learning and Data Scraping](#ml_models)
 ## Description
 This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project can be viewed at the following URL: https://pokemon-superhero-ai.herokuapp.com/. 
 
