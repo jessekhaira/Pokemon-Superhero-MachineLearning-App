@@ -1,4 +1,9 @@
 # Pokemon & Superhero Machine Learning
+## Table of Contents
+
+1. [Description](##Description)
+2. [Installation](##Installation)
+3. [Screenshots](##Screenshots)
 ## Description
 This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project can be viewed at the following URL: https://pokemon-superhero-ai.herokuapp.com/. 
 
