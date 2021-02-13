@@ -8,6 +8,7 @@
 5. [Deep Learning and Data Scraping Information](#ml_models)
   1. [Language Model](#lang_model)
   2. [Image Recognition](#img_recognition)
+ 
 ## Description
 This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project can be viewed at the following URL: https://pokemon-superhero-ai.herokuapp.com/. 
 
@@ -76,6 +77,7 @@ Seeing all the probabilities for an image that was sent to the image recognition
 
 ## Deep Learning & Data Scraping<a name = "ml_models"></a> 
 Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models.  Data scraping was accomplished with a combination of Selenium and Beautiful Soup.  
+
 ### Language Model<a name = "lang_model"></a>
 All of the base 898 Pokémon names were scraped using a combination of the Python requests package and beautiful soup. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used. 
 
