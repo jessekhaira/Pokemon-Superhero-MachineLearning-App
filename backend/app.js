@@ -39,6 +39,8 @@ app.get('*', (req,res) => {
 
 const port = process.env.PORT || 3002;
 
-app.listen(port);
+if (process.env.NODE_ENV !== 'TEST') {
+  app.listen(port);
+} 
 
 module.exports = app;
