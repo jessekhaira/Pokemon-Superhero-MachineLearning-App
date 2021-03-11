@@ -9,7 +9,7 @@
     "start": "cd .. && cd client && npm install && npm run build && cd .. && cd backend && npm install && node app.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "pretest": "cd ../ML_Model_Serving && python3 app.py &",
-    "test": "sleep 5 && NODE_ENV=TEST jest",
+    "test": "sleep 7 && NODE_ENV=TEST jest",
     "posttest": "lsof -t -i:5000 | xargs kill -9"
   },
   "dependencies": {
