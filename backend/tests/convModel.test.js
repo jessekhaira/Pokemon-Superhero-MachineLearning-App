@@ -1,6 +1,5 @@
 const app = require('../app');
 const request = require('supertest');
-const fs = require('fs');
 const path = require('path');
 
 describe('group of tests testing /convModel POST endpoint', () => {
