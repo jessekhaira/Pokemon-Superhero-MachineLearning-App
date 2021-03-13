@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch'); 
-const { json } = require('express');
 require('dotenv').config();
 
 /**

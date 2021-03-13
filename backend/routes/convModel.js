@@ -3,7 +3,6 @@ var router = express.Router();
 var fetch = require('node-fetch'); 
 var fileUpload = require('express-fileupload');
 var FormData = require('form-data');
-const { json } = require('express');
 require('dotenv').config();
 
 router.use(fileUpload({
