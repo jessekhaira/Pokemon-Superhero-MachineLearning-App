@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -7,7 +6,6 @@ var conv_modelRouter = require('./routes/convModel');
 var languageModelRouter = require('./routes/languageModel'); 
 var compression = require('compression');
 var helmet = require('helmet'); 
-const { type } = require('os');
 require('dotenv').config();
 
 var app = express();
@@ -38,6 +36,7 @@ app.get('*', (req,res) => {
 })
 
 const port = process.env.PORT || 3002;
+
 
 if (process.env.NODE_ENV !== 'TEST') {
   app.listen(port);
