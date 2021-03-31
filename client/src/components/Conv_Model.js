@@ -179,7 +179,7 @@ class Conv_Model extends React.Component {
             <div className = "Model_Div">
                 <div id = "ConvModel">
                     <form id = "conv_form">
-                        <label for="pokeImg" 
+                        <label htmlFor="pokeImg" 
                         id = "labelPokeImg" 
                         className="button"
                         >
