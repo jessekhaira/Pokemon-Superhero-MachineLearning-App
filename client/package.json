@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^13.1.1",
     "msw": "^0.28.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -14,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3001",
@@ -34,6 +35,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.5.0"
+    "jest-environment-jsdom-sixteen": "^1.0.3"
   }
 }

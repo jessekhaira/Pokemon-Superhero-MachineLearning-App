@@ -3,6 +3,9 @@ import App from '../../components/App';
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import * as React from 'react';
+import fs from 'fs'
+import path from 'path'
+
 
 function setupAppForTests() {
     beforeAll(() => {
@@ -10,7 +13,16 @@ function setupAppForTests() {
     });
 
     beforeEach(() => {
-        render(<App />)
+        const cssFile = fs.readFileSync(
+            path.resolve(__dirname, '../../stylesheets/App.css'),
+            'utf8'
+        );
+        const {container} = render(<App />);
+        
+        const style = document.createElement('style')
+        style.type = 'text/css'
+        style.innerHTML = cssFile
+        container.append(style);
     })
 
     afterEach(() => {
