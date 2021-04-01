@@ -21,5 +21,5 @@ test('testing onChange event handler on input tag -- uploading an image', async 
     await waitFor(() => expect(screen.getByText(/This is the image you uploaded/)).toBeVisible());
     expect(screen.getByText('Submit')).toBeVisible(); 
     expect(screen.getByAltText('Your uploaded image')).toHaveAttribute('src');
-
 });
+

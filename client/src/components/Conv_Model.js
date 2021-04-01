@@ -201,7 +201,7 @@ class Conv_Model extends React.Component {
                             </p>
                             <img id = "imgLoaded" alt = "Your uploaded image"></img>
                         </div>
-                        <div id = "submitConv" onClick = {this._requestPrediction} className = "button">Submit</div>
+                        <div role = "button" id = "submitConv" onClick = {this._requestPrediction} className = "button">Submit</div>
                     </form>
                 </div>
                 <div id = "convServErr" className = "serverError">
