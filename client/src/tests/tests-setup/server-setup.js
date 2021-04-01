@@ -3,7 +3,13 @@ import {setupServer} from 'msw/node';
 
 const server = setupServer(
     rest.post('/convModel', (req, res, ctx) => {
-        return res(ctx.json({results: []}));
+        let fileName = req.body.values().next().value.name; 
+        if (fileName === 'test_failure.txt') {
+            throw Error; 
+        }
+        else {
+            return res(ctx.json({MostLikelyClass: 'Batman', allProbs: {'Batman': 0.7, 'Superman': 0.1, 'Hulk': 0.1, 'Spiderman': 0.1}}));
+        }
     }),
 
     rest.post('/languageModel', (req, res, ctx) => {
