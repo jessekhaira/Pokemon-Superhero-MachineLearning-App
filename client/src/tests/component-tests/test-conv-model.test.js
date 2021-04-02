@@ -60,7 +60,7 @@ describe('testing onClick event handler on div with ID submitConv for success ca
 
     }); 
 
-    test(`testing success case for onclick handler -- clicking on see top prediction button`, async () => {
+    test(`Clicking on see top prediction button`, async () => {
 
         userEvent.click(screen.getByText('See Top Prediction'));
 
@@ -76,7 +76,7 @@ describe('testing onClick event handler on div with ID submitConv for success ca
     })
 
 
-    test(`testing success case for onclick handler -- clicking on see top prediction button`, async () => {
+    test(`Clicking on start new button`, async () => {
 
         userEvent.click(screen.getByText('Start New'));
 
@@ -84,8 +84,8 @@ describe('testing onClick event handler on div with ID submitConv for success ca
         expect(screen.getByText(/Upload a .png or .jpeg/)).toBeVisible(); 
         expect(screen.getByText(/Submit a .png or .jpg/)).toBeVisible(); 
 
-
     })
+
 
 
 

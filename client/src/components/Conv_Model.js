@@ -209,10 +209,10 @@ class Conv_Model extends React.Component {
                     <div id = "startNew" className = "button" onClick = {this._errorStartAgain}>Try new image</div>
                 </div>
                 <div id = "convResults">
-                    <div id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>
-                    <div id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
-                    <div id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
-                    <div id = "goBackButton" className = "button results" onClick = {this._goBack}>Go Back</div>
+                    <div role = "button" id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>
+                    <div role = "button" id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
+                    <div role = "button" id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
+                    <div role = "button" id = "goBackButton" className = "button results" onClick = {this._goBack}>Go Back</div>
                     <div id = "topPrediction" className = "displayedResult">
                         <p id = "pred_info"></p>
                         <p id = "pred_result"></p>
