@@ -23,52 +23,44 @@ test('testing onChange event handler on input tag -- uploading an image', async 
     expect(screen.getByAltText('Your uploaded image')).toHaveAttribute('src');
 });
 
+test(`testing error case for handler -- error button should be shown and we should be able to go back to 
+view that was present before uploading an image`,
 
-describe('testing onClick event handler on div with ID submitConv', () => {
-    async function setUpClickHandlerTestSubmitConv(error = false) {
+async () => {
+    imageInputTag = screen.getByLabelText(/Submit a .png or .jpg/);
+    file = new File([""], "test_failure.txt", {type: "text/plain"}); 
+
+    userEvent.upload(imageInputTag, file);
+    await waitFor(() => expect(screen.getByText('Submit')).toBeVisible());
+    userEvent.click(screen.getByText('Submit'));
+
+    await waitFor(() => expect(screen.getByText(/There was an error/)).toBeVisible()); 
+
+    userEvent.click(screen.getByText(/There was an error/));
+
+    expect(screen.getByText('Try new image')).toBeVisible(); 
+
+    userEvent.click(screen.getByText('Try new image'));
+
+    expect(screen.getByText(/Upload a .png or .jpeg/)).toBeVisible(); 
+
+});
+
+
+describe('testing onClick event handler on div with ID submitConv for success cases', () => {
+    beforeEach(async () => {
         imageInputTag = screen.getByLabelText(/Submit a .png or .jpg/);
-
-        if (error) {
-            file = new File([""], "test_failure.txt", {type: "text/plain"}); 
-        }
-
-        else {
-            file = new File(['(⌐□_□)'], 'test_image1.jpg', { type: 'image/jpg' });
-        }
+        file = new File(['(⌐□_□)'], 'test_image1.jpg', { type: 'image/jpg' });
 
         userEvent.upload(imageInputTag, file);
         await waitFor(() => expect(screen.getByText('Submit')).toBeVisible());
         userEvent.click(screen.getByText('Submit'));
-
-        if (error) {
-            await waitFor(() => expect(screen.getByText(/There was an error/)).toBeVisible()); 
-        }
-
-        else {
-            await waitFor(() => expect(screen.getByText('See Top Prediction')).toBeVisible()); 
-        }
+        await waitFor(() => expect(screen.getByText('See Top Prediction')).toBeVisible()); 
         expect(screen.getByText(/Upload a .png or .jpeg/)).not.toBeVisible(); 
 
-    }
-    test(`testing error case for handler -- error button should be shown and we should be able to go back to 
-        view that was present before uploading an image`,
-
-        async () => {
-
-            await setUpClickHandlerTestSubmitConv(true);
-            
-            userEvent.click(screen.getByText(/There was an error/));
-
-            expect(screen.getByText('Try new image')).toBeVisible(); 
-
-            userEvent.click(screen.getByText('Try new image'));
-
-            expect(screen.getByText(/Upload a .png or .jpeg/)).toBeVisible(); 
-
-    });
+    }); 
 
     test(`testing success case for onclick handler -- clicking on see top prediction button`, async () => {
-        await setUpClickHandlerTestSubmitConv();
 
         userEvent.click(screen.getByText('See Top Prediction'));
 
