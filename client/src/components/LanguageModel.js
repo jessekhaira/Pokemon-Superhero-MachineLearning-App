@@ -227,9 +227,9 @@ class LanguageModel extends React.Component {
             <div className = "Model_Div" id = "LM_ModelDiv">
                 <div id = "ResultsLanguageModel"></div>
                 <form id = "temperatureForm">
-                    <label for = "temperature" id = "tempLabel">Temperature:</label>
+                    <label htmlFor = "temperature" id = "tempLabel">Temperature:</label>
                     <input type = "number" id = "temperatureVal" className = "formInputNumber" name = "temperature" min = "0.5" max = "5" step = "any"></input>
-                    <label for = "numGenerate" id = "numGenerateLabel"></label>
+                    <label htmlFor = "numGenerate" id = "numGenerateLabel"></label>
                     <input type = "number" name = "numGenerate" className ="formInputNumber" id = "numGenerateInput" min = "1" max = "15" step = "1"></input>
                     <input type= "submit" className = "button" id = "submitLM" onClick = {this._generateNewName} value = "Generate!"></input>
                 </form>

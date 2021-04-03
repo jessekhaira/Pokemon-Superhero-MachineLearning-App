@@ -12,6 +12,10 @@ const server = setupServer(
         }
     }),
 
+    rest.get('https://type.fit/api/quotes', (req, res, ctx) => {
+        console.log(req); 
+    }),
+
     rest.post('/languageModel', (req, res, ctx) => {
         return res(ctx.json({results: []}))
     }), 
