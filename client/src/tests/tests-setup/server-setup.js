@@ -13,7 +13,23 @@ const server = setupServer(
     }),
 
     rest.get('https://type.fit/api/quotes', (req, res, ctx) => {
-        console.log(req); 
+        let arr = [];
+        for (let i=0; i<500; i++) {
+            const text = `Quote number ${i}`;
+            let author; 
+            if (i%100 === 0) {
+                author = null;
+            }
+            else {
+                author = `Number ${i}`
+            }
+            const quote = {
+                text,
+                author
+            }
+            arr.push(quote); 
+        }
+        return res(ctx.json(arr)); 
     }),
 
     rest.post('/languageModel', (req, res, ctx) => {
