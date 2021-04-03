@@ -27,3 +27,14 @@ view that was present before uploading an image`,
 
     }
 );
+
+
+test('testing whether appropriate error is displayed when server is down for quotes Language Model component', async () => {
+    userEvent.click(screen.getByText('Generate Names'));
+
+    await waitFor(() => expect(screen.getByText(/Sorry, there was/)).toBeVisible());
+    userEvent.click(screen.getByText('Get New Quote'));
+
+    await waitFor(() => expect(screen.getByText(/Sorry, there was/)).toBeVisible());
+
+});
