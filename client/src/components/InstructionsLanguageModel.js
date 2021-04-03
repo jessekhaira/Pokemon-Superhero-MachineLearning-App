@@ -8,6 +8,8 @@ import {getRndInteger} from '../utils/utilityFunctions';
  * @public 
  */
 class InstructionsLM extends React.Component {
+    _isMounted = false;
+
     constructor(props) {
         super(props); 
         this.state = {cachedQuotes: null}
@@ -16,6 +18,7 @@ class InstructionsLM extends React.Component {
     }
     
     componentDidMount() {
+        this._isMounted = true;
         this._fetchQuoteAndDisplay(); 
     }
 
@@ -54,10 +57,12 @@ class InstructionsLM extends React.Component {
             const fetchedQuotesRaw = await fetch('https://type.fit/api/quotes');
             const fetchedQuotesJSON = await fetchedQuotesRaw.json(); 
             // cache the values we just got from the API in the storage 
-            this.setState((state, props) => {
-                return {cachedQuotes: fetchedQuotesJSON};
-            });
-            this._addQuoteToPage(this.state.cachedQuotes);
+            if (this._isMounted) {
+                this.setState((state, props) => {
+                    return {cachedQuotes: fetchedQuotesJSON};
+                });
+                this._addQuoteToPage(this.state.cachedQuotes);
+            }
         }
 
         catch(err) {
@@ -70,6 +75,10 @@ class InstructionsLM extends React.Component {
                 document.getElementById("newQuote")); 
             quoteBox.removeChild(quoteBox.lastChild); 
         }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     /**
@@ -132,8 +141,8 @@ class InstructionsLM extends React.Component {
                 <div id = "instructionsLM">
                 </div>
                 <div id = "quoteBox">
-                    <div id = "quoteDisplay"></div>
-                    <div id = "authorDisplay"></div>
+                    <div role = "banner" aria-label = "display for quotes" id = "quoteDisplay"></div>
+                    <div role = "banner" aria-label = "display for authors" id = "authorDisplay"></div>
                     <div id = "newQuote" className = "button" onClick = {this._addQuote}>Get New Quote</div>
                 </div>
             </div>

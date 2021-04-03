@@ -14,14 +14,14 @@ const server = setupServer(
 
     rest.get('https://type.fit/api/quotes', (req, res, ctx) => {
         let arr = [];
-        for (let i=0; i<500; i++) {
+        for (let i=0; i<1644; i++) {
             const text = `Quote number ${i}`;
-            let author; 
+            let author;
             if (i%100 === 0) {
                 author = null;
             }
             else {
-                author = `Number ${i}`
+                author = `Author Number ${i}`
             }
             const quote = {
                 text,

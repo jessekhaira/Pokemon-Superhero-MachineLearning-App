@@ -15,4 +15,14 @@ describe('testing language model, need describe for beforeEach', () => {
         expect(screen.getByText(/Recognize Images/)).toBeVisible(); 
         expect(screen.queryByText(/Submit a .png/)).toBe(null);
     }); 
+
+    test('testing whether quotes are fetched and displayed properly when component mounts', async () => {
+        await waitFor(() => expect(screen.getByText(/Quote number /)).toBeVisible()); 
+        try {
+            expect(screen.getByText(/Author Number/)).toBeVisible();
+        }
+        catch {
+            expect(screen.getByText(/Unknown/)).toBeVisible();
+        }
+    })
 }); 
