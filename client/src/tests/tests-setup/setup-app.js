@@ -1,4 +1,4 @@
-import {server} from './server-setup';
+import {successServer, errorServer} from './server-setup';
 import App from '../../components/App';
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -7,7 +7,9 @@ import fs from 'fs'
 import path from 'path'
 
 
-function setupAppForTests() {
+function setupAppForTests(useSuccessServer = true) {
+    let server = useSuccessServer ? successServer : errorServer;
+    
     beforeAll(() => {
         server.listen();
     });
