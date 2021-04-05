@@ -211,7 +211,7 @@ class Conv_Model extends React.Component {
                 <div id = "convResults">
                     <div role = "button" id = "seeTopPrediction" className = "button results" onClick ={this._seeInferenceResults}>See Top Prediction</div>
                     <div role = "button" id = "startNewPrediction" className = "button results" onClick = {this._startNewPrediction}>Start New</div>
-                    <div role = "button" id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
+                    <div role = "button" aria-label = "button that shows all probabilities" id = "seeAllProbs" className = "button results" onClick = {this._seeInferenceResults}>See All Probabilities</div>
                     <div role = "button" id = "goBackButton" className = "button results" onClick = {this._goBack}>Go Back</div>
                     <div id = "topPrediction" className = "displayedResult">
                         <p id = "pred_info"></p>

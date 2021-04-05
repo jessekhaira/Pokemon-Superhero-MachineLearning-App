@@ -40,7 +40,7 @@ describe('testing onClick event handler on div with ID submitConv for success ca
 
     }); 
 
-    test(`Clicking on see top prediction button`, async () => {
+    test(`Clicking on see top prediction button -- testing click handler`, async () => {
 
         userEvent.click(screen.getByText('See Top Prediction'));
 
@@ -56,17 +56,25 @@ describe('testing onClick event handler on div with ID submitConv for success ca
     })
 
 
-    test(`Clicking on start new button`, async () => {
+    test(`Clicking on start new button -- testing click handler`, async () => {
 
         userEvent.click(screen.getByText('Start New'));
 
         expect(screen.getByText('See Top Prediction')).not.toBeVisible();
         expect(screen.getByText(/Upload a .png or .jpeg/)).toBeVisible(); 
         expect(screen.getByText(/Submit a .png or .jpg/)).toBeVisible(); 
-
     })
 
+    test(`Clicking on see all probabilities button -- testing click handler`, async () => {
+        userEvent.click(screen.getByRole('button', {name: "button that shows all probabilities"}));
 
+        expect(screen.getByText('See All Probabilities')).not.toBeVisible();
+        expect(screen.getByText('Batman: 70%')).toBeVisible(); 
+        expect(screen.getByText('Superman: 10%')).toBeVisible(); 
+        expect(screen.getByText('Hulk: 10%')).toBeVisible(); 
+        expect(screen.getByText('Spiderman: 10%')).toBeVisible(); 
+
+    });
 
 
 }); 
