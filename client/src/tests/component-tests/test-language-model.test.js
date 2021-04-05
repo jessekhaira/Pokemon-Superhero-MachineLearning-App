@@ -25,5 +25,4 @@ describe('testing language model, need describe for beforeEach', () => {
             expect(screen.getByText(/Unknown/)).toBeVisible();
         }
     });
-    
 }); 

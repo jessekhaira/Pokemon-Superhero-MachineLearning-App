@@ -27,7 +27,11 @@ const successServer = setupServer(
     }),
 
     rest.post('/languageModel', (req, res, ctx) => {
-        return res(ctx.json({results: []}))
+        const namesToReturn = [];
+        for (let i=0; i<req.body.number_to_generate; i++) {
+            namesToReturn.push(`name${i}`);
+        }
+        return res(ctx.json({predictedName: namesToReturn}))
     }), 
 
     rest.get('/*', (req, res, ctx) => {
@@ -38,6 +42,10 @@ const successServer = setupServer(
 const errorServer = setupServer(
     rest.post('/convModel', (req, res, ctx) => {
         throw Error;
+    }),
+
+    req.post('/languageModel', (req,res,ctx) => {
+        throw Error; 
     }),
 
     rest.get('https://type.fit/api/quotes', (req, res, ctx) => {
