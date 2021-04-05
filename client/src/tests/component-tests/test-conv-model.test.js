@@ -66,15 +66,19 @@ describe('testing onClick event handler on div with ID submitConv for success ca
     })
 
     test(`Clicking on see all probabilities button -- testing click handler`, async () => {
-        userEvent.click(screen.getByRole('button', {name: "button that shows all probabilities"}));
+        userEvent.click(screen.getByText('See All Probabilities'));
 
         expect(screen.getByText('See All Probabilities')).not.toBeVisible();
         expect(screen.getByText('Batman: 70%')).toBeVisible(); 
         expect(screen.getByText('Superman: 10%')).toBeVisible(); 
         expect(screen.getByText('Hulk: 10%')).toBeVisible(); 
-        expect(screen.getByText('Spiderman: 10%')).toBeVisible(); 
+        expect(screen.getByText('Spiderman: 10%')).toBeVisible();
 
+        userEvent.click(screen.getByText(/Go Back/));
+
+        expect(screen.getByText('See All Probabilities')).toBeVisible();
+        expect(screen.getByText(/With a probability of 70.0%, the AI says/)).not.toBeVisible(); 
+        
+        
     });
-
-
 }); 
