@@ -127,6 +127,7 @@ class LanguageModel extends React.Component {
     async _sendRequestForNames(LM_ModelDiv, temperatureInputNode, numNamesInputNode, resultsLM) {
         this.props._hideDisplays(document.getElementById('temperatureForm')); 
         LM_ModelDiv.appendChild(this.props._addSpinnerAsync());
+
         let fetchedData = await fetch('/languageModel', {
             method: 'POST',
             body: JSON.stringify({
@@ -137,6 +138,7 @@ class LanguageModel extends React.Component {
                 'Content-type': 'application/json; charset=UTF-8'
             }
         });
+
         let jsonData = await fetchedData.json();
         let predictedNames = jsonData.predictedName; 
         if (!predictedNames) {

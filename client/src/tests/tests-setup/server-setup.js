@@ -28,10 +28,10 @@ const successServer = setupServer(
 
     rest.post('/languageModel', (req, res, ctx) => {
         const namesToReturn = [];
-        for (let i=0; i<req.body.number_to_generate; i++) {
+        for (let i=0; i<Number(req.body.number_to_generate); i++) {
             namesToReturn.push(`name${i}`);
         }
-        return res(ctx.json({predictedName: []}))
+        return res(ctx.json({predictedName: namesToReturn}))
     }), 
 
     rest.get('/*', (req, res, ctx) => {
