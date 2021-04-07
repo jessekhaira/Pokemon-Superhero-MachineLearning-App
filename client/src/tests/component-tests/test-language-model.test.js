@@ -60,7 +60,27 @@ describe('testing language model, need describe for beforeEach', () => {
         userEvent.click(screen.getByText('Generate!'));
 
         expect(screen.getByText(/5.2 does not meet those conditions/)); 
+    });
 
+    test('testing whether num names to generate value is validated correctly', async () => {
+        userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), '0.51');
+        // no value 
+        userEvent.click(screen.getByText('Generate!'));
+        expect(screen.getByText(/no value was provided at all/)); 
 
+        // value to low 
+        userEvent.type(screen.getByRole('spinbutton', {name: /number names to generate/}), '0.9');
+        userEvent.click(screen.getByText('Generate!'));
+
+        expect(screen.getByText(/0.9 does not meet those conditions/)); 
+
+        userEvent.clear(screen.getByRole('spinbutton', {name: /number names to generate/}));
+
+        // value to high
+
+        userEvent.type(screen.getByRole('spinbutton', {name: /number names to generate/}), '16');
+        userEvent.click(screen.getByText('Generate!'));
+
+        expect(screen.getByText(/16 does not meet those conditions/)); 
     });
 }); 
