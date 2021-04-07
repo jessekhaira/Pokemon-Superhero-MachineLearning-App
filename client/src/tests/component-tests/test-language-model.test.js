@@ -25,4 +25,9 @@ describe('testing language model, need describe for beforeEach', () => {
             expect(screen.getByText(/Unknown/)).toBeVisible();
         }
     });
+
+    test('testing whether names are fetched and displayed appropriately', async () => {
+        userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), 2.3);
+        userEvent.type(screen.getByRole('spinbutton', {name: /names to generate/}), 5);
+    })
 }); 

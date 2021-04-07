@@ -31,7 +31,7 @@ const successServer = setupServer(
         for (let i=0; i<req.body.number_to_generate; i++) {
             namesToReturn.push(`name${i}`);
         }
-        return res(ctx.json({predictedName: namesToReturn}))
+        return res(ctx.json({predictedName: []}))
     }), 
 
     rest.get('/*', (req, res, ctx) => {
@@ -44,7 +44,7 @@ const errorServer = setupServer(
         throw Error;
     }),
 
-    req.post('/languageModel', (req,res,ctx) => {
+    rest.post('/languageModel', (req,res,ctx) => {
         throw Error; 
     }),
 
