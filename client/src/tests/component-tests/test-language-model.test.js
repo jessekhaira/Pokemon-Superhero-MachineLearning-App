@@ -38,6 +38,29 @@ describe('testing language model, need describe for beforeEach', () => {
         }
 
         expect(screen.queryByText(`name5`)).toBe(null); 
+    });
 
-    })
+    test('testing whether temperature value is validated correctly', async () => {
+        // no value 
+        userEvent.click(screen.getByText('Generate!'));
+        expect(screen.getByText(/no value was provided at all/)); 
+
+        // value to low 
+
+        userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), '0.2');
+        userEvent.click(screen.getByText('Generate!'));
+
+        expect(screen.getByText(/0.2 does not meet those conditions/)); 
+
+        userEvent.clear(screen.getByRole('spinbutton', {name: /temperature value/})); 
+
+        // value to high
+
+        userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), '5.2');
+        userEvent.click(screen.getByText('Generate!'));
+
+        expect(screen.getByText(/5.2 does not meet those conditions/)); 
+
+
+    });
 }); 
