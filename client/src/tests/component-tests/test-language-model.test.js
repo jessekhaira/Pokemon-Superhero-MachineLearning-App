@@ -26,7 +26,7 @@ describe('testing language model, need describe for beforeEach', () => {
         }
     });
 
-    test('testing whether names are fetched and displayed appropriately', async () => {
+    test('testing whether names are fetched and displayed appropriately for 5 names', async () => {
         userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), '2.3');
         userEvent.type(screen.getByRole('spinbutton', {name: /names to generate/}), '5');
         userEvent.click(screen.getByText('Generate!'));
@@ -39,6 +39,21 @@ describe('testing language model, need describe for beforeEach', () => {
 
         expect(screen.queryByText(`name5`)).toBe(null); 
     });
+
+    test('testing whether names are fetched and displayed appropriately for 15 names', async () => {
+        userEvent.type(screen.getByRole('spinbutton', {name: /temperature value/}), '2.3');
+        userEvent.type(screen.getByRole('spinbutton', {name: /names to generate/}), '15');
+        userEvent.click(screen.getByText('Generate!'));
+
+        await waitFor(() => expect(screen.getByText(/name14/)).toBeVisible());
+
+        for (let i =0; i<15; i++) {
+            expect(screen.getByText(`name${i}`)).toBeVisible();
+        }
+
+        expect(screen.queryByText(`name16`)).toBe(null); 
+    });
+
 
     test('testing whether temperature value is validated correctly', async () => {
         // no value 
@@ -83,4 +98,6 @@ describe('testing language model, need describe for beforeEach', () => {
 
         expect(screen.getByText(/16 does not meet those conditions/)); 
     });
+
+
 }); 
