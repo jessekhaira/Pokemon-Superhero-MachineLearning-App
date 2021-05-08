@@ -27,21 +27,23 @@ model = load_model(
 
 
 @languageModelBlueprint.route('/', methods=['POST'])
-def languageModel_rootAPIHandler():
+def language_model_root_handler():
     """
-    This function is an API endpoint for the flask application that will respond to HTTP post requests to the 
-    /languageModel/ endpoint. This function has the purpose of generating a variable number of pokemon names
-    and returning them as a JSON object to the requestor. 
+    This function is an API endpoint for the flask application
+    that will respond to HTTP post requests to the /languageModel/
+    endpoint. This function has the purpose of generating a
+    variable number of pokemon names and returning them as a
+    JSON object to the requestor.
     """
-    dataRecieved = request.get_json()
-    temperature = round(float(dataRecieved["temperature"]), 2)
-    number_to_generate = dataRecieved["number_to_generate"]
-    predictedName = []
-    for i in range(int(number_to_generate)):
-        predictedName.append(
+    data_recieved = request.get_json()
+    temperature = round(float(data_recieved['temperature']), 2)
+    number_to_generate = data_recieved['number_to_generate']
+    predicted_name = []
+    for _ in range(int(number_to_generate)):
+        predicted_name.append(
             make_name(model,
                       index_to_char,
                       char_to_index,
                       temperature=temperature,
                       max_seq_len=10))
-    return jsonify({'predictedName': predictedName})
+    return jsonify({'predictedName': predicted_name})

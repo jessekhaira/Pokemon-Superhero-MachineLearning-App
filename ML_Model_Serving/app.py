@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from convModelFolder.convBlueprint import convBlueprint
-from languageModelFolder.languageModelBlueprint import languageModelBlueprint
+from languageModelFolder.language_model_blueprint import languageModelBlueprint
 
 app = Flask(__name__)
 
