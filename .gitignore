@@ -1,5 +1,4 @@
-backend/venv
-Backend/node_modules
+app/backend/node_modules
 ML_Model_Serving/venv
 
 ML_Model_Serving/convModelFolder/model/data
