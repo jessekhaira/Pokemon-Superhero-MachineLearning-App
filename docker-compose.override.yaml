@@ -1,0 +1,17 @@
+services:
+  app-service:
+    build: app/Dockerfile
+    volumes:
+      - ./app:/app-service
+    ports:
+      - "80:80"
+    environment:
+      PORT: "80"
+      ML_Server: "http://172.18.0.3:5000/"
+
+  poke-ml-service:
+    build: Dockerfile
+    volumes:
+      - ./ML_Model_Serving:/ml-service/ML_Model_Serving
+    ports:
+      - "5000:5000"
