@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 import numpy as np
+import tensorflow
 from tensorflow.keras import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import SparseCategoricalCrossentropy
@@ -42,8 +43,8 @@ def make_name(model,
     for i in range(curr_seq_len):
         raw_logits = (model.predict(x)[0]) / temperature
         # get generated char at this timestep
-        predicted_index = tf.random.categorical(raw_logits,
-                                                num_samples=1).numpy()[0][0]
+        predicted_index = tensorflow.random.categorical(
+            raw_logits, num_samples=1).numpy()[0][0]
         gen_char = index_to_char[str(predicted_index)]
         # append char to name we're making, and create a new vector to be input at the
         # next timestep
