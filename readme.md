@@ -20,13 +20,17 @@ I also worked with an external API to obtain inspirational quotes and templated 
 
 The tech stack I used in the project included:
 
-- React and Sass for the frontend
-- Express for the backend
-- Flask to serve as an API wrapper for the deep learning models
-- Keras in Python for building, training and validating the deep learning models
-- Beautiful Soup + Selenium in Python for data scraping
-- Heroku for deploying the Flask server and the Express server
-- Docker to containerize the machine learning service and the application service
+- Frontend:
+    - React
+    - Sass
+- App server:
+    - Express, Node
+- Machine learning service:
+    - Flask to serve as an API wrapper for the deep learning models
+    - Keras in Python for building, training and validating the deep learning models
+    - Beautiful Soup + Selenium in Python for data scraping
+- Heroku for deployment
+- Docker for containierizing the services
 
 So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, a request is dispatched to the flask api, where it is routed to the appropriate deep learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend.
 
