@@ -1,4 +1,5 @@
 # Pokemon & Superhero Machine Learning
+
 ## Table of Contents
 
 1. [Description](#Description)
@@ -6,43 +7,50 @@
 3. [Features](#Features)
 4. [Screenshots](#Screenshots)
 5. [Deep Learning and Data Scraping Information](#ml_models)
-    1. [Language Model](#lang_model)
-    2. [Image Recognition](#img_recognition)
- 
+   1. [Language Model](#lang_model)
+   2. [Image Recognition](#img_recognition)
+
 ## Description
-This is a dynamic website I created deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The project can be viewed at the following URL: https://pokemon-superhero-ai.herokuapp.com/. 
+
+This is a dynamic website I architected using a microservices architecture, deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The services were containerized, and the project was deployed on the free tier of Heroku, viewable at the following URL: https://pokemon-superhero-ai.herokuapp.com/.
 
 I wanted to determine if an algorithm could recognize my four favourite superheros given images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and then trained deep learning algorithms on the scraped data. Upon validation, the algorithms were found to produce excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
 I also worked with an external API to obtain inspirational quotes and templated the quotes on the website.
 
 The tech stack I used in the project included:
+
 - React and Sass for the frontend
 - Express for the backend
 - Flask to serve as an API wrapper for the deep learning models
 - Keras in Python for building, training and validating the deep learning models
 - Beautiful Soup + Selenium in Python for data scraping
-- Heroku for deploying the Flask server and the Express server 
+- Heroku for deploying the Flask server and the Express server
+- Docker to containerize the machine learning service and the application service
 
-So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, a request is dispatched to the flask api, where it is routed to the appropriate deep learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend. 
+So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, a request is dispatched to the flask api, where it is routed to the appropriate deep learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend.
 
-## Installation 
+## Installation
+
 ```
 $ git clone https://github.com/13jk59/Pokemon-Superhero-MachineLearning-App.git
 $ cd Pokemon-Superhero-MachineLearning-App/
 $ ./run-app-locally
 ```
-Then in a browser, visit this URL: http://localhost:3002/. To stop the servers, simply press ctrl+c in the terminal that is currently running the servers. 
+
+Then in a browser, visit this URL: http://localhost:3002/. To stop the servers, simply press ctrl+c in the terminal that is currently running the servers.
 
 The bash script runs the express server and flask server in parallel, after installing the necessary requirements needed for the app to run.
 
-## Features 
-* User can input images on the home route and send them to an AI algorithm, which will process the data and send back predictions. The user can then see the top prediction, and probabilities for all the classes. 
-* User can query a deep learning model to generate 1-15 new pokemon names
-* Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes can be shown on demand. 
-* Media queries make website responsive 
+## Features
 
-## Screenshots 
+- User can input images on the home route and send them to an AI algorithm, which will process the data and send back predictions. The user can then see the top prediction, and probabilities for all the classes.
+- User can query a deep learning model to generate 1-15 new pokemon names
+- Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes can be shown on demand.
+- Media queries make website responsive
+
+## Screenshots
+
 Homepage of the app, where the user can submit images of a superhero and send them to be processed by the image recognition algorithm
 <br>
 <img src="./screenshots/img_rec_page.png" width = "900">
@@ -51,18 +59,18 @@ Route of the app where the user can request a language generating model to gener
 <br>
 <img src="./screenshots/name_gen_page.png" width="900">
 
-Showing results from the language model generating various numbers of pokemon names 
+Showing results from the language model generating various numbers of pokemon names
 <br>
 <img src="./screenshots/15_names_generated.png" width="900">
 
 <br>
 <img src="./screenshots/6_names_generated.png" width="900">
 
-After the user has sumbitted an image on the homepage, the image will be shown to the user before sending to the model 
+After the user has sumbitted an image on the homepage, the image will be shown to the user before sending to the model
 <br>
 <img src="./screenshots/img_submitted.png" width="900">
 
-Once the image has been processed, user can access the most likely prediction or see all of the probabilities 
+Once the image has been processed, user can access the most likely prediction or see all of the probabilities
 <br>
 <img src="./screenshots/img_results_obtained.png" width="900">
 
@@ -74,21 +82,22 @@ Seeing all the probabilities for an image that was sent to the image recognition
 <br>
 <img src="./screenshots/all_probs.png" width="900">
 
+## Deep Learning & Data Scraping<a name = "ml_models"></a>
 
-## Deep Learning & Data Scraping<a name = "ml_models"></a> 
-Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models.  Data scraping was accomplished with a combination of Selenium and Beautiful Soup.  
+Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models. Data scraping was accomplished with a combination of Selenium and Beautiful Soup.
 
 ### Language Model<a name = "lang_model"></a>
-All of the base 898 Pokémon names were scraped using a combination of the Python requests package and beautiful soup. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used. 
 
-The particular type of language model I chose to build was a character-level language model, so at every time step in the GRU cell, the goal was to predict the most likely next character. Following shows a summary of the model used. 
+All of the base 898 Pokémon names were scraped using a combination of the Python requests package and beautiful soup. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used.
+
+The particular type of language model I chose to build was a character-level language model, so at every time step in the GRU cell, the goal was to predict the most likely next character. Following shows a summary of the model used.
 
 <img src="./screenshots/language_model.png" width="700">
 
-### Image Recognition Model<a name = "img_recognition"></a> 
-After creating a custom image scraper with Selenium, ~500 raw images for each superhero were scraped. After manual cleaning of these images, I ended up with approximately ~260 images of each superhero, with the training set being ~1000 images overall and the validation and test set each having 100 images. 
+### Image Recognition Model<a name = "img_recognition"></a>
 
-Given the limited training data available, I decided to use a transfer learning approach, and downloaded the ResNet50V2 architecture along with weights learned for this model on the imagenet competition. I replaced the softmax classifer on top of the model with one relevant to this image classification task, and only trained the softmax classifier during training. After training the softmax classifier, I decided against unfreezing the base model and fine tuning the entire architecture in order to avoid over-fitting, as good performance was obtained by just using the transfer learned model as a fixed feature extractor. 
+After creating a custom image scraper with Selenium, ~500 raw images for each superhero were scraped. After manual cleaning of these images, I ended up with approximately ~260 images of each superhero, with the training set being ~1000 images overall and the validation and test set each having 100 images.
+
+Given the limited training data available, I decided to use a transfer learning approach, and downloaded the ResNet50V2 architecture along with weights learned for this model on the imagenet competition. I replaced the softmax classifer on top of the model with one relevant to this image classification task, and only trained the softmax classifier during training. After training the softmax classifier, I decided against unfreezing the base model and fine tuning the entire architecture in order to avoid over-fitting, as good performance was obtained by just using the transfer learned model as a fixed feature extractor.
 
 <img src="./screenshots/conv_model.png" width="700">
-

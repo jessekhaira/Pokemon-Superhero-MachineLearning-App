@@ -1,6 +1,6 @@
 app/backend/node_modules
 *run-docker.sh
-ML_Model_Serving/venv
+ML_Model_Serving/venv*
 
 ML_Model_Serving/convModelFolder/model/data
 ML_Model_Serving/convModelFolder/model/imageScrapingPlayground.ipynb

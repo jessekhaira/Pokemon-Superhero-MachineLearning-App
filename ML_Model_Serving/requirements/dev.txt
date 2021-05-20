@@ -1,0 +1,6 @@
+-r common.txt
+pylint==2.5.2
+jupyter-client==6.1.6
+jupyter-core==4.6.3
+yapf==0.31.0
+selenium==3.141.0

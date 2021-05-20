@@ -3,7 +3,7 @@ from flask import jsonify
 from flask import request
 import os
 import json
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from ML_Model_Serving.languageModelFolder.model.languageModel import make_name
 
 languageModelBlueprint = Blueprint('Language Model Blueprint', __name__)
