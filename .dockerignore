@@ -1,0 +1,6 @@
+Dockerfile
+.dockerignore
+docker-compose.yml
+ML_Model_Serving/venv*
+ML_Model_Serving/ML_Model_Serving*
+**/__pycache__
