@@ -2,7 +2,7 @@ services:
   app-service:
     environment:
       PORT: "80"
-      ML_Server: "http://172.18.0.3:5000/"
+      ML_Server: "http://172.17.0.1:5000/"
 
   poke-ml-service:
     ports:
