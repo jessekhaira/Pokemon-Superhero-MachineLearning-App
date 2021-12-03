@@ -53,7 +53,7 @@ The bash script runs the express server and flask server in parallel, after inst
 - Random inspirational quotes are pulled from an API by react, stored in a cache and displayed on the language generating models route. New quotes can be shown on demand.
 - Media queries make website responsive
 
-## Screenshots
+## Usage
 
 Homepage of the app, where the user can submit images of a superhero and send them to be processed by the image recognition algorithm
 <br>
