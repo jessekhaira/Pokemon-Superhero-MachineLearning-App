@@ -5,7 +5,7 @@
 1. [Description](#Description)
 2. [Installation](#Installation)
 3. [Features](#Features)
-4. [Screenshots](#Screenshots)
+4. [Usage](#Usage)
 5. [Deep Learning and Data Scraping Information](#ml_models)
    1. [Language Model](#lang_model)
    2. [Image Recognition](#img_recognition)
