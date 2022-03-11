@@ -12,25 +12,25 @@
 
 ## Description
 
-This is a dynamic website I architected using a microservices architecture, deploying multiple deep learning models I trained related to my 4 favourite superheros and Pokémon. The services were containerized, and the project was deployed on the free tier of Heroku, viewable at the following URL: https://pokemon-superhero-ai.herokuapp.com/.
+This dynamic web application deploys multiple deep learning models related to superheros and Pokémon. The application was containerized and deployed on Heroku for a period of time, with installation and usage instructions [below](#Installation). 
 
 I wanted to determine if an algorithm could recognize my four favourite superheros given images of them. I also wanted to determine if an algorithm could generate viable pokémon names. To achieve these two goals, I scraped the web to create relevant datasets, and then trained deep learning algorithms on the scraped data. Upon validation, the algorithms were found to produce excellent results. For details about the data scraping and deep learning models used, click [here](#ml_models).
 
 I also worked with an external API to obtain inspirational quotes and templated the quotes on the website.
 
-The tech stack I used in the project included:
-
+## Tech Stack
+The following contains the combination of technologies that were used to build the project:
 - Frontend:
     - React
     - Sass
 - App server:
-    - Express, Node
-- Machine learning service:
-    - Flask to serve as an API wrapper for the deep learning models
-    - Keras in Python for building, training and validating the deep learning models
-    - Beautiful Soup + Selenium in Python for data scraping
-- Heroku for deployment
-- Docker for containierizing the services
+    - Express
+    - Node
+- Machine Learning Service:
+    - Flask
+    - Keras 
+    - Beautiful Soup & Selenium 
+- Docker 
 
 So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, a request is dispatched to the flask api, where it is routed to the appropriate deep learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend.
 
