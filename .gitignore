@@ -8,7 +8,6 @@ ML_Model_Serving/convModelFolder/model/kerasConvModel.ipynb
 
 .DS_Store
 ML_Model_Serving/languageModelFolder/model/kerasLanguageModel.ipynb
-.vscode/
 *.pyc
 
 *.egg-info
