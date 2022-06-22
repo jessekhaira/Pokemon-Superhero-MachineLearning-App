@@ -17,6 +17,6 @@ setup(name='ML_Model_Serving',
       version='1.0',
       license="MIT",
       author="Jesse Khaira",
-      author_email="jesse.khaira15@gmail.com",
+      author_email="jesse.khaira10@gmail.com",
       packages=find_packages(),
       install_requires=install_requires)
