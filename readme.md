@@ -88,7 +88,7 @@ Seeing all the probabilities for an image that was sent to the image recognition
 
 ## Deep Learning & Data Scraping<a name = "ml_models"></a>
 
-Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models. Data scraping was accomplished with a combination of Selenium and Beautiful Soup.
+Keras was used as the deep learning framework for this project due to its simplicity and support for easy deployment of its models. Data scraping was accomplished using a combination of Selenium and Beautiful Soup.
 
 ### Language Model<a name = "lang_model"></a>
 
