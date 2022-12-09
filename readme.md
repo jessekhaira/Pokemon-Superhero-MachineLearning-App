@@ -92,9 +92,9 @@ Keras was used as the deep learning framework for this project due to its simpli
 
 ### Language Model<a name = "lang_model"></a>
 
-All of the base 898 Pokémon names were scraped using a combination of the Python requests package and beautiful soup. Taking into the account the number of examples available, I decided to use a single GRU cell in the model with a small number of hidden units to prevent overfitting. I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used.
+All of the base 898 Pokémon names (at the time) were scraped using a combination of the Python requests package and beautiful soup. Taking into the account the amount of data available and the task, I decided to create a character-level language model with a single gated recurrent unit (GRU) cell with a small number of hidden units.
 
-A character-level language model was deemed to be the most appropriate to use for the given task, so at every time step in the GRU cell, the goal was to predict the most likely next character. Following shows a summary of the model used.
+I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data available. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used.
 
 <img src="./screenshots/language_model.png" width="700">
 
@@ -102,6 +102,8 @@ A character-level language model was deemed to be the most appropriate to use fo
 
 After creating a custom image scraper with Selenium, ~500 raw images for each superhero were scraped. After manual cleaning of these images, I ended up with approximately ~260 images of each superhero, with the training set being ~1000 images overall and the validation and test set each having 100 images.
 
-Given the limited training data available, I decided to use a transfer learning approach, and downloaded the ResNet50V2 architecture along with weights learned for this model on the imagenet competition. I replaced the softmax classifer on top of the model with one relevant to this image classification task, and only trained the softmax classifier during training. After training the softmax classifier, I decided against unfreezing the base model and fine tuning the entire architecture in order to avoid over-fitting, as good performance was obtained by just using the transfer learned model as a fixed feature extractor.
+Given the limited training data available, I decided to use a transfer learning approach, and downloaded the ResNet50V2 architecture along with weights learned for this model on the imagenet competition. I replaced the softmax classifer on top of the model with one relevant to this image classification task, and only trained the softmax classifier during training. 
+
+After training the softmax classifier, I decided against unfreezing the base model and fine tuning the entire architecture in order to avoid over-fitting, as good performance was obtained by just using the transfer learned model as a fixed feature extractor.
 
 <img src="./screenshots/conv_model.png" width="700">
