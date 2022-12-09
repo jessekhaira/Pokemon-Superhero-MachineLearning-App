@@ -92,7 +92,7 @@ Keras was used as the deep learning framework for this project due to its simpli
 
 ### Language Model<a name = "lang_model"></a>
 
-All of the base 898 Pokémon names (at the time) were scraped using a combination of the Python requests package and beautiful soup. Taking into account the amount of data available and the task, I decided to create a character-level language model with a single gated recurrent unit (GRU) cell with a small number of hidden units.
+All of the base 898 Pokémon names (at the time) were scraped using a combination of the Python requests package and beautiful soup. Taking into account the amount of data available and the task, I decided to create a character-level language model with a single gated recurrent unit (GRU) cell to generate the Pokémon names. 
 
 I considered building a deeper architecture to allow the model to learn more expressive features, but decided against it due to the scarcity of training data available. The dimension of the input was also quite low, with the vocabulary formed from the existing names, sitting at 34, so an embedding layer was not used.
 
