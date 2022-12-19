@@ -23,14 +23,15 @@ The following contains the combination of technologies that were used to build t
 - Frontend:
     - React
     - Sass
-- App server:
+- Application server:
     - Express
     - Node
 - Machine Learning Service:
     - Flask
     - Keras 
     - Beautiful Soup & Selenium 
-- Docker 
+- DevOps:
+   - Docker 
 
 So whenever a user sends an HTTP request for a prediction, that request goes to the express backend first, where it flows through a stack of middleware functions and if the request is valid, a request is dispatched to the flask api, where it is routed to the appropriate deep learning model. The output from the deep learning models is then returned from the API's and templated on the React frontend.
 
